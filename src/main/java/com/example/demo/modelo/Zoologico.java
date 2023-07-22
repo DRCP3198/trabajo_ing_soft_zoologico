@@ -21,7 +21,7 @@ public class Zoologico {
 	@Column(name = "zoo_id")
 	private Integer id;
 
-	@Column(name = "zoo_id")
+	@Column(name = "zoo_nombre")
 	private String nombre;
 
 	@Column(name = "zoo_direccion")

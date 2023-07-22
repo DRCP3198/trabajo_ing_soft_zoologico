@@ -38,7 +38,8 @@ public class Empleado {
 	@Column(name = "empl_cargo")
 	private String cargo;
 	
-	@OneToOne(mappedBy = "empleado")
+	@OneToOne
+	@JoinColumn(name = "empleado_id_cliente")
 	private Cliente cliente;
 	
 	@ManyToOne
