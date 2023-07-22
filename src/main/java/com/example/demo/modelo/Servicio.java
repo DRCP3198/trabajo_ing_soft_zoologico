@@ -14,32 +14,43 @@ import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name="servicio")
+@Table(name = "servicio")
 public class Servicio {
-	
+
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "seq_servicio")
-	@SequenceGenerator(name = "seq_servicio",sequenceName = "seq_servicio", allocationSize = 1)
-	@Column(name="serv_id")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_servi")
+	@SequenceGenerator(name = "seq_servi", sequenceName = "seq_servi", allocationSize = 1)
+	@Column(name = "serv_id")
 	private Integer id;
-	
-	@Column(name="serv_nombre")
-	private String nombre;
-	
-	@Column(name="serv_fecha_inicio")
+
+	@Column(name = "serv_tipo")
+	private String tipo;
+
+	@Column(name = "serv_fecha_inicio")
 	private LocalDate fechaInicioContrato;
-	
-	@Column(name="serv_fecha_fin")
+
+	@Column(name = "serv_fecha_fin")
 	private LocalDate fechaFinContrato;
-	
-	@Column(name="serv_precio")
+
+	@Column(name = "serv_precio")
 	private BigDecimal precio;
 	
+	@Column(name = "serv_codigo")
+	private String codigo;
+
+	// RELACIONES:
 	@OneToOne
-	@JoinColumn(name="serv_id_proveedor")
+	@JoinColumn(name = "serv_id_proveedor")
 	private Proveedor proveedor;
 
-	//SET Y GET
+	// toString:
+	@Override
+	public String toString() {
+		return "Servicio [id=" + id + ", tipo=" + tipo + ", fechaInicioContrato=" + fechaInicioContrato
+				+ ", fechaFinContrato=" + fechaFinContrato + ", precio=" + precio + ", codigo=" + codigo + "]";
+	}
+
+	// SET Y GET
 	public Integer getId() {
 		return id;
 	}
@@ -48,12 +59,12 @@ public class Servicio {
 		this.id = id;
 	}
 
-	public String getNombre() {
-		return nombre;
+	public String getTipo() {
+		return tipo;
 	}
 
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
 	}
 
 	public LocalDate getFechaInicioContrato() {
@@ -88,13 +99,13 @@ public class Servicio {
 		this.proveedor = proveedor;
 	}
 
-	@Override
-	public String toString() {
-		return "Servicio [id=" + id + ", nombre=" + nombre + ", fechaInicioContrato=" + fechaInicioContrato
-				+ ", fechaFinContrato=" + fechaFinContrato + ", precio=" + precio + "]";
+	public String getCodigo() {
+		return codigo;
 	}
-	
-	
-	
 
+	public void setCodigo(String codigo) {
+		this.codigo = codigo;
+	}
+
+	
 }

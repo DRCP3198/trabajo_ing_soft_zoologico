@@ -18,35 +18,49 @@ import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name="proveedor")
+@Table(name = "proveedor")
 public class Proveedor {
-	
+
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "seq_proveedor")
-	@SequenceGenerator(name = "seq_proveedor",sequenceName = "seq_proveedor", allocationSize = 1)
-	@Column(name="prov_id")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_prove")
+	@SequenceGenerator(name = "seq_prove", sequenceName = "seq_prove", allocationSize = 1)
+	@Column(name = "prov_id")
 	private Integer id;
-	
-	@Column(name="prov_nombre")
+
+	@Column(name = "prov_nombre")
 	private String nombre;
-	
-	@Column(name="prov_fecha_contrato")
+
+	@Column(name = "prov_fecha_contrato")
 	private LocalDate fechaContrato;
-	
-	@Column(name="prov_ruc")
+
+	@Column(name = "prov_ruc")
 	private String ruc;
 	
-	@ManyToOne
-	@JoinColumn(name="proveedor_id_zoologico")
-	private Zoologico zoologico;
-
-	@OneToMany(mappedBy = "proveedor")
-	private List<Producto> productos;
+	@Column(name = "prov_codigo")
+	private String codigo;
 	
+	// RELACIONES:
+	// servicio:
 	@OneToOne(mappedBy = "proveedor")
 	private Servicio servicio;
 
-	//GET Y SET
+	// productos:
+	@OneToMany(mappedBy = "proveedor")
+	private List<Producto> productos;
+
+	// zoológico:
+	@ManyToOne
+	@JoinColumn(name = "prove_id_zoo")
+	private Zoologico zoologico;
+
+	// toString:
+	@Override
+	public String toString() {
+		return "Proveedor [id=" + id + ", nombre=" + nombre + ", fechaContrato=" + fechaContrato + ", ruc=" + ruc
+				+ ", codigo=" + codigo + "]";
+	}
+
+	// GET Y SET
 	public Integer getId() {
 		return id;
 	}
@@ -79,14 +93,6 @@ public class Proveedor {
 		this.ruc = ruc;
 	}
 
-	public List<Producto> getProductos() {
-		return productos;
-	}
-
-	public void setProductos(List<Producto> productos) {
-		this.productos = productos;
-	}
-
 	public Servicio getServicio() {
 		return servicio;
 	}
@@ -95,14 +101,31 @@ public class Proveedor {
 		this.servicio = servicio;
 	}
 
-	@Override
-	public String toString() {
-		return "Proveedor [id=" + id + ", nombre=" + nombre + ", fechaContrato=" + fechaContrato + ", ruc=" + ruc
-				+ "]";
+	public List<Producto> getProductos() {
+		return productos;
 	}
+
+	public void setProductos(List<Producto> productos) {
+		this.productos = productos;
+	}
+
+	public Zoologico getZoologico() {
+		return zoologico;
+	}
+
+	public void setZoologico(Zoologico zoologico) {
+		this.zoologico = zoologico;
+	}
+
 	
+	public String getCodigo() {
+		return codigo;
+	}
+
 	
-	
-	
+	public void setCodigo(String codigo) {
+		this.codigo = codigo;
+	}
+
 	
 }

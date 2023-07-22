@@ -14,32 +14,50 @@ import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name="producto")
+@Table(name = "producto")
 public class Producto {
-	
+
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "seq_producto")
-	@SequenceGenerator(name = "seq_producto",sequenceName = "seq_producto", allocationSize = 1)
-	@Column(name="prod_id")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_produ")
+	@SequenceGenerator(name = "seq_produ", sequenceName = "seq_produ", allocationSize = 1)
+	@Column(name = "prod_id")
 	private Integer id;
-	
-	@Column(name="prod_nombre")
+
+	@Column(name = "prod_nombre")
 	private String nombre;
-	
-	@Column(name="prod_stock")
-	private Integer stock;
-	
-	@Column(name="prod_precio")
+
+	@Column(name = "prod_tipo")
+	private String tipo;
+
+	@Column(name = "prod_cantidad_stock")
+	private Integer cantidad_stock;
+
+	@Column(name = "prod_codigo")
+	private String codigo;
+
+	@Column(name = "prod_descripcion")
+	private String descripcion;
+
+	@Column(name = "prod_precio")
 	private BigDecimal precio;
-	
-	@Column(name="prod_fecha_caducidad")
+
+	@Column(name = "prod_fecha_caducidad")
 	private LocalDate fechaCaducidad;
-	
+
+	// RELACIONES:
 	@ManyToOne
-	@JoinColumn(name="prod_id_prov")
+	@JoinColumn(name = "produ_id_prove")
 	private Proveedor proveedor;
 
-	//SET Y GET
+	// toString:
+	@Override
+	public String toString() {
+		return "Producto [id=" + id + ", nombre=" + nombre + ", tipo=" + tipo + ", cantidad_stock=" + cantidad_stock
+				+ ", codigo=" + codigo + ", descripcion=" + descripcion + ", precio=" + precio + ", fechaCaducidad="
+				+ fechaCaducidad + "]";
+	}
+
+	// SET Y GET
 	public Integer getId() {
 		return id;
 	}
@@ -56,12 +74,36 @@ public class Producto {
 		this.nombre = nombre;
 	}
 
-	public Integer getStock() {
-		return stock;
+	public String getTipo() {
+		return tipo;
 	}
 
-	public void setStock(Integer stock) {
-		this.stock = stock;
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
+	}
+
+	public Integer getCantidad_stock() {
+		return cantidad_stock;
+	}
+
+	public void setCantidad_stock(Integer cantidad_stock) {
+		this.cantidad_stock = cantidad_stock;
+	}
+
+	public String getCodigo() {
+		return codigo;
+	}
+
+	public void setCodigo(String codigo) {
+		this.codigo = codigo;
+	}
+
+	public String getDescripcion() {
+		return descripcion;
+	}
+
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
 	}
 
 	public BigDecimal getPrecio() {
@@ -87,13 +129,5 @@ public class Producto {
 	public void setProveedor(Proveedor proveedor) {
 		this.proveedor = proveedor;
 	}
-
-	@Override
-	public String toString() {
-		return "Producto [id=" + id + ", nombre=" + nombre + ", stock=" + stock + ", precio=" + precio
-				+ ", fechaCaducidad=" + fechaCaducidad + "]";
-	}
-	
-	
 
 }
