@@ -33,13 +33,88 @@ public class Zoologico {
 	@Column(name = "zoo_tamaño")
 	private String tamanio;
 
-	//relacion con proveedor
+	// relacion con proveedor
 	@OneToMany(mappedBy = "zoologico")
 	private List<Proveedor> provedores;
-	
-	//relacion con cliente
+
+	// relacion con cliente
 	@OneToMany(mappedBy = "zoologico")
 	private List<Cliente> clientes;
+
+	// relacion con empleado
+	@OneToMany(mappedBy = "zoologico")
+	private List<Empleado> empleado;
+
+	//SET y GET
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public String getDireccion() {
+		return direccion;
+	}
+
+	public void setDireccion(String direccion) {
+		this.direccion = direccion;
+	}
+
+	public String getNumeroTlf() {
+		return numeroTlf;
+	}
+
+	public void setNumeroTlf(String numeroTlf) {
+		this.numeroTlf = numeroTlf;
+	}
+
+	public String getTamanio() {
+		return tamanio;
+	}
+
+	public void setTamanio(String tamanio) {
+		this.tamanio = tamanio;
+	}
+
+	public List<Proveedor> getProvedores() {
+		return provedores;
+	}
+
+	public void setProvedores(List<Proveedor> provedores) {
+		this.provedores = provedores;
+	}
+
+	public List<Cliente> getClientes() {
+		return clientes;
+	}
+
+	public void setClientes(List<Cliente> clientes) {
+		this.clientes = clientes;
+	}
+
+	public List<Empleado> getEmpleado() {
+		return empleado;
+	}
+
+	public void setEmpleado(List<Empleado> empleado) {
+		this.empleado = empleado;
+	}
+
+	@Override
+	public String toString() {
+		return "Zoologico [id=" + id + ", nombre=" + nombre + ", direccion=" + direccion + ", numeroTlf=" + numeroTlf
+				+ ", tamanio=" + tamanio + "]";
+	}
 	
 	
 

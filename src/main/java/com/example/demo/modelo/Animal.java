@@ -26,7 +26,5 @@ public class Animal {
 	private Integer edad;
 	
 	
-	@OneToMany
-	private Especie especie;
 
 }

@@ -43,13 +43,16 @@ public class ClienteRepoImpl implements IClienteRepo {
 	@Override
 	public void eliminar(String cedula) {
 		// TODO Auto-generated method stub
+		
+		this.entityManager.remove(this.encontrar(cedula));
 
 	}
 
 	@Override
 	public List<Cliente> encontrarTodos() {
 		// TODO Auto-generated method stub
-		return null;
+		TypedQuery<Cliente> query = this.entityManager.createQuery("SELECT cli FROM Cliente cli", Cliente.class);
+		return query.getResultList();
 	}
 
 }
