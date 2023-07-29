@@ -2,6 +2,7 @@ package com.example.demo.modelo;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.Set;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -9,6 +10,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
@@ -48,6 +51,11 @@ public class Producto {
 	@ManyToOne
 	@JoinColumn(name = "produ_id_prove")
 	private Proveedor proveedor;
+	
+	// animal:
+	@ManyToMany
+	@JoinTable(name = "producto_animal", joinColumns = @JoinColumn(name = "proan_id_producto"), inverseJoinColumns = @JoinColumn(name = "anhi_id_animal"))
+	private Set<Animal> animales;
 
 	// toString:
 	@Override
@@ -128,6 +136,14 @@ public class Producto {
 
 	public void setProveedor(Proveedor proveedor) {
 		this.proveedor = proveedor;
+	}
+
+	public Set<Animal> getAnimales() {
+		return animales;
+	}
+
+	public void setAnimales(Set<Animal> animales) {
+		this.animales = animales;
 	}
 
 }
