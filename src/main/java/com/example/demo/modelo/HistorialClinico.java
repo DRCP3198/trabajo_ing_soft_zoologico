@@ -12,6 +12,8 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 
@@ -38,10 +40,12 @@ public class HistorialClinico {
 	private String observaciones;
 	
 	// RELACIONES:
+	@OneToOne(mappedBy = "historial")
+	private Animal animal;
 	
-	@ManyToMany
-	@JoinTable(name="historial_animal",joinColumns = @JoinColumn(name="anhi_id_historial"),inverseJoinColumns = @JoinColumn(name="anhi_id_animal"))
-	private List<Animal>animales;
+	@OneToMany(mappedBy="clinico")
+	private List<HistorialCitas> historialCitas;
+	
 
 	//Set and Get
 	public Integer getId() {
@@ -84,13 +88,30 @@ public class HistorialClinico {
 		this.observaciones = observaciones;
 	}
 
-	public List<Animal> getAnimales() {
-		return animales;
+	
+	public Animal getAnimal() {
+		return animal;
 	}
 
-	public void setAnimales(List<Animal> animales) {
-		this.animales = animales;
+	public void setAnimal(Animal animal) {
+		this.animal = animal;
 	}
+
+	public List<HistorialCitas> getHistorialCitas() {
+		return historialCitas;
+	}
+
+	public void setHistorialCitas(List<HistorialCitas> historialCitas) {
+		this.historialCitas = historialCitas;
+	}
+
+	@Override
+	public String toString() {
+		return "HistorialClinico [id=" + id + ", fechaRegistro=" + fechaRegistro + ", fechaAlta=" + fechaAlta
+				+ ", diagnostico=" + diagnostico + ", observaciones=" + observaciones + "]";
+	}
+
+	
 
 
 	

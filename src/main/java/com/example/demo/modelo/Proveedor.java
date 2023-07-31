@@ -41,8 +41,7 @@ public class Proveedor {
 	
 	// RELACIONES:
 	// servicio:
-	@OneToOne(mappedBy = "proveedor")
-	private Servicio servicio;
+	
 
 	// productos:
 	@OneToMany(mappedBy = "proveedor")
@@ -91,14 +90,6 @@ public class Proveedor {
 
 	public void setRuc(String ruc) {
 		this.ruc = ruc;
-	}
-
-	public Servicio getServicio() {
-		return servicio;
-	}
-
-	public void setServicio(Servicio servicio) {
-		this.servicio = servicio;
 	}
 
 	public List<Producto> getProductos() {

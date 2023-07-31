@@ -8,6 +8,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 
@@ -37,9 +38,9 @@ public class Zoologico {
 	@OneToMany(mappedBy = "zoologico")
 	private List<Proveedor> provedores;
 
-	// relacion con cliente
-	@OneToMany(mappedBy = "zoologico")
-	private List<Cliente> clientes;
+	// relacion con usuario
+	@OneToOne(mappedBy = "zoologico") 
+	private Usuario usuario;
 
 	// relacion con empleado
 	@OneToMany(mappedBy = "zoologico")
@@ -92,14 +93,6 @@ public class Zoologico {
 
 	public void setProvedores(List<Proveedor> provedores) {
 		this.provedores = provedores;
-	}
-
-	public List<Cliente> getClientes() {
-		return clientes;
-	}
-
-	public void setClientes(List<Cliente> clientes) {
-		this.clientes = clientes;
 	}
 
 	public List<Empleado> getEmpleado() {

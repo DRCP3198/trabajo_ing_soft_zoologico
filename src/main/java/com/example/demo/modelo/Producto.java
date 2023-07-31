@@ -13,6 +13,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 
@@ -52,10 +53,13 @@ public class Producto {
 	@JoinColumn(name = "produ_id_prove")
 	private Proveedor proveedor;
 	
-	// animal:
-	@ManyToMany
-	@JoinTable(name = "producto_animal", joinColumns = @JoinColumn(name = "proan_id_producto"), inverseJoinColumns = @JoinColumn(name = "anhi_id_animal"))
-	private Set<Animal> animales;
+	@ManyToOne
+	@JoinColumn(name = "prod_id_hab")
+	private Producto producto;
+	
+	@OneToOne(mappedBy = "producto")
+	private Almacen almacen;
+	
 
 	// toString:
 	@Override
@@ -138,12 +142,24 @@ public class Producto {
 		this.proveedor = proveedor;
 	}
 
-	public Set<Animal> getAnimales() {
-		return animales;
+	public Producto getProducto() {
+		return producto;
 	}
 
-	public void setAnimales(Set<Animal> animales) {
-		this.animales = animales;
+	public void setProducto(Producto producto) {
+		this.producto = producto;
 	}
+
+	public Almacen getAlmacen() {
+		return almacen;
+	}
+
+	public void setAlmacen(Almacen almacen) {
+		this.almacen = almacen;
+	}
+	
+	
+	
+
 
 }

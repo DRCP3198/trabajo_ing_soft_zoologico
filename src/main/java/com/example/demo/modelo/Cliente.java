@@ -42,11 +42,14 @@ public class Cliente {
 	@JoinColumn(name = "cliente_id_zoologico")
 	private Zoologico zoologico;
 
-	@OneToOne(mappedBy =  "cliente")
+	@OneToOne(mappedBy = "cliente")
 	private Empleado empleado;
 
+	// Relación usuario -cliente
+	@OneToOne(mappedBy = "cliente")
+	private Usuario usuario;
 	
-	//SET y GET
+	// SET y GET
 	public Integer getId() {
 		return id;
 	}
@@ -118,13 +121,19 @@ public class Cliente {
 	public void setEmpleado(Empleado empleado) {
 		this.empleado = empleado;
 	}
+	
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
 
 	@Override
 	public String toString() {
 		return "Cliente [id=" + id + ", nombre=" + nombre + ", apellido=" + apellido + ", edad=" + edad + ", correo="
 				+ correo + ", cedula=" + cedula + ", direccion=" + direccion + "]";
 	}
-	
-	
 
 }

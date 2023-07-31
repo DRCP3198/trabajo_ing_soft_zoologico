@@ -8,8 +8,11 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 
@@ -43,13 +46,14 @@ public class Animal {
 	
 	// RELACIONES:
 	
-	//historial
-	@ManyToMany(mappedBy = "animales")
-	private List<HistorialClinico>historiales;
+	//historial-animal
+	@OneToOne(mappedBy = "animal")
+	private HistorialClinico historial;
 	
-	//animal
-	@ManyToMany(mappedBy = "animales")
-	private List<Producto>productos;
+	//animal-habitad
+	@ManyToOne
+	@JoinColumn(name = "animal_id_habitad")
+	private Habitat habitat;
 
 	
 	//Set and Get
@@ -109,21 +113,29 @@ public class Animal {
 		this.edad = edad;
 	}
 
-	public List<HistorialClinico> getHistoriales() {
-		return historiales;
+	public HistorialClinico getHistorial() {
+		return historial;
 	}
 
-	public void setHistoriales(List<HistorialClinico> historiales) {
-		this.historiales = historiales;
+	public void setHistorial(HistorialClinico historial) {
+		this.historial = historial;
 	}
 
-	public List<Producto> getProductos() {
-		return productos;
+	public Habitat getHabitat() {
+		return habitat;
 	}
 
-	public void setProductos(List<Producto> productos) {
-		this.productos = productos;
+	public void setHabitat(Habitat habitat) {
+		this.habitat = habitat;
 	}
+
+	@Override
+	public String toString() {
+		return "Animal [id=" + id + ", nombreComun=" + nombreComun + ", especie=" + especie + ", nombreCientifico="
+				+ nombreCientifico + ", genero=" + genero + ", peso=" + peso + ", edad=" + edad + "]";
+	}
+
+
 
 
 	
