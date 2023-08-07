@@ -56,6 +56,7 @@ public class AlmacenController {
 	    if (almacenExistente != null) {
 	        almacenExistente.setNombre(almacenModificado.getNombre());
 	        almacenExistente.setCapacidad(almacenModificado.getCapacidad());
+	        almacenExistente.setTipo(almacenModificado.getTipo());
 	        almacenService.modificar(almacenExistente);
 	    }
 	    return "redirect:/almacen/lista"; 

@@ -79,26 +79,48 @@
             text-decoration: none;
             margin-right: 10px;
         }
+        
+        .table-container {
+            max-height: 500px; 
+            overflow: auto;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 8px 15px;
+            background-color: #333;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: #555;
+        }
     </style>
 </head>
 <body>
     <h1>Lista de Almacenes</h1>
     
-    <table border="1">
-        <tr>
+    <div class="table-container">
+        <table border="1">        <tr>
             <th>Nombre</th>
             <th>Capacidad</th>
+            <th>Tipo</th>
             <th>Acciones</th>
         </tr>
-        <tr th:each="almacen : ${almacenes}">
+            <tr th:each="almacen : ${almacenes}">
             <td th:text="${almacen.nombre}"></td>
             <td th:text="${almacen.capacidad}"></td>
-            <td>
-                <a th:href="@{/almacen/editar/{nombre}(nombre=${almacen.nombre})}">Editar</a>
-                <a th:href="@{/almacen/eliminar/{nombre}(nombre=${almacen.nombre})}">Eliminar</a>
-            </td>
-        </tr>
-    </table>
+            <td th:text="${almacen.tipo}"></td>
+                <td>
+                    <a class="btn" th:href="@{/almacen/editar/{nombre}(nombre=${almacen.nombre})}">Editar</a>
+                    <a class="btn" th:href="@{/almacen/eliminar/{nombre}(nombre=${almacen.nombre})}">Eliminar</a>
+                </td>
+            </tr>
+        </table>
+    </div>
     
     <h2>Agregar Nuevo Almacén</h2>
     <form action="/almacen/agregar" method="post">
@@ -107,6 +129,9 @@
         
         <label for="capacidad">Capacidad:</label>
         <input type="number" id="capacidad" name="capacidad">
+        
+        <label for="tipo">Tipo:</label>
+        <input type="text" id="tipo" name="tipo">
         
         <input type="submit" value="Agregar Almacén">
     </form>
