@@ -9,6 +9,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
 
 @Entity
 @Table(name = "almacen")
@@ -23,17 +24,18 @@ public class Almacen {
 	@Column(name = "alm_capacidad")
 	private Integer capacidad;
 	
-	
 	@Column(name = "alm_nombre")
 	private String nombre;
 	
 	@Column(name = "alm_tipo")
 	private String tipo;
 	
+	// relaciones:
 	@OneToOne
 	@JoinColumn(name="alm_id_pro")
 	private Producto producto;
 
+	
 	public Integer getId() {
 		return id;
 	}
@@ -79,9 +81,4 @@ public class Almacen {
 		return "Almacen [id=" + id + ", capacidad=" + capacidad + ", nombre=" + nombre + ", tipo=" + tipo + "]";
 	}
 	
-	
-
-	
-	
-
 }

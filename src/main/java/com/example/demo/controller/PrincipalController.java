@@ -10,20 +10,20 @@ import com.example.demo.service.IEmpleadoService;
 
 
 
-//@Controller
-//@RequestMapping("/inicio")
+@Controller
+@RequestMapping("/inicio")
 //como regla general siempre se debe poner el recurso general en plural
 //Manejo un recurso Persona
 
 public class PrincipalController {
-//
-//	@Autowired
-//	private IEmpleadoService empleadoService;
-//
-//	@GetMapping("")
-//	public String inicio(Cliente cliente) {
-//		return "vInicioSesion";
-//	}
+
+	@Autowired
+	private IEmpleadoService empleadoService;
+
+	@GetMapping("")
+	public String inicio(Cliente cliente) {
+		return "vInicioSesion";
+	}
 
 
 
