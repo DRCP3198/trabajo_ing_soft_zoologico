@@ -34,10 +34,10 @@ public class Habitat {
 	private String clima;
 	
 	
-	@OneToMany(mappedBy = "producto")
+	@OneToMany(mappedBy = "habitat")
 	private List<Producto> productos;
 	
-	@OneToMany(mappedBy = "animal")
+	@OneToMany(mappedBy = "habitat")
 	private List<Animal> animales;
 
 	public Integer getId() {

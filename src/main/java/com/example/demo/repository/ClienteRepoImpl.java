@@ -31,13 +31,33 @@ public class ClienteRepoImpl implements IClienteRepo {
 	}
 
 	@Override
-	public Cliente encontrar(String cedula) {
+	public Cliente encontrar(String usuario) {
 		// TODO Auto-generated method stub
 
 		TypedQuery<Cliente> typedQuery = this.entityManager
-				.createQuery("SELECT cli FROM Cliente cli where cli.cedula=:datoCedula", Cliente.class);
-		typedQuery.setParameter("datoCedula", cedula);
-		return typedQuery.getSingleResult();
+				.createQuery("SELECT cli FROM Cliente cli where cli.usuario=:datoUsuario", Cliente.class);
+		typedQuery.setParameter("Usuario", usuario);
+		try {
+			return typedQuery.getSingleResult();
+		} catch (Exception e) {
+			// TODO: handle exception
+			System.err.println("Usuario no encontrado");
+			return null;
+		}
+	
+	}
+	// BUSCAR CEDULA
+	@Override
+	public Cliente encontrarCedula(String Cedula) {
+		TypedQuery<Cliente> query = this.entityManager
+				.createQuery("SELECT c FROM Cliente c WHERE c.cedula= :datoCedula", Cliente.class);
+		query.setParameter("datoCedula", Cedula);
+		try {
+			return query.getSingleResult();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			return query.getResultList().get(0);
+		}
 	}
 
 	@Override

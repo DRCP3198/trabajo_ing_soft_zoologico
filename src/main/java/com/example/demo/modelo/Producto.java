@@ -55,7 +55,7 @@ public class Producto {
 	
 	@ManyToOne
 	@JoinColumn(name = "prod_id_hab")
-	private Producto producto;
+	private Habitat habitat;
 	
 	@OneToOne(mappedBy = "producto")
 	private Almacen almacen;
@@ -142,12 +142,13 @@ public class Producto {
 		this.proveedor = proveedor;
 	}
 
-	public Producto getProducto() {
-		return producto;
+
+	public Habitat getHabitat() {
+		return habitat;
 	}
 
-	public void setProducto(Producto producto) {
-		this.producto = producto;
+	public void setHabitat(Habitat habitat) {
+		this.habitat = habitat;
 	}
 
 	public Almacen getAlmacen() {

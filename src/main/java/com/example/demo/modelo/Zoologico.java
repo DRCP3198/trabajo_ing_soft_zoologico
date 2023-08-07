@@ -39,8 +39,8 @@ public class Zoologico {
 	private List<Proveedor> provedores;
 
 	// relacion con usuario
-	@OneToOne(mappedBy = "zoologico") 
-	private Usuario usuario;
+	@OneToMany(mappedBy = "zoologico") 
+	private List<Usuario> usuarios;
 
 	// relacion con empleado
 	@OneToMany(mappedBy = "zoologico")

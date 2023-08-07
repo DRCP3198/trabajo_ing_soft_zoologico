@@ -37,6 +37,12 @@ public class Cliente {
 
 	@Column(name = "clie_dirección")
 	private String direccion;
+	
+	@Column(name="clie_contraseña")
+	private String contrasenia;
+	
+	@Column(name= "clie_usuario")
+	private String usuarioGeneral;
 
 	@ManyToOne
 	@JoinColumn(name = "cliente_id_zoologico")
@@ -46,7 +52,8 @@ public class Cliente {
 	private Empleado empleado;
 
 	// Relación usuario -cliente
-	@OneToOne(mappedBy = "cliente")
+	@OneToOne
+	@JoinColumn(name = "cli_id_usu")
 	private Usuario usuario;
 	
 	// SET y GET
@@ -128,6 +135,23 @@ public class Cliente {
 
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
+	}
+	
+
+	public String getContrasenia() {
+		return contrasenia;
+	}
+
+	public void setContrasenia(String contrasenia) {
+		this.contrasenia = contrasenia;
+	}
+
+	public String getUsuarioGeneral() {
+		return usuarioGeneral;
+	}
+
+	public void setUsuarioGeneral(String usuarioGeneral) {
+		this.usuarioGeneral = usuarioGeneral;
 	}
 
 	@Override

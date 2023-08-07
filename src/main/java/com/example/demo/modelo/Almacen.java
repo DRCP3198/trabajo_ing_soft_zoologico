@@ -5,6 +5,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
@@ -29,7 +30,8 @@ public class Almacen {
 	@Column(name = "alm_tipo")
 	private String tipo;
 	
-	@OneToOne(mappedBy = "almacen")
+	@OneToOne
+	@JoinColumn(name="alm_id_pro")
 	private Producto producto;
 
 	public Integer getId() {

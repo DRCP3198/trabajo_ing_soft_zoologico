@@ -13,6 +13,8 @@ public class ClienteServiceImpl implements IClienteService{
 	
 	@Autowired
 	private IClienteRepo clienteRepo;
+	
+	
 
 	@Override
 	public void agregar(Cliente cliente) {
@@ -43,7 +45,25 @@ public class ClienteServiceImpl implements IClienteService{
 		// TODO Auto-generated method stub
 		return this.clienteRepo.encontrarTodos();
 	}
-	
+
+	@Override
+	public Boolean autenticar(String usuario, String contrasenia) {
+		Cliente cliente = this.clienteRepo.encontrar(usuario);
+		System.out.println("Encontro el usuario");
+		if (cliente == null) {
+			return false;
+		} else {
+			System.out.println(cliente.getContrasenia());
+			System.out.println(contrasenia);
+			if (cliente.getContrasenia().equals(contrasenia)) {
+				System.out.println("Contraseña Correcta");
+				return true;
+			} else {
+				System.out.println("Contraseña Incorrecta");
+				return false;
+			}
+		}
+	}
 	
 
 }
