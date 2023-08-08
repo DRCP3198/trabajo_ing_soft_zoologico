@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<head>   
+	<meta charset="UTF-8">   
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">   
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">    <title>Zoologico</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+
+	<style>
+		form:invalid-feedback {
+			display: block;
+		}
+	</style>
+
+</head>
+
+<body style="background-image :url('https://static.nationalgeographicla.com/files/styles/image_3200/public/01-og-growing-lion-trade-nationalgeographic_2429926.jpg?w=1600&h=900');background-repeat:no-repeat;color: #FFFFFF; padding:25px;"> 
+	
+	<p>
+		<center><img src=http://padelecuador.com/wp-content/uploads/2016/09/BOTON_INICIARSESION.png"" alt="Auto"
+			></center>
+	</p>
+	<form th:action="@{/inicio/sesion}" th:object="${cliente}" method="GET">
+		 <Center><table class="table-secondary">
+			<tr>
+				<td>
+					<label >Usuario:</label>
+				</td>
+
+				<td>
+					<input type="text" id="usr" th:field="${cliente.usuario}">
+				</td>
+			</tr>
+
+			<tr>
+				<td >
+					<label style=>Contraseña:</label>
+				</td>
+				<td>
+					<input type="text" id="pas" th:field="${cliente.contrasenia}">
+				</td>
+			</tr>
+		</table></Center>
+		<Center><input class="btn btn-dark btn-lg" type="submit" value="Iniciar Sesion"></Center>
+		<li class="btn btn-warning btn-lg">
+			<a href="/clientes/registro"> Registrarse</a>
+		</li>
+	</form>
+</body>
+
+
+</html>

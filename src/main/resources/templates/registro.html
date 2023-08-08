@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<title>Registro de Usuarios</title>
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+		integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+		integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+</head>
+
+<body>
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+					aria-expanded="false" aria-controls="navbar">
+					<span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#" th:href="@{/}">Registro y
+					inicio de sesión</a>
+			</div>
+		</div>
+	</nav>
+
+
+	<br>
+	<br>
+
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6 col-md-offset-3">
+				<div th:if=${param.exito}]>
+					<div class="alert alert -info">
+						Se ha registrado con exito
+					</div>
+					<h1>Registrate</h1>
+					<form action="@{/registro}" method="post" th:object="${cliente}">
+						<div class="form-group">
+							<label class="form-control" for="nombre">Nombre:</label>
+							<input id="nombre" type="text" class="form-control" th:field="*{nombre}" required autofocus="autofocus">
+						</div>
+						<div class="form-group">
+							<label class="form-control" for="apellido">Apellido:</label>
+							<input id="apellido" type="text" class="form-control" th:field="*{apellido}" required autofocus="autofocus">
+						</div>
+						<div class="form-group">
+							<label class="form-control" for="edad">Edad:</label>
+							<input id="edad" type="number" class="form-control" th:field="*{edad}" required autofocus="autofocus">
+						</div>
+						<div class="form-group">
+							<label class="form-control" for="correo">Email</label>
+							<input id="correo" type="email" class="form-control" th:field="*{correo}" required autofocus="autofocus">
+						</div>
+						<div class="form-group">
+							<label class="form-control" for="cedula">Cédula:</label>
+							<input id="cedula" type="text" class="form-control" th:field="*{cedula}" required autofocus="autofocus">
+						</div>
+						<div class="form-group">
+							<label class="form-control" for="direccion">Dirección:</label>
+							<input id="direccion"type="text" class="form-control" th:field="*{direccion}" required autofocus="autofocus">
+						</div>
+						<div class="form-group">
+							<label class="form-control" for="usuario">Usuario:</label>
+							<input id="usuario" type="text" class="form-control" th:field="*{usuarioGeneral}" required autofocus="autofocus">
+						</div>
+						<div class="form-group">
+							<label class="form-control" for="contrasenia">Contraseña:</label>
+							<input id="contrasenia" type="password" class="form-control" th:field="*{contrasenia}" required autofocus="autofocus">
+						</div>
+						
+						<div class="form-group">
+							<button type="submit" class="btn btn-success">Registrar</button>
+							<span>Si estas registrado<a>Inisio de sesión aquí</a></span>
+						</div>
+					</form>
+				</div>
+
+			</div>
+		</div>
+	</div>
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+		integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+		crossorigin="anonymous"></script>
+</body>
+
+</html>
