@@ -13,6 +13,11 @@ public interface IEmpleadoService {
 	public Empleado buscar(String codigo);
 
 	public void borrar(String codigo);
+	// VERIFICAR USUARIO
+		public Boolean autenticar(String usuario, String contraseni);
+		
+	//pasar siguiente vista 
+	public String siguienteVista(String usuario, String contrasenia);
 
 	public List<Empleado> reporte();
 

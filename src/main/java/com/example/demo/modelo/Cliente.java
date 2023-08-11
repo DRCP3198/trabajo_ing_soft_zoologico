@@ -37,6 +37,12 @@ public class Cliente {
 
 	@Column(name = "clie_dirección")
 	private String direccion;
+	
+	@Column(name="clie_contraseña")
+	private String contrasenia;
+	
+	@Column(name= "clie_usuario")
+	private String usuarioGeneral;
 
 	@OneToOne
 	@JoinColumn(name="clie_id_usuario")
@@ -105,6 +111,22 @@ public class Cliente {
 
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
+	}
+
+	public String getContrasenia() {
+		return contrasenia;
+	}
+
+	public void setContrasenia(String contrasenia) {
+		this.contrasenia = contrasenia;
+	}
+
+	public String getUsuarioGeneral() {
+		return usuarioGeneral;
+	}
+
+	public void setUsuarioGeneral(String usuarioGeneral) {
+		this.usuarioGeneral = usuarioGeneral;
 	}
 
 

@@ -10,6 +10,7 @@ import com.example.demo.modelo.Empleado;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.Query;
+import jakarta.persistence.TypedQuery;
 import jakarta.transaction.Transactional;
 
 @Transactional
@@ -52,4 +53,24 @@ public class EmpleadoRepoImpl implements IEmpleadoRepo {
 		return query.getResultList();
 	}
 
+	@Override
+	public Empleado buscar(Integer id) {
+		// TODO Auto-generated method stub
+		return this.entityManager.find(Empleado.class, id);
+	}
+
+	@Override
+	public Empleado buscarUsuario(String usuario) {
+		TypedQuery< Empleado> query = this.entityManager.createQuery("SELECT e FROM Empleado e WHERE e.usuarioGeneral = :datoUsuario",Empleado.class);
+		query.setParameter("datoUsuario", usuario);
+		
+		try {
+			return query.getSingleResult();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			System.err.println("Usuario no encontrado");
+			return null;
+			
+		}
+	}
 }

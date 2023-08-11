@@ -10,6 +10,12 @@ public interface IClienteService {
 	public void modificar(Cliente cliente);
 	public Cliente buscar(String cedula);
 	public void borrar(String cedula);
+
+	// VERIFICAR USUARIO
+	public Boolean autenticar(String user, String pass);
+	
+	//pasar siguiente vista 
+	public String siguienteVistaCliente(String user, String pass);
 	public List<Cliente> reporte();
 
 }

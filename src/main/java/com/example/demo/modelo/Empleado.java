@@ -29,14 +29,20 @@ public class Empleado {
 	@Column(name = "empl_apellido")
 	private String apellido;
 
-	@Column(name = "empl_codigo")
-	private String codigo;
+	@Column(name = "empl_cedula")
+	private String cedula;
 	
 	@Column(name = "empl_sueldo")
 	private BigDecimal sueldo;
 
 	@Column(name = "empl_cargo")
 	private String cargo;
+	
+	@Column(name = "empl_contrasenia")
+	private String contrasenia;
+	
+	@Column(name = "empl_usuarioGeneral")
+	private String usuarioGeneral;
 	
 	@OneToOne
 	@JoinColumn(name="empl_id_usuario")
@@ -85,12 +91,35 @@ public class Empleado {
 		this.cargo = cargo;
 	}
 
-	public String getCodigo() {
-		return codigo;
+	@Override
+	public String toString() {
+		return "Empleado [id=" + id + ", nombre=" + nombre + ", apellido=" + apellido + ", cedula=" + cedula
+				+ ", sueldo=" + sueldo + ", cargo=" + cargo + ", contrasenia=" + contrasenia + ", usuarioGeneral="
+				+ usuarioGeneral + "]";
 	}
 
-	public void setCodigo(String codigo) {
-		this.codigo = codigo;
+	public String getCedula() {
+		return cedula;
+	}
+
+	public void setCedula(String cedula) {
+		this.cedula = cedula;
+	}
+
+	public String getContrasenia() {
+		return contrasenia;
+	}
+
+	public void setContrasenia(String contrasenia) {
+		this.contrasenia = contrasenia;
+	}
+
+	public String getUsuarioGeneral() {
+		return usuarioGeneral;
+	}
+
+	public void setUsuarioGeneral(String usuarioGeneral) {
+		this.usuarioGeneral = usuarioGeneral;
 	}
 
 	public Usuario getUsuario() {

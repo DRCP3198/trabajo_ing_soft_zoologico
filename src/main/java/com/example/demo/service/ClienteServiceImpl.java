@@ -29,7 +29,7 @@ public class ClienteServiceImpl implements IClienteService{
 	@Override
 	public Cliente buscar(String cedula) {
 		// TODO Auto-generated method stub
-		return this.clienteRepo.encontrar(cedula);
+		return this.clienteRepo.encontrarCedula(cedula);
 	}
 
 	@Override
@@ -42,6 +42,34 @@ public class ClienteServiceImpl implements IClienteService{
 	public List<Cliente> reporte() {
 		// TODO Auto-generated method stub
 		return this.clienteRepo.encontrarTodos();
+	}
+
+	@Override
+	public Boolean autenticar(String user, String pass) {
+		Cliente cliente = this.clienteRepo.encontrarUsuario(user);
+		System.out.println("Encontro el usuario");
+		if (cliente == null) {
+			return false;
+		} else {
+			System.out.println(cliente.getContrasenia());
+			System.out.println(pass);
+			if (cliente.getContrasenia().equals(pass)) {
+				System.out.println("Contraseña Correcta");
+				return true;
+			} else {
+				System.out.println("Contraseña incorrecta");
+				return false;
+			}
+		}
+	}
+
+	
+	public String siguienteVistaCliente(String user, String pass) {
+		if (this.autenticar(user, pass)) {
+			return "vistaCliente";
+		} else {
+			return "redirect:/inicio";
+		}
 	}
 	
 	

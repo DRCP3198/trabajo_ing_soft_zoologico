@@ -13,6 +13,8 @@ public class EmpleadoServiceImpl implements IEmpleadoService {
 
 	@Autowired
 	private IEmpleadoRepo empleadoRepo;
+	@Autowired
+	private IClienteService clienteService;
 
 	@Override
 	public void agregar(Empleado empleado) {
@@ -44,4 +46,33 @@ public class EmpleadoServiceImpl implements IEmpleadoService {
 		return this.empleadoRepo.encontrarTodos();
 	}
 
+	@Override
+	public Boolean autenticar(String usuario, String contraseni) {
+		Empleado empleado = this.empleadoRepo.buscarUsuario(usuario);
+		System.out.println("Usuario encontrado");
+		if (empleado == null) {
+			return false;
+		} else {
+			System.out.println(empleado.getContrasenia());
+			System.out.println(contraseni);
+			if (empleado.getContrasenia().equals(contraseni)) {
+				System.out.println("Contraseña CORRECTA");
+				return true;
+			} else {
+				System.out.println("CONTRASEÑA INCORRECTA");
+				return false;
+			}
+		}
+	}
+
+	@Override
+	public String siguienteVista(String usuario, String contrasenia) {
+		if (this.autenticar(usuario, contrasenia)) {
+			return "vInicioE";
+		} else if (this.clienteService.autenticar(usuario, contrasenia)) {
+			return "vistaCliente";
+		} else {
+			return "redirect:/inicio";
+		}
+	}
 }
