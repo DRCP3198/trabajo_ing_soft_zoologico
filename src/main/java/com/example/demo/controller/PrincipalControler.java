@@ -19,10 +19,12 @@ public class PrincipalControler {
 	@Autowired
 	private IClienteService clienteService;
 	
+	
 	@GetMapping("")
 	public String inicio(Cliente cliente) {
 		return "Login";
 	}
+	
 	
 	@GetMapping("/sesion")
 		public String paginaInicio(Cliente cliente) {

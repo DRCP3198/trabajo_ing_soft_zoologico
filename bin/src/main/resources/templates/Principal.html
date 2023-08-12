@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<title>Principal|Zoológico</title>
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+		integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+		integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+	<link rel="shortcut icon"
+		href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSmexK41kTYytSYP8D2SDbnCZnuC6Ps0a8yXw&usqp=CAU"
+		type="image/x-icon">
+
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
+
+</head>
+
+<style>
+	* {
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+	}
+
+	body {
+		font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+	}
+
+	.contenedor {
+		padding: 60px 0;
+		width: 90%;
+		max-width: 1000px;
+		margin: auto;
+		overflow: hidden;
+	}
+
+	.titulo {
+		color: #2a735b;
+		font-size: 30px;
+		text-align: center;
+		margin-bottom: 60px;
+	}
+
+	/* HEADER */
+	header {
+		width: 100%;
+		height: 700px;
+
+
+		background: #1E9600;
+		/* fallback for old browsers */
+		background: linear-gradient(to right, hsla(0, 100%, 50%, 0.493), hsla(57, 100%, 50%, 0.452), hsla(108, 100%, 29%, 0.507)), url('https://noticiassalamanca.com/wp-content/uploads/2022/10/5fa53234969ff.jpeg');
+		/* Chrome 10-25, Safari 5.1-6 */
+		background: linear-gradient(to right, hsla(0, 100%, 50%, 0.493), hsla(57, 100%, 50%, 0.452), hsla(108, 100%, 29%, 0.507)), url('https://noticiassalamanca.com/wp-content/uploads/2022/10/5fa53234969ff.jpeg');
+		/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+		/*background-size: cover;*/
+		background-attachment: fixed;
+		position: relative;
+	}
+
+	nav {
+		text-align: right;
+		padding: 30px 50px 0 0;
+	}
+
+	nav>a {
+		color: #fff;
+		font-weight: 300;
+		text-decoration: none;
+		font-size: 19px;
+		margin-right: 10px;
+	}
+
+	/*Cuando pase sobre nav tenga un diseño */
+	nav>a:hover {
+		text-decoration: underline;
+	}
+
+	header .textos-header {
+		display: flex;
+		height: 430px;
+		width: 100%;
+		align-items: center;
+		justify-content: center;
+		flex-direction: column;
+		text-align: center;
+
+	}
+
+	.textos-header h1 {
+		font-size: 50px;
+		color: #fff;
+	}
+
+	.textos-header h2 {
+		font-size: 30px;
+		font-weight: 300;
+		color: #fff;
+	}
+
+	.wave {
+		position: absolute;
+		bottom: 0;
+		width: 100%;
+	}
+
+	/*Parte del Acerda de*/
+	.contenedor-sobre-nosotros {
+		display: flex;
+		justify-content: space-evenly;
+	}
+
+	.imagen-about-us {
+		width: 60%;
+	}
+
+	.sobre-nosostros .contenido-textos {
+		width: 48;
+	}
+
+	.contenido-textos h3 {
+		margin-bottom: 15px;
+
+	}
+
+	.contenido-textos h3 span {
+		background: #118606;
+		color: white;
+		border-radius: 50%;
+		display: inline-block;
+		text-align: center;
+		width: 30px;
+		height: 30px;
+		padding: 2px;
+		box-shadow: 0 0 6px o rgba(0, 0, 0, .5);
+		margin-right: 5px;
+
+	}
+
+	.contenido-textos p {
+		padding: 0px 0px 30px 15px;
+		font-weight: 300;
+		text-align: justify;
+
+	}
+
+	/*GALERIA*/
+	.portafolio {
+		background: #f2f2f2;
+	}
+
+	.galeria-port {
+		display: flex;
+		justify-content: space-evenly;
+		flex-wrap: wrap;
+	}
+
+	.imagen-port {
+		width: 24%;
+		margin-bottom: 10px;
+		height: 150px;
+		overflow: hidden;
+		position: relative;
+		cursor: pointer;
+		box-shadow: 0 0 6px 0 rgba(0, 0, 0, .5);
+
+	}
+
+	.imagen-port>img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		display: block;
+	}
+
+	.hover-galeria {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		top: 0;
+		transform: scale(0);
+		background: hsla(108, 100%, 29%, 0.507);
+		transition: transform .5s;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+
+
+	}
+
+	.hover-galeria img {
+		width: 50px;
+	}
+
+	.hover-galeria p {
+		color: #fff;
+	}
+
+	.imagen-port:hover .hover-galeria {
+		transform: scale(1);
+	}
+
+
+	/*Comentario Clientes*/
+	.cards {
+		display: flex;
+		justify-content: space-evenly;
+	}
+
+	.cards .card {
+		background: #38af74;
+		display: flex;
+		width: 30%;
+		height: 300px;
+		align-items: center;
+		justify-content: space-evenly;
+		border-radius: 5px;
+		box-shadow: 0 0 6px rgba(0, 0, 0, .6);
+
+	}
+
+	.cards .card img {
+		width: 100px;
+		height: 100px;
+		object-fit: cover;
+		border: 3px solid white;
+		border-radius: 50%;
+		display: block;
+	}
+
+	.cards .card>.contenido-texto-card {
+		width: 60%;
+		color: white;
+
+	}
+
+	.cards .card>.contenido-texto-card p {
+		font-weight: 300;
+		padding-top: 5px;
+
+	}
+
+	/*NUESTROS SERVICIOS*/
+	.about-service {
+		background: #f2f2f2;
+		padding-top: 30px;
+	}
+
+	.servicio-contenedor {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+
+	.servicio-ind {
+		width: 28%;
+		text-align: center;
+
+
+	}
+
+	.servicio-ind img {
+		width: 100%;
+
+	}
+
+	.servicio-ind h3 {
+		margin: 10px 0;
+	}
+
+	.servicio-ind p {
+		font-weight: 300;
+		text-align: justify;
+	}
+
+	/*FOOTER*/
+	footer {
+		background: #1E9600;
+		/* fallback for old browsers */
+		background: linear-gradient(to right, hsla(0, 100%, 50%, 0.719), hsla(57, 100%, 50%, 0.747), hsla(108, 100%, 29%, 0.699));
+		/* Chrome 10-25, Safari 5.1-6 */
+		background: linear-gradient(to right, hsla(0, 100%, 50%, 0.685), hsla(57, 100%, 50%, 0.76), hsla(108, 100%, 29%, 0.705));
+		/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+		/*background-size: cover;*/
+
+	}
+
+	.contenedor-footer {
+		display: flex;
+		width: 90%;
+		justify-content: space-evenly;
+		margin: auto;
+		padding-bottom: 50px;
+		border-bottom: 1px solid #ccc;
+	}
+
+	.contenedor-foo {
+		text-align: center;
+	}
+
+	.contenedor-foo h4 {
+		color: rgb(27, 26, 26);
+		border-bottom: 3px solid #38af74;
+		padding-bottom: 5px;
+		margin-bottom: 10px;
+
+	}
+
+	.contenedor-foo p {
+		color: #0c0101;
+		font-size: 18px;
+
+	}
+
+	.titulo-final {
+		text-align: center;
+		font-size: 40px;
+		margin: 20px 0 0 0;
+		color: #2a735b
+	}
+</style>
+
+
+<body>
+
+	<header>
+		<!-- Encabezado-->
+		<nav>
+
+			<a href="#">Inicio Sesion</a>
+			<a href="#">Acerca de</a>
+			<a href="#">Portafolio</a>
+			<a href="#">Servicios</a>
+			<a href="#">Contacto</a>
+
+		</nav>
+		<section class="textos-header">
+			<h1>Disfruta de la naturaleza</h1>
+			<h2>Visitando ZooMania</h2>
+		</section>
+		<!--ESTILO TIPO HOLA-->
+		<div class="wave" style="height: 150px; overflow: hidden;"><svg viewBox="0 0 500 150" preserveAspectRatio="none"
+				style="height: 100%; width: 100%;">
+				<path d="M0.00,49.98 C149.99,150.00 349.20,-49.98 500.00,49.98 L500.00,150.00 L0.00,150.00 Z"
+					style="stroke: none; fill: rgb(249, 249, 250);"></path>
+			</svg></div>
+
+	</header>
+	<main>
+		<section class="contenedor sobre-nosotros">
+			<h2 class="titulo">El mejor Zoológico</h2>
+			<div class="contenedor-sobre-nosotros">
+				<img src="https://live.staticflickr.com/3813/33070783181_ac016017a2_b.jpg" class="imagen-about-us">
+				<div class="contenido-textos">
+					<h3><span>1</span>El mejor Zoológico</h3>
+					<p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laborum quod libero dignissimos rerum
+						sapiente ab voluptatem consequatur aut at. Et possimus, facere voluptas quam quas est! Eum porro
+						itaque pariatur.</p>
+					<h3><span>2</span>El mejor Zoológico</h3>
+					<p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laborum quod libero dignissimos rerum
+						sapiente ab voluptatem consequatur aut at. Et possimus, facere voluptas quam quas est! Eum porro
+						itaque pariatur.</p>
+				</div>
+			</div>
+		</section>
+		<section class="portafolio">
+			<div class="contenedor">
+				<h2 class="titulo">Nuestros Animales</h2>
+				<div class="galeria-port">
+					<div class="imagen-port">
+						<img src="https://quitozoo.org/wp-content/uploads/2023/02/RafaelaRecinto_4-scaled.jpg" alt="">
+						<div class="hover-galeria">
+							<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRsi24PVQvh32e3MjC49AFripkF7snDqbNuXA&usqp=CAU"
+								alt="">
+							<p>Conoce el Animal</p>
+						</div>
+					</div>
+					<div class="imagen-port">
+						<img src="https://zoomorelia.michoacan.gob.mx/wp-content/uploads/2022/06/WhatsApp-Image-2022-06-07-at-10.47.38-AM.jpeg"
+							alt="">
+						<div class="hover-galeria">
+							<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRsi24PVQvh32e3MjC49AFripkF7snDqbNuXA&usqp=CAU"
+								alt="">
+							<p>Conoce el Animal</p>
+						</div>
+					</div>
+					<div class="imagen-port">
+						<img src="https://media-front.elmostrador.cl/2019/02/giraffe-2481843_960_720.jpg" alt="">
+						<div class="hover-galeria">
+							<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRsi24PVQvh32e3MjC49AFripkF7snDqbNuXA&usqp=CAU"
+								alt="">
+							<p>Conoce el Animal</p>
+						</div>
+					</div>
+					<div class="imagen-port">
+						<img src="https://cloudfront-us-east-1.images.arcpublishing.com/eluniverso/V4SPPZ3S5BBE7LA7DGC2RP426A.jpg"
+							alt="">
+						<div class="hover-galeria">
+							<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRsi24PVQvh32e3MjC49AFripkF7snDqbNuXA&usqp=CAU"
+								alt="">
+							<p>Conoce el Animal</p>
+						</div>
+					</div>
+					<div class="imagen-port">
+						<img src="https://upload.wikimedia.org/wikipedia/commons/9/9c/Oleg_Litvin_-_Meerkat_%28Suricata%29.jpg"
+							alt="">
+						<div class="hover-galeria">
+							<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRsi24PVQvh32e3MjC49AFripkF7snDqbNuXA&usqp=CAU"
+								alt="">
+							<p>Conoce el Animal</p>
+						</div>
+					</div>
+					<div class="imagen-port">
+						<img src="https://media.primicias.ec/2022/07/10094122/condor-andino.jpg" alt="">
+						<div class="hover-galeria">
+							<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRsi24PVQvh32e3MjC49AFripkF7snDqbNuXA&usqp=CAU"
+								alt="">
+							<p>Conoce el Animal</p>
+						</div>
+					</div>
+					<div class="imagen-port">
+						<img src="https://naturegalapagos.com/es/wp-content/uploads/sites/3/2015/03/tortugas-galapagos.jpg"
+							alt="">
+						<div class="hover-galeria">
+							<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRsi24PVQvh32e3MjC49AFripkF7snDqbNuXA&usqp=CAU"
+								alt="">
+							<p>Conoce el Animal</p>
+						</div>
+					</div>
+					<div class="imagen-port">
+						<img src="https://www.orellana.gob.ec/media/k2/items/cache/84ac056b57dd032fcf18a346d4a81feb_XL.jpg"
+							alt="">
+						<div class="hover-galeria">
+							<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRsi24PVQvh32e3MjC49AFripkF7snDqbNuXA&usqp=CAU"
+								alt="">
+							<p>Conoce el Animal</p>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</section>
+
+		<section class="clientes-comentarios">
+			<h2 class="titulo">Que dicen nuestros clientes</h2>
+			<div class="cards">
+				<div class="card">
+					<img src="https://i0.wp.com/lamiradafotografia.es/wp-content/uploads/2014/07/foto-perfil-psicologo-180x180.jpg?resize=180%2C180"
+						alt="">
+					<div class="contenido-texto-card">
+						<h4>Nombre</h4>
+						<p>Recomiendo encarecidamente Zoomania a cualquier amante de la naturaleza, familias y
+							curiosos por igual. No solo es un lugar donde puedes maravillarte con la diversidad de
+							la vida en la Tierra, sino que también es una oportunidad para contribuir a la
+							protección de nuestro planeta y sus habitantes. ¡Una experiencia que recordaré y
+							recomendaré siempre con entusiasmo!</p>
+					</div>
+				</div>
+				<div class="card">
+					<img src="https://plus.unsplash.com/premium_photo-1687832783320-35671afbf484?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8Zm90byUyMGRlJTIwcGVyZmlsfGVufDB8fDB8fHww&w=1000&q=80"
+						alt="">
+					<div class="contenido-texto-card">
+						<h4>Nombre</h4>
+						<p>¡Visitar Zoomania fue una experiencia absolutamente increíble! Este zoológico no solo
+							alberga una impresionante variedad de especies fascinantes de todo el mundo, sino que
+							también se compromete activamente con la educación y conservación de la vida silvestre.
+							Quedé asombrado por lo bien cuidados que están los hábitats, creando un ambiente en el
+							que los animales parecen realmente felices y saludables.</p>
+					</div>
+				</div>
+				<div class="card">
+					<img src="https://media.licdn.com/dms/image/D4E03AQHoS8a4g5CO0w/profile-displayphoto-shrink_800_800/0/1679891122461?e=2147483647&v=beta&t=BfIW_s-6uA4p_ZUuG3I5astvCIvC7uuJ9gn6rMwQbNM"
+						alt="">
+					<div class="contenido-texto-card">
+						<h4>Nombre</h4>
+						<p>¡Visitando Zoomania, la experiencia zoológica se eleva a un nuevo nivel! Este lugar es un
+							paraíso para los amantes de la naturaleza y la vida salvaje. Desde majestuosos leones
+							hasta juguetones monos, cada paso te acerca más a la belleza y diversidad de nuestro
+							mundo animal. ¡No pierdas la oportunidad de sumergirte en la maravilla de la vida
+							salvaje en Zoomania</p>
+					</div>
+				</div>
+
+
+			</div>
+		</section>
+		<section class="about-service">
+			<div class="contenedor">
+				<h2 class="titulo">Nuestros servicios</h2>
+				<div class="servicio-contenedor">
+					<div class="servicio-ind">
+						<img src="https://media-edg.barcelona.cat/wp-content/uploads/2021/07/30140755/IMG_0136-1024x684.jpg"
+							alt="">
+						<h3>Restaurante</h3>
+						<p>Bienvenidos a Zoomania-Restaurant, donde la cocina exquisita y la vida salvaje se encuentran
+							en armonía. Disfruta de sabores únicos mientras contemplas paisajes naturales y animales
+							fascinantes. Una experiencia gastronómica que alimenta cuerpo y alma en medio de la
+							maravilla animal.</p>
+					</div>
+					<div class="servicio-ind">
+						<img src="https://1.bp.blogspot.com/-acY-cvqFVWo/U5CRujqTITI/AAAAAAAAOzI/jhfyZ8CS3JU/s1600/zoologico.jpg"
+							alt="">
+						<h3>Juegos Infantiles</h3>
+						<p>
+							¡Bienvenidos a la Zona de Juegos Salvajes en Zoomania! Aquí, la diversión y la emoción se
+							mezclan con la maravilla de la naturaleza. Nuestra zona de juegos ofrece un paraíso de
+							aventuras para los más pequeños, donde pueden trepar como monos, deslizarse como gacelas y
+							explorar como auténticos exploradores de la selva. Con estructuras de juego inspiradas en la
+							fauna y flora del zoológico, los niños pueden liberar su energía mientras aprenden sobre la
+							vida salvaje. ¡Prepárate para que tus pequeños se embarquen en una emocionante expedición
+							llena de sonrisas y risas en la Zona de Juegos Salvajes de Zoomania!.</p>
+					</div>
+					<div class="servicio-ind">
+						<img src="https://cdn.milenio.com/uploads/media/2023/01/10/ninos-disfrutando-momentos-divertidos-animales.jpg"
+							alt="">
+						<h3>Guias Personalizados</h3>
+						<p>
+							En Zoomania, llevamos la experiencia de explorar la vida salvaje a un nivel superior con
+							nuestros Guias Personalizados. Nuestros expertos conocen cada rincón y criatura de nuestro
+							zoológico, y están listos para acompañarte en un viaje educativo y emocionante. Descubre
+							historias fascinantes, hechos curiosos y conexiones profundas con los animales mientras te
+							sumerges en la maravilla de la naturaleza en compañía de nuestros apasionados Guias
+							Personalizados</p>
+					</div>
+
+
+				</div>
+			</div>
+		</section>
+
+	</main>
+	<footer>
+		<div class="contenedor-footer">
+			<div class="contenedor-foo">
+				<h4>Telefonos</h4>
+				<p>022036013</p>
+				<p>+593 963471341</p>
+				<p>+593 983179452</p>
+				<p>+593 962562921</p>
+				<p>+593 983999198</p>
+			</div>
+			<div class="contenedor-foo">
+				<h4>Dirección</h4>
+				<p>500 Terry Francine St.
+					Quito, CA 94158</p>
+			</div>
+			<div class="contenedor-foo">
+				<h4>E-mail</h4>
+				<p>zoomania_tu_diversion@gmail.com</p>
+			</div>
+
+		</div>
+		<h2 class="titulo-final">&copy; ZooMania S.A</h2>
+	</footer>
+
+</body>
+
+</html>
