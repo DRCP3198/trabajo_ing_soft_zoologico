@@ -19,6 +19,8 @@
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
+	<link rel="stylesheet" type="text/css"
+		href="C:\Users\dilan\Documents\workspace-spring-tool-suite-4-4.16.1.RELEASE3\trabajo_ing_soft_zoologico\src\main\resources\css\animales.css">
 
 </head>
 
@@ -162,52 +164,6 @@
 		flex-wrap: wrap;
 	}
 
-	.imagen-port {
-		width: 24%;
-		margin-bottom: 10px;
-		height: 150px;
-		overflow: hidden;
-		position: relative;
-		cursor: pointer;
-		box-shadow: 0 0 6px 0 rgba(0, 0, 0, .5);
-
-	}
-
-	.imagen-port>img {
-		width: 100%;
-		height: 100%;
-		object-fit: cover;
-		display: block;
-	}
-
-	.hover-galeria {
-		position: absolute;
-		width: 100%;
-		height: 100%;
-		top: 0;
-		transform: scale(0);
-		background: hsla(108, 100%, 29%, 0.507);
-		transition: transform .5s;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		flex-direction: column;
-
-
-	}
-
-	.hover-galeria img {
-		width: 50px;
-	}
-
-	.hover-galeria p {
-		color: #fff;
-	}
-
-	.imagen-port:hover .hover-galeria {
-		transform: scale(1);
-	}
-
 
 	/*Comentario Clientes*/
 	.cards {
@@ -326,6 +282,138 @@
 		margin: 20px 0 0 0;
 		color: #2a735b
 	}
+
+	/*COSAS PRUEBA*/
+	a {
+
+		color: #fff;
+
+		text-decoration: none;
+
+		transition: color 0.3s;
+
+	}
+
+
+
+	a:hover {
+
+		color: #ff4500;
+
+	}
+
+	.social-icons {
+
+		margin-top: 10px;
+
+	}
+
+
+
+	.social-icons a {
+
+		display: inline-block;
+
+		width: 300px;
+
+		height: 300px;
+
+		background-color: #fff;
+
+		color: #333;
+
+		text-align: center;
+
+		line-height: 30px;
+
+
+
+		margin: 0 5px;
+
+		transition: background-color 0.3s;
+
+	}
+
+
+
+	.social-icons a:hover {
+
+		background-color: #ff4500;
+
+		color: #fff;
+
+	}
+
+
+
+	#osoAnteojos {
+
+
+
+		background-image: url('https://cloudfront-us-east-1.images.arcpublishing.com/eluniverso/V4SPPZ3S5BBE7LA7DGC2RP426A.jpg');
+
+		background-size: cover;
+
+	}
+
+	#condor {
+
+
+
+		background-image: url('https://i0.wp.com/birdscolombia.com/wp-content/uploads/2016/04/vultur-gryphus.jpg?fit=1200%2C969&ssl=1');
+
+		background-size: cover;
+
+	}
+
+	#jirafa {
+
+		background-image: url('https://www.nationalgeographic.com.es/medio/2020/08/14/un-par-de-jirafas-se-aparean-fervientemente-en-sudafrica_60deb7eb_800x800.jpg');
+
+		background-size: cover;
+
+	}
+
+	#leon {
+		background-image: url('https://www.selwo.es/content/dam/swa/images/descubre-el-zoo/especies-y-territorios/animales/leon/Leon-Selwo-Aventura-3.jpg');
+		background-size: cover;
+
+	}
+
+	#monoCariblanco {
+		background-image: url('https://live.staticflickr.com/7153/6721974199_ae036b3673_b.jpg');
+
+		background-size: cover;
+
+	}
+
+	#peresozo {
+		background-image: url('https://static.inaturalist.org/photos/73892662/medium.jpg');
+
+		background-size: cover;
+
+	}
+
+	#armadilloGigante {
+		background-image: url('https://inaturalist-open-data.s3.amazonaws.com/photos/59695247/medium.jpg');
+
+		background-size: cover;
+
+	}
+
+	#aguilaCaminera {
+		background-image: url('https://inaturalist-open-data.s3.amazonaws.com/photos/14667/medium.jpg');
+
+		background-size: cover;
+
+	}
+
+	#tigrillo {
+		background-image: url('https://inaturalist-open-data.s3.amazonaws.com/photos/144561570/medium.jpg');
+
+		background-size: cover;
+
+	}
 </style>
 
 
@@ -335,9 +423,9 @@
 		<!-- Encabezado-->
 		<nav>
 
-			<a href="#">Inicio Sesion</a>
-			<a href="#">Acerca de</a>
-			<a href="#">Portafolio</a>
+			<a href="http://localhost:8085/inicio">Inicio Sesion</a>
+			<a href="https://pueblitoland.wixsite.com/zoomania/product-page/siervo">Acerca de</a>
+			<a href="https://pangeanimales.com/">Enciclopedia de Animales</a>
 			<a href="#">Servicios</a>
 			<a href="#">Contacto</a>
 
@@ -373,79 +461,30 @@
 		</section>
 		<section class="portafolio">
 			<div class="contenedor">
-				<h2 class="titulo">Nuestros Animales</h2>
-				<div class="galeria-port">
-					<div class="imagen-port">
-						<img src="https://quitozoo.org/wp-content/uploads/2023/02/RafaelaRecinto_4-scaled.jpg" alt="">
-						<div class="hover-galeria">
-							<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRsi24PVQvh32e3MjC49AFripkF7snDqbNuXA&usqp=CAU"
-								alt="">
-							<p>Conoce el Animal</p>
-						</div>
-					</div>
-					<div class="imagen-port">
-						<img src="https://zoomorelia.michoacan.gob.mx/wp-content/uploads/2022/06/WhatsApp-Image-2022-06-07-at-10.47.38-AM.jpeg"
-							alt="">
-						<div class="hover-galeria">
-							<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRsi24PVQvh32e3MjC49AFripkF7snDqbNuXA&usqp=CAU"
-								alt="">
-							<p>Conoce el Animal</p>
-						</div>
-					</div>
-					<div class="imagen-port">
-						<img src="https://media-front.elmostrador.cl/2019/02/giraffe-2481843_960_720.jpg" alt="">
-						<div class="hover-galeria">
-							<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRsi24PVQvh32e3MjC49AFripkF7snDqbNuXA&usqp=CAU"
-								alt="">
-							<p>Conoce el Animal</p>
-						</div>
-					</div>
-					<div class="imagen-port">
-						<img src="https://cloudfront-us-east-1.images.arcpublishing.com/eluniverso/V4SPPZ3S5BBE7LA7DGC2RP426A.jpg"
-							alt="">
-						<div class="hover-galeria">
-							<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRsi24PVQvh32e3MjC49AFripkF7snDqbNuXA&usqp=CAU"
-								alt="">
-							<p>Conoce el Animal</p>
-						</div>
-					</div>
-					<div class="imagen-port">
-						<img src="https://upload.wikimedia.org/wikipedia/commons/9/9c/Oleg_Litvin_-_Meerkat_%28Suricata%29.jpg"
-							alt="">
-						<div class="hover-galeria">
-							<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRsi24PVQvh32e3MjC49AFripkF7snDqbNuXA&usqp=CAU"
-								alt="">
-							<p>Conoce el Animal</p>
-						</div>
-					</div>
-					<div class="imagen-port">
-						<img src="https://media.primicias.ec/2022/07/10094122/condor-andino.jpg" alt="">
-						<div class="hover-galeria">
-							<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRsi24PVQvh32e3MjC49AFripkF7snDqbNuXA&usqp=CAU"
-								alt="">
-							<p>Conoce el Animal</p>
-						</div>
-					</div>
-					<div class="imagen-port">
-						<img src="https://naturegalapagos.com/es/wp-content/uploads/sites/3/2015/03/tortugas-galapagos.jpg"
-							alt="">
-						<div class="hover-galeria">
-							<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRsi24PVQvh32e3MjC49AFripkF7snDqbNuXA&usqp=CAU"
-								alt="">
-							<p>Conoce el Animal</p>
-						</div>
-					</div>
-					<div class="imagen-port">
-						<img src="https://www.orellana.gob.ec/media/k2/items/cache/84ac056b57dd032fcf18a346d4a81feb_XL.jpg"
-							alt="">
-						<div class="hover-galeria">
-							<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRsi24PVQvh32e3MjC49AFripkF7snDqbNuXA&usqp=CAU"
-								alt="">
-							<p>Conoce el Animal</p>
-						</div>
-					</div>
+				<h2 class="titulo">Nuestros Animales en un solo click</h2>
+
+				<div class="social-icons">
+
+					<a href="https://ecuador.wcs.org/Especies/Especies-terrestres/Oso-de-anteojos.aspx" target="_blank"
+						id="osoAnteojos"></a>
+
+					<a href="https://www.nationalgeographic.es/animales/condor-andino" target="_blank" id="condor"></a>
+
+					<a href="https://www.oasysparquetematico.com/jirafas/" target="_blank" id="jirafa"></a>
+
+					<a href="https://www.nationalgeographic.com.es/animales/leones" target="_blank" id="leon"></a>
+					<a href="https://ecuador.inaturalist.org/guide_taxa/1195388" target="_blank"
+						id="monoCariblanco"></a>
+					<a href="https://ecuador.inaturalist.org/guide_taxa/1195388" target="_blank" id="peresozo"></a>
+
+					<a href="https://ecuador.inaturalist.org/taxa/47084-Priodontes" target="_blank"
+						id="armadilloGigante"></a>
+					<a href="https://ecuador.inaturalist.org/taxa/201041-Rupornis-magnirostris" target="_blank"
+						id="aguilaCaminera"></a>
+						<a href="https://ecuador.inaturalist.org/taxa/41997-Leopardus-pardalis" target="_blank"
+						id="tigrillo"></a>
+
 				</div>
-			</div>
 
 		</section>
 
@@ -560,6 +599,7 @@
 		</div>
 		<h2 class="titulo-final">&copy; ZooMania S.A</h2>
 	</footer>
+
 
 </body>
 

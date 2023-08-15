@@ -25,9 +25,9 @@ public class ClienteRepoImpl implements IClienteRepo {
 	}
 
 	@Override
-	public void actualizar(Cliente cliente) {
+	public void actualizar(Integer id) {
 		// TODO Auto-generated method stub
-		this.entityManager.merge(cliente);
+		this.entityManager.merge(id);
 	}
 
 	@Override
@@ -73,6 +73,19 @@ public class ClienteRepoImpl implements IClienteRepo {
 		// TODO Auto-generated method stub
 		TypedQuery<Cliente> query = this.entityManager.createQuery("SELECT cli FROM Cliente cli", Cliente.class);
 		return query.getResultList();
+	}
+
+	@Override
+	public void actualizarCliente(Cliente cliente) {
+		// TODO Auto-generated method stub
+		this.entityManager.merge(cliente);
+		
+	}
+
+	@Override
+	public Cliente encontrarId(Integer id) {
+		// TODO Auto-generated method stub
+		return this.entityManager.find(Cliente.class, id);
 	}
 
 }

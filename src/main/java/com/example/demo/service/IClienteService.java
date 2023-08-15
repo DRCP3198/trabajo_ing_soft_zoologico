@@ -7,9 +7,11 @@ import com.example.demo.modelo.Cliente;
 public interface IClienteService {
 	
 	public void agregar(Cliente cliente);
-	public void modificar(Cliente cliente);
+	public void modificar(Integer id);
+	public void modificarCliente(Cliente cliente);
 	public Cliente buscar(String cedula);
 	public void borrar(String cedula);
+	public Cliente buscarId(Integer id); 
 
 	// VERIFICAR USUARIO
 	public Boolean autenticar(String user, String pass);

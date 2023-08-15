@@ -21,6 +21,11 @@ public class AnimalController {
 	@Autowired
 	private IAnimalService animalService;
 	
+	@GetMapping("/misAnimales")
+	public String misAnimales() {
+		return "VistaAnimalesEnZoologico";
+	}
+	
 	@GetMapping("/registrarAnimal")
 	public String registrarAnimal(Animal animal) {
 		return "vistaNuevoAnimal";

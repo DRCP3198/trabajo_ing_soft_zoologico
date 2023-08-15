@@ -21,9 +21,9 @@ public class ClienteServiceImpl implements IClienteService{
 	}
 
 	@Override
-	public void modificar(Cliente cliente) {
+	public void modificar(Integer id) {
 		// TODO Auto-generated method stub
-		this.clienteRepo.actualizar(cliente);
+		this.clienteRepo.actualizar(id);
 	}
 
 	@Override
@@ -70,6 +70,19 @@ public class ClienteServiceImpl implements IClienteService{
 		} else {
 			return "redirect:/inicio";
 		}
+	}
+
+	@Override
+	public void modificarCliente(Cliente cliente) {
+		// TODO Auto-generated method stub
+		this.clienteRepo.actualizarCliente(cliente);
+		
+	}
+
+	@Override
+	public Cliente buscarId(Integer id) {
+		// TODO Auto-generated method stub
+		return this.clienteRepo.encontrarId(id);
 	}
 	
 	
