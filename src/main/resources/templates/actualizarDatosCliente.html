@@ -41,9 +41,12 @@
 
 <body>
 	<h2>Actualización de datos</h2>
-	<form th:action="@{/clientes/actualizar/{id}(id =${cliente.id})}" th:object="${cliente}" th:method="PUT">
+	<!--<form th:action="@{/clientes/actualizar/{id}(id =${cliente.id})}" th:object="${cliente}" th:method="PUT">-->
+	
+	<form th:action="@{/clientes/actualizar/{id}(id=${cliente.id})}" th:object="${cliente}"
+			th:method="PUT">
 
-		<table class="table table-striped table-bordered table-hover table-responsive">
+		<table class="table table-striped table-bordered table-hover table-responsive" style="margin: 0 auto;">
 
 
 			<tr>
@@ -51,7 +54,7 @@
 					<label>Id:</label>
 				</td>
 				<td>
-					<label value=th:object=${cliente.id}> </label>
+					<input  th:field="${cliente.id}">
 				</td>
 			</tr>
 
@@ -91,7 +94,7 @@
 					<label>Edad:</label>
 				</td>
 				<td>
-					<input type="number" id="edad" th:field="${cliente.edad}"></input>
+					<input type="number" id="edad" th:field="${cliente.edad}">
 				</td>
 			</tr>
 			<tr>
@@ -99,7 +102,7 @@
 					<label>Dirección:</label>
 				</td>
 				<td>
-					<input type="text" id="direccion" th:field="${cliente.direccion}"></input>
+					<input type="text" id="direccion" th:field="${cliente.direccion">
 				</td>
 			</tr>
 

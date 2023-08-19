@@ -1,5 +1,7 @@
 package com.example.demo.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -28,20 +30,31 @@ public class ClienteController {
 		this.clienteService.agregar(cliente);
 		return "redirect:/clientes/registro";
 	}
-	@GetMapping("/actualizar/{id}")
-	public String actualizarCliente(@PathVariable("id")Integer id,Model model) {
-		Cliente cliente = this.clienteService.buscarId(id);
-		model.addAttribute("cliente", cliente);
-		model.addAttribute("id", id);
+	
+	//http://localhost:8085/zoologico/clientes/reporte
+	@GetMapping("/reporte")
+	public String encontrarTodos(Model model) {
+		List<Cliente> lista=this.clienteService.reporte();
+		model.addAttribute("clientes",lista);
+		return "vistaReporteClientes";
+	}
+	//http://localhost:8085/zoologico/clientes/buscarID/1
+	@GetMapping("/buscarID/{idCliente}")
+	public String buscarId(@PathVariable("idCliente") Integer id, Model model) {
+		Cliente cli = this.clienteService.buscarId(id);
+		model.addAttribute("cliente",cli);
 		return "actualizarDatosCliente";
+		
 	}
-	@PutMapping("/actualizar/cliente/{id}")
-	public String actualizarPorIdCliente(@PathVariable("id") Integer id, Cliente cliente) {
-		cliente.setId(id);
-
-		this.clienteService.modificarCliente(cliente);
-
-		return "redirect:/clientes/inicio";
+	@PutMapping("/actualizar/{idCliente}")
+	public String actualizarCliente(@PathVariable("idCliente") Integer id, Cliente cliente) {
+		this.clienteService.modificar(id);
+		return "redirect:/clientes/reporte";
 	}
+	
+	
+	
+
+	
 
 }
