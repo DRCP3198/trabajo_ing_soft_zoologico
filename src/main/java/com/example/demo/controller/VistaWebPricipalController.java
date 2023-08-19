@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class VistaWebPricipalController {
 	
 //	INICIO PAGINA PRINCIPAL
-//	http://localhost:8085/principal/vistaPrincipal
+//	http://localhost:8085/zoologico/principal/vistaPrincipal
 
 	@GetMapping("/vistaPrincipal")
 	public String vistaPrincipal() {
