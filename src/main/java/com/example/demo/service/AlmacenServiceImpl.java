@@ -1,5 +1,7 @@
 package com.example.demo.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -34,6 +36,11 @@ public class AlmacenServiceImpl implements IAlmacenService{
 	public void borrar(String nombre) {
 		// TODO Auto-generated method stub
 		this.almacenRepo.eliminar(nombre);
+	}
+
+	@Override
+	public List<Almacen> encontrarTodos() {
+		return almacenRepo.encontrarTodos();
 	}
 
 }

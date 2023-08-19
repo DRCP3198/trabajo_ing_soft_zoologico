@@ -48,7 +48,7 @@ public class ClienteController {
 	}
 	@PutMapping("/actualizar/{idCliente}")
 	public String actualizarCliente(@PathVariable("idCliente") Integer id, Cliente cliente) {
-		this.clienteService.modificar(id);
+		this.clienteService.modificarCliente(cliente);
 		return "redirect:/clientes/reporte";
 	}
 	

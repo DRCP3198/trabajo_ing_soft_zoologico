@@ -1,5 +1,7 @@
 package com.example.demo.repository;
 
+import java.util.List;
+
 import org.springframework.stereotype.Repository;
 
 import com.example.demo.modelo.Almacen;
@@ -30,11 +32,22 @@ public class AlmacenRepoImpl implements IAlmacenRepo {
 
 	@Override
 	public Almacen buscar(String nombre) {
-		// TODO Auto-generated method stub
-		TypedQuery<Almacen> typedQuery = this.entityManager
-				.createQuery("SELECT al FROM Almacen al WHERE al.nombre=:datoNombre", Almacen.class);
-		typedQuery.setParameter("datoNombre", nombre);
-		return typedQuery.getSingleResult();
+	    TypedQuery<Almacen> typedQuery = this.entityManager
+	            .createQuery("SELECT al FROM Almacen al WHERE al.nombre=:datoNombre", Almacen.class);
+	    typedQuery.setParameter("datoNombre", nombre);
+	    
+	    List<Almacen> resultados = typedQuery.getResultList();
+	    if (!resultados.isEmpty()) {
+	        return resultados.get(0); 
+	    } else {
+	        return null;  
+	    }
+	}
+
+
+	public List<Almacen> encontrarTodos() {
+	    TypedQuery<Almacen> typedQuery = this.entityManager.createQuery("SELECT a FROM Almacen a", Almacen.class);
+	    return typedQuery.getResultList();
 	}
 
 	@Override
