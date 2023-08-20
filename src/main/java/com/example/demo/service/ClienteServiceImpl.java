@@ -7,12 +7,16 @@ import org.springframework.stereotype.Service;
 
 import com.example.demo.modelo.Cliente;
 import com.example.demo.repository.IClienteRepo;
+import com.example.demo.repository.IEmpleadoRepo;
 
 @Service
 public class ClienteServiceImpl implements IClienteService{
 	
 	@Autowired
 	private IClienteRepo clienteRepo;
+	
+	@Autowired 
+	private IEmpleadoRepo empleadoRepo;
 
 	@Override
 	public void agregar(Cliente cliente) {

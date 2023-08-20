@@ -60,7 +60,7 @@
 		<div class="row">
 			<div class="col-md-6 col-md-offset-3">
 				<h1>Regístrate:</h1>
-				<form th:action="@{/clientes/insertar}" th:object="${cliente}" method="POST">
+				<form th:action="@{/empleados/insertar/cliente}" th:object="${cliente}" method="POST">
 					<div class="form-group">
 						<label class="form-control" for="nombre">Nombre:</label>
 						<input id="nombre" type="text" class="form-control" th:field="${cliente.nombre}" required
@@ -110,7 +110,7 @@
 							alert("¡ACEPTAR si desea registrarse!");
 						});
 					</script>
-					<span>Si estas registrado <a th:href="@{/inicio}">Inicia sesión aqui</a></span>
+					
 
 				</form>
 

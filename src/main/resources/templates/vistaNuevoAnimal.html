@@ -13,11 +13,13 @@
 
 <style>
 	body {
-		background-image: url('https://www.orientacionandujar.es/wp-content/uploads/2017/02/Imagen-14-El-parque-zoolo%CC%81gico-I.jpg');
+		background-image: url('https://www.timeforkids.com/wp-content/uploads/2019/09/final-cover-forest.jpg?w=1024');
 		background-repeat: no-repeat;
 		background-attachment: fixed;
 		background-size: cover;
+		font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 	}
+    
 </style>
 
 <body>
@@ -25,14 +27,14 @@
         <div class="row justify-content-center">
             <div class="col-md-4">
                 <div class="card">
-                    <div class="card-header bg-warning text-white">
+                    <div class="card-header bg-secondary bg-gradient text-white">
                         <h3 class="mb-0">
 						<center>
 						Registro de Animales
 						</center></h3>
                     </div>
-                    <div class="card-body bg-primary text-white">
-                        <form th:action="@{/animales/insertar}" th:object="${animal}" th:method="POST">
+                    <div class="card-body bg-success text-white">
+                        <form th:action="@{/empleados/insertar/animal}" th:object="${animal}" th:method="POST">
                             <div class="mb-3">
                                 <label for="nombreComun" class="form-label">Nombre Común:</label>
                                 <input type="text" id="nombreComun" class="form-control" th:field="${animal.nombreComun}">

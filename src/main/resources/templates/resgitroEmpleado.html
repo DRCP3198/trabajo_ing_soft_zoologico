@@ -3,7 +3,7 @@
 
 <head>
 	<meta charset="utf-8">
-	<title>Registro | Usuarios</title>
+	<title>Registro | Empleado</title>
 	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
 		integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -15,43 +15,40 @@
 </head>
 
 <style>
-	* {
-		margin: 0;
-		padding: 0;
-		box-sizing: border-box;
-	}
 	body {
-		background-image: url('https://files.worldwildlife.org/wwfcmsprod/images/Polar_bear_cubs/story_full_width/16pc7wohn2_Small_WW22791.jpg');
+		background-image: url('https://www.explica.me/__export/1630425844553/sites/debate/img/2021/08/31/animales_diurnos_crop1630425842866.png_673822677.png');
 		margin: 0;
 		padding: 0;
 		background-size: cover;
 		font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-		height: 100px;
-		text-align: unset;
+		height: 100vh;
 	}
-	
+
 	.registro label {
 		margin: 0;
 		padding: 0;
 		font-weight: bold;
+        color: #f8f8f8;
 		display: contents;
-		
 
 	}
 
 	.registro input {
 		width: 60%;
-		margin-bottom: 30px;
+		margin-bottom: 15px;
+        
 
 	}
-	
+
 	.registro span{
 		margin: 0;
 		padding: 0;
-		font-size: 17px;
-		
 	}
-
+    .registro a{
+        font-size: 18px;
+        
+        color: #e95c5c;
+    }
 </style>
 
 
@@ -59,59 +56,55 @@
 	<div class="registro">
 		<div class="row">
 			<div class="col-md-6 col-md-offset-3">
-				<h1>Regístrate:</h1>
-				<form th:action="@{/clientes/insertar}" th:object="${cliente}" method="POST">
+				<h1>Registro Empleado</h1>
+				<form th:action="@{/empleados/insertar}" th:object="${empleado}" method="POST">
 					<div class="form-group">
 						<label class="form-control" for="nombre">Nombre:</label>
-						<input id="nombre" type="text" class="form-control" th:field="${cliente.nombre}" required
+						<input id="nombre" type="text" class="form-control" th:field="${empleado.nombre}" required
 							autofocus="autofocus">
 					</div>
 					<div class="form-group">
 						<label class="form-control" for="apellido">Apellido:</label>
-						<input id="apellido" type="text" class="form-control" th:field="${cliente.apellido}" required
-							autofocus="autofocus">
-					</div>
-					<div class="form-group">
-						<label class="form-control" for="edad">Edad:</label>
-						<input id="edad" type="number" class="form-control" th:field="${cliente.edad}" required
-							autofocus="autofocus">
-					</div>
-					<div class="form-group">
-						<label class="form-control" for="correo">Email</label>
-						<input id="correo" type="email" class="form-control" th:field="${cliente.correo}" required
+						<input id="apellido" type="text" class="form-control" th:field="${empleado.apellido}" required
 							autofocus="autofocus">
 					</div>
 					<div class="form-group">
 						<label class="form-control" for="cedula">Cédula:</label>
-						<input id="cedula" type="text" class="form-control" th:field="${cliente.cedula}" required
+						<input id="cedula" type="text" class="form-control" th:field="${empleado.cedula}" required
 							autofocus="autofocus">
 					</div>
-					<div class="form-group">
-						<label class="form-control" for="direccion">Dirección:</label>
-						<input id="direccion" type="text" class="form-control" th:field="${cliente.direccion}" required
-							autofocus="autofocus">
+                    <div class="form-group">
+						<label class="form-control" for="sueldo">Sueldo:</label>
+						<input id="sueldo" type="number" class="form-control" th:field="${empleado.sueldo}"
+							required autofocus="autofocus">
 					</div>
+                    <div class="form-group">
+						<label class="form-control" for="cargo">Contraseña:</label>
+						<input id="cargo" type="text" class="form-control" th:field="${empleado.cargo}"
+							required autofocus="autofocus">
+					</div>
+
 					<div class="form-group">
 						<label class="form-control" for="usuarioGeneral">Usuario:</label>
-						<input id="usuario" type="text" class="form-control" th:field="${cliente.usuarioGeneral}"
+						<input id="usuario" type="text" class="form-control" th:field="${empleado.usuarioGeneral}"
 							required autofocus="autofocus">
 					</div>
 					<div class="form-group">
 						<label class="form-control" for="contrasenia">Contraseña:</label>
-						<input id="contrasenia" type="password" class="form-control" th:field="${cliente.contrasenia}"
+						<input id="contrasenia" type="password" class="form-control" th:field="${empleado.contrasenia}"
 							required autofocus="autofocus">
 					</div>
 
 
-					<button id="registrar" type="submit" class="btn btn-warning">Registrar</button>
+					<button id="registrar" type="submit" class="btn btn-success" >Registrar</button>
 					<script>
 
 						document.getElementById("registrar").addEventListener("click", function () {
-							alert("¡ACEPTAR si desea registrarse!");
+							alert("¡Aceptar si desea registrar un Empleado!");
 						});
 					</script>
-					<span>Si estas registrado <a th:href="@{/inicio}">Inicia sesión aqui</a></span>
-
+					
+                   
 				</form>
 
 
