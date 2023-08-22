@@ -86,7 +86,7 @@
 <body>
     <h1>Editar Almacén</h1>
     
-<form th:action="@{/almacen/editar/{nombre}(nombre=${almacen.nombre})}" method="post">
+<form th:action="@{/empleados/almacen/editar/{nombre}(nombre=${almacen.nombre})}" method="post">
         <label for="nombre">Nuevo Nombre:</label>
         <input type="text" id="nombre" name="nombre" th:value="${almacen.nombre}" required>
         

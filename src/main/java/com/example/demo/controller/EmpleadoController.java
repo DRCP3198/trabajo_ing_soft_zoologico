@@ -83,7 +83,7 @@ public class EmpleadoController {
 	@DeleteMapping("/eliminar/{id}")
 	public String eliminarAnimal(@PathVariable("id")Integer id) {
 		this.animalService.borrarPorID(id);
-		return "redirect:/animales/listaAnimales";
+		return "redirect:/empleados/listaAnimales";
 	}
 	//ALMACEN
 	//http://localhost:8085/zoologico/empleados/almacen/lista
@@ -97,19 +97,19 @@ public class EmpleadoController {
 		@PostMapping("/almacen/agregar")
 		public String agregarAlmacen(Almacen almacen) {
 			almacenService.agregar(almacen);
-			return "redirect:/almacen/lista";
+			return "redirect:/empleados/almacen/lista";
 		}
 
 		@PostMapping("/almacen/editar")
 		public String guardarEdicionAlmacen(Almacen almacen) {
 			almacenService.modificar(almacen);
-			return "redirect:/almacen/lista";
+			return "redirect:/empleados/almacen/lista";
 		}
 
 		@GetMapping("/almacen/eliminar/{nombre}")
 		public String eliminarAlmacen(@PathVariable String nombre) {
 		    almacenService.borrar(nombre);
-		    return "redirect:/almacen/lista"; 
+		    return "redirect:/empleados/almacen/lista"; 
 		}
 
 		@GetMapping("/almacen/editar/{nombre}")
@@ -128,7 +128,7 @@ public class EmpleadoController {
 		        almacenExistente.setTipo(almacenModificado.getTipo());
 		        almacenService.modificar(almacenExistente);
 		    }
-		    return "redirect:/almacen/lista"; 
+		    return "redirect:/empleados/almacen/lista"; 
 		}
 
 }

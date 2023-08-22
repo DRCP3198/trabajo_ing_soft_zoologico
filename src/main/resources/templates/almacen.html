@@ -118,8 +118,8 @@
             <td th:text="${almacen.capacidad}"></td>
             <td th:text="${almacen.tipo}"></td>
                 <td>
-                    <a class="btn" th:href="@{/almacen/editar/{nombre}(nombre=${almacen.nombre})}">Editar</a>
-                    <a class="btn" th:href="@{/almacen/eliminar/{nombre}(nombre=${almacen.nombre})}">Eliminar</a>
+                    <a class="btn" th:href="@{/empleados/almacen/editar/{nombre}(nombre=${almacen.nombre})}">Editar</a>
+                    <a class="btn" th:href="@{/empleados/almacen/eliminar/{nombre}(nombre=${almacen.nombre})}">Eliminar</a>
                 </td>
             </tr>
         </table>
