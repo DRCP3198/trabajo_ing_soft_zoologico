@@ -7,44 +7,44 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
 		integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-
+	<link rel="shortcut icon" href="https://cdn-icons-png.flaticon.com/512/616/616412.png" type="image/x-icon">
 	<title>Document</title>
 </head>
 <h1>Registro de historial clinico</h1>
-	
+
 <body>
 	<form th:action="@{/historiales/insertar}" th:object="${historial}" th:method="POST">
 		<table class="table table-striped table-dark">
 			<tr>
 				<td>
-				<label>Fecha registro:</label>
+					<label>Fecha registro:</label>
 				</td>
 				<td>
-				<input type="date" id="fechaRegistro" th:field="${historial.fechaRegistro}">
-				</td>
-			</tr>
-			<tr>
-				<td>
-				<label>Apellido:</label>
-				</td>
-				<td>
-				<input type="date" id="fechaAlta" th:field="${historial.fechaAlta}">
+					<input type="date" id="fechaRegistro" th:field="${historial.fechaRegistro}">
 				</td>
 			</tr>
 			<tr>
 				<td>
-				<label>Cedula:</label>
+					<label>Apellido:</label>
 				</td>
 				<td>
-				<input type="text" id="diagnostico" th:field="${historial.diagnostico}">
+					<input type="date" id="fechaAlta" th:field="${historial.fechaAlta}">
 				</td>
 			</tr>
 			<tr>
 				<td>
-				<label>Genero:</label>
+					<label>Cedula:</label>
 				</td>
 				<td>
-				<input type="text" id="observaciones" th:field="${historial.observaciones}">
+					<input type="text" id="diagnostico" th:field="${historial.diagnostico}">
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<label>Genero:</label>
+				</td>
+				<td>
+					<input type="text" id="observaciones" th:field="${historial.observaciones}">
 				</td>
 			</tr>
 		</table>

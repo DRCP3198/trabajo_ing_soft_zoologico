@@ -21,11 +21,14 @@ public class Usuario {
 	@Column(name="usu_id")
 	private Integer id;
 	
-	@Column(name="usu_usuario_nombre")
+	@Column(name="usu_usuario")
 	private String usuarioNombre;
 	
 	@Column(name="usu_contraseña")
 	private String contrasenia;
+	
+	@Column(name= "usu_rol_name")
+	private String rolName;
 	
 	@ManyToOne
 	@JoinColumn(name="usu_id_zoologico")
@@ -85,6 +88,16 @@ public class Usuario {
 	public void setCliente(Cliente cliente) {
 		this.cliente = cliente;
 	}
+
+	public String getRolName() {
+		return rolName;
+	}
+
+	public void setRolName(String rolName) {
+		this.rolName = rolName;
+	}
+	
+	
 
 
 	

@@ -11,7 +11,7 @@
 	<!-- Optional theme -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
 		integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-
+	<link rel="shortcut icon" href="https://cdn-icons-png.flaticon.com/512/616/616412.png" type="image/x-icon">
 </head>
 
 <style>
@@ -28,7 +28,7 @@
 		margin: 0;
 		padding: 0;
 		font-weight: bold;
-        color: #f8f8f8;
+		color: #f8f8f8;
 		display: contents;
 
 	}
@@ -36,19 +36,20 @@
 	.registro input {
 		width: 60%;
 		margin-bottom: 15px;
-        
+
 
 	}
 
-	.registro span{
+	.registro span {
 		margin: 0;
 		padding: 0;
 	}
-    .registro a{
-        font-size: 18px;
-        
-        color: #e95c5c;
-    }
+
+	.registro a {
+		font-size: 18px;
+
+		color: #e95c5c;
+	}
 </style>
 
 
@@ -73,15 +74,15 @@
 						<input id="cedula" type="text" class="form-control" th:field="${empleado.cedula}" required
 							autofocus="autofocus">
 					</div>
-                    <div class="form-group">
+					<div class="form-group">
 						<label class="form-control" for="sueldo">Sueldo:</label>
-						<input id="sueldo" type="number" class="form-control" th:field="${empleado.sueldo}"
-							required autofocus="autofocus">
+						<input id="sueldo" type="number" class="form-control" th:field="${empleado.sueldo}" required
+							autofocus="autofocus">
 					</div>
-                    <div class="form-group">
+					<div class="form-group">
 						<label class="form-control" for="cargo">Contraseña:</label>
-						<input id="cargo" type="text" class="form-control" th:field="${empleado.cargo}"
-							required autofocus="autofocus">
+						<input id="cargo" type="text" class="form-control" th:field="${empleado.cargo}" required
+							autofocus="autofocus">
 					</div>
 
 					<div class="form-group">
@@ -96,15 +97,15 @@
 					</div>
 
 
-					<button id="registrar" type="submit" class="btn btn-success" >Registrar</button>
+					<button id="registrar" type="submit" class="btn btn-success">Registrar</button>
 					<script>
 
 						document.getElementById("registrar").addEventListener("click", function () {
 							alert("¡Aceptar si desea registrar un Empleado!");
 						});
 					</script>
-					
-                   
+
+
 				</form>
 
 

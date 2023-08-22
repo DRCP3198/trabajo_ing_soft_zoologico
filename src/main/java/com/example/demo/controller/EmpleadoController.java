@@ -62,6 +62,13 @@ public class EmpleadoController {
 		this.clienteService.agregar(cliente);
 		return "redirect:/empleados/cliente/registro";
 	} 
+	//http://localhost:8085/zoologico/empleados/cliente/reporte
+	@GetMapping("/cliente/reporte")
+	public String encontrarTodos(Model model) {
+		List<Cliente> lista=this.clienteService.reporte();
+		model.addAttribute("clientes",lista);
+		return "vistaReporteClientesEmpleado";
+	}
 	
 	//ANIMALES
 	@GetMapping("animal/registro")
