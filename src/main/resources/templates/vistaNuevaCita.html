@@ -26,23 +26,15 @@
                         <h3 class="mb-0">Registrar Historial Clínico</h3>
                     </div>
                     <div class="card-body">
-                        <form th:action="@{/historiales/insertar}" th:object="${historial}" th:method="POST">
+                        <form th:action="@{/citas/insertar}" th:object="${cita}" th:method="POST">
                             <div class="mb-3">
-                                <label for="fechaRegistro" class="form-label">Fecha de registro:</label>
-                                <input type="datetime-local" id="fechaRegistro" class="form-control" th:field="${historial.fechaRegistro}">
+                                <label for="fechaIngreso" class="form-label">Fecha de ingreso:</label>
+                                <input type="datetime-local" id="fechaIngreso" class="form-control" th:field="${cita.fechaIngreso}">
                             </div>
                             <div class="mb-3">
-                                <label for="fechaAlta" class="form-label">Fecha de alta:</label>
-                                <input type="datetime-local" id="fechaAlta" class="form-control" th:field="${historial.fechaAlta}">
-                            </div>
-                            <div class="mb-3">
-                                <label for="diagnostico" class="form-label">Diagnóstico:</label>
-                                <input type="text" id="diagnostico" class="form-control" th:field="${historial.diagnostico}">
-                            </div>
-                            <div class="mb-3">
-                                <label for="observaciones" class="form-label">Observaciones:</label>
-                                <input type="text" id="observaciones" class="form-control" th:field="${historial.observaciones}">
-                            </div>
+                                <label for="fechaSalida" class="form-label">Fecha de salida:</label>
+                                <input type="datetime-local" id="fechaSalida" class="form-control" th:field="${cita.fechaSalida}">
+                           
                             <div class="d-grid gap-2">
                                 <button type="submit" class="btn btn-success">Guardar</button>
                             </div>

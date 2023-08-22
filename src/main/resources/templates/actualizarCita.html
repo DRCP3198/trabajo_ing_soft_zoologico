@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<head>   
+	<meta charset="UTF-8">   
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">   
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">   
+	<title>Document</title>
+</head>
+
+<body>   
+	<form th:action="@{/citas/actualizar/{id}(id=${cita.id})}" th:object="${cita}" th:method="PUT">
+		<table>
+			<tr>
+				<td>
+					<label>Fecha de ingreso:</label>
+				</td>
+
+
+				<td>
+					<input type="datetime-local" id="fechaIngreso" th:field="${cita.fechaIngreso}">
+				</td>
+			</tr>
+
+			///////////////////////////////////////////////////////////
+			<tr>
+				<td>
+					<label>Fecha de salida:</label>
+				</td>
+
+
+				<td>
+					<input type="datetime-local" id="fechaSalida" th:field="${cita.fechaSalida}">
+				</td>
+			</tr>
+
+			
+			
+		</table>
+
+
+
+		<input type="submit" value="Actualizar">
+	</form>
+</body>
+
+</html>

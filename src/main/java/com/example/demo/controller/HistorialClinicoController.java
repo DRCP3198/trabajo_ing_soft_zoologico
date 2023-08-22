@@ -3,17 +3,20 @@ package com.example.demo.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.demo.modelo.HistorialClinico;
 import com.example.demo.service.IHistorialClinicoService;
 
+
 @Controller
 @RequestMapping("/historiales")
-public class HistorialController {
-	
+public class HistorialClinicoController {
+
 	@Autowired
 	private IHistorialClinicoService clinicoService;
 	
@@ -27,9 +30,25 @@ public class HistorialController {
 	@PostMapping("/insertar")
 	public String insertarHistorial(HistorialClinico historial) {
 		this.clinicoService.realizar(historial);
-		return "redirect:/historiales/registrarHistorial";
+		return "redirect:/historiales/listaHistorial";
 	}
 	
 	
+	@GetMapping("/listaHistorial/{id}")
+	public String listaAnimales(@PathVariable("id")Integer id, Model modelo) {
+		HistorialClinico historial =this.clinicoService.buscar(id);
+		modelo.addAttribute("historial",historial);
+		return "vistaHistorial";
+	}
+	
+	@DeleteMapping("/eliminar/{id}")
+	public String eliminarAnimal(@PathVariable("id")Integer id) {
+		this.clinicoService.eliminar(id);
+		return "redirect:/historiales/listaHistorial";
+	}
+	
+	
+	
 
+	
 }
