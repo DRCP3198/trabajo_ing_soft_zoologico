@@ -21,6 +21,7 @@ public class ClienteController {
 	@Autowired
 	private IClienteService clienteService;
 	
+	
 	@GetMapping("/registro")
 	public String registro(Cliente cliente) {
 		return "registroCliente";
@@ -44,6 +45,7 @@ public class ClienteController {
 		model.addAttribute("clientes",lista);
 		return "vistaReporteClientes";
 	}
+	
 	//http://localhost:8085/zoologico/clientes/buscarID/1
 	@GetMapping("/buscarID/{idCliente}")
 	public String buscarId(@PathVariable("idCliente") Integer id, Model model) {
@@ -52,15 +54,13 @@ public class ClienteController {
 		return "actualizarDatosCliente";
 		
 	}
+	
 	@PutMapping("/actualizar/{idCliente}")
 	public String actualizarCliente(@PathVariable("idCliente") Integer id, Cliente cliente) {
 		this.clienteService.modificarCliente(cliente);
-		return "redirect:/clientes/reporte";
+//		return "redirect:/clientes/reporte";
+		return "vistaCliente";
 	}
 	
 	
-	
-
-	
-
 }
