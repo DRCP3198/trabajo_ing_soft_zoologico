@@ -1,0 +1,71 @@
+a {
+
+    color: #fff;
+
+    text-decoration: none;
+
+    transition: color 0.3s;
+
+}
+
+ 
+
+a:hover {
+
+    color: #ff4500;
+
+}
+
+.social-icons {
+
+    margin-top: 10px;
+
+}
+
+ 
+
+.social-icons a {
+
+    display: inline-block;
+
+    width: 300px;
+
+    height: 300px;
+
+    background-color: #fff;
+
+    color: #333;
+
+    text-align: center;
+
+    line-height: 30px;
+
+    
+
+    margin: 0 5px;
+
+    transition: background-color 0.3s;
+
+}
+
+ 
+
+.social-icons a:hover {
+
+    background-color: #ff4500;
+
+    color: #fff;
+
+}
+
+ 
+
+#fb  {
+
+ 
+
+    background-image: url('https://cloudfront-us-east-1.images.arcpublishing.com/eluniverso/V4SPPZ3S5BBE7LA7DGC2RP426A.jpg');
+
+    background-size: cover;
+
+}
