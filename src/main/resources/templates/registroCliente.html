@@ -4,11 +4,9 @@
 <head>
 	<meta charset="utf-8">
 	<title>Registro | Usuarios</title>
-	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
 		integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
-	<!-- Optional theme -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
 		integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 
@@ -78,45 +76,45 @@
 		<div class="left-panel"></div>
 		<div class="right-panel">
 			<a href="javascript:history.back()" class="btn btn-primary atras-button">Atrás</a>
-			<h1>Regístrate:</h1>
+			<h1 style="text-align: center; margin-bottom: 20px;">Regístrate</h1>
 			<form th:action="@{/clientes/insertar}" th:object="${cliente}" method="POST">
 				<div class="form-group">
-					<label class="form-control" for="nombre">Nombre:</label>
+					<label for="nombre">Nombre:</label>
 					<input id="nombre" type="text" class="form-control" th:field="${cliente.nombre}" required
 						autofocus="autofocus">
 				</div>
 				<div class="form-group">
-					<label class="form-control" for="apellido">Apellido:</label>
+					<label for="apellido">Apellido:</label>
 					<input id="apellido" type="text" class="form-control" th:field="${cliente.apellido}" required
 						autofocus="autofocus">
 				</div>
 				<div class="form-group">
-					<label class="form-control" for="edad">Edad:</label>
+					<label for="edad">Edad:</label>
 					<input id="edad" type="number" class="form-control" th:field="${cliente.edad}" required
 						autofocus="autofocus">
 				</div>
 				<div class="form-group">
-					<label class="form-control" for="correo">Email</label>
+					<label for="correo">Email</label>
 					<input id="correo" type="email" class="form-control" th:field="${cliente.correo}" required
 						autofocus="autofocus">
 				</div>
 				<div class="form-group">
-					<label class="form-control" for="cedula">Cédula:</label>
+					<label  for="cedula">Cédula:</label>
 					<input id="cedula" type="text" class="form-control" th:field="${cliente.cedula}" required
 						autofocus="autofocus">
 				</div>
 				<div class="form-group">
-					<label class="form-control" for="direccion">Dirección:</label>
+					<label  for="direccion">Dirección:</label>
 					<input id="direccion" type="text" class="form-control" th:field="${cliente.direccion}" required
 						autofocus="autofocus">
 				</div>
 				<div class="form-group">
-					<label class="form-control" for="usuarioGeneral">Usuario:</label>
+					<label  for="usuarioGeneral">Usuario:</label>
 					<input id="usuario" type="text" class="form-control" th:field="${cliente.usuarioGeneral}" required
 						autofocus="autofocus">
 				</div>
 				<div class="form-group">
-					<label class="form-control" for="contrasenia">Contraseña:</label>
+					<label for="contrasenia">Contraseña:</label>
 					<input id="contrasenia" type="password" class="form-control" th:field="${cliente.contrasenia}"
 						required autofocus="autofocus">
 				</div>
@@ -130,7 +128,6 @@
 			<span>Si estás registrado <a th:href="@{/inicio}">Inicia sesión aquí</a></span>
 		</div>
 	</div>
-	<!-- Latest compiled and minified JavaScript -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
 		integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
 		crossorigin="anonymous"></script>
@@ -140,140 +137,5 @@
 
 
 
-<!--<!DOCTYPE html>-->
-<!--<html xmlns:th="http://www.thymeleaf.org" lang="en">-->
 
-<!--<head>-->
-<!--	<meta charset="utf-8">-->
-<!--	<title>Registro | Usuarios</title>-->
-<!--	 Latest compiled and minified CSS -->
-<!--	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"-->
-<!--		integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">-->
 
-<!--	 Optional theme -->
-<!--	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"-->
-<!--		integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">-->
-
-<!--</head>-->
-
-<!--<style>-->
-<!--	* {-->
-<!--		margin: 0;-->
-<!--		padding: 0;-->
-<!--		box-sizing: border-box;-->
-<!--	}-->
-
-<!--	body {-->
-<!--		background-image: url('https://files.worldwildlife.org/wwfcmsprod/images/Polar_bear_cubs/story_full_width/16pc7wohn2_Small_WW22791.jpg');-->
-<!--		margin: 0;-->
-<!--		padding: 0;-->
-<!--		background-size: cover;-->
-<!--		font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;-->
-<!--		height: 100px;-->
-<!--		text-align: unset;-->
-<!--	}-->
-
-<!--	.registro {-->
-<!--		text-align: center;-->
-<!--		/* Center the boxes */-->
-<!--		margin-top: 100px;-->
-<!--		/* Add margin for spacing */-->
-<!--	}-->
-
-<!--	.registro label {-->
-<!--		margin: 0;-->
-<!--		padding: 0;-->
-<!--		font-weight: bold;-->
-<!--		display: contents;-->
-<!--	}-->
-
-<!--	.registro input {-->
-<!--		width: 60%;-->
-<!--		margin-bottom: 15px;-->
-<!--		/* Reduce spacing between boxes */-->
-<!--	}-->
-
-<!--	.registro span {-->
-<!--		font-size: 17px;-->
-<!--		display: block;-->
-<!--		/* Place "Si estas registrado..." on a new line */-->
-<!--		margin-top: 10px;-->
-<!--		/* Add some space above the login link */-->
-<!--	}-->
-
-<!--	.atras-button {-->
-<!--		position: absolute;-->
-<!--		top: 10px;-->
-<!--		left: 10px;-->
-<!--	}-->
-<!--</style>-->
-
-<!--<body>-->
-<!--	<div class="registro">-->
-<!--		<div class="row">-->
-<!--			<div class="col-md-6 col-md-offset-3">-->
-<!--				<a href="javascript:history.back()" class="btn btn-primary atras-button">Atrás</a>  Back button -->
-<!--				<h1>Regístrate:</h1>-->
-<!--				<form th:action="@{/clientes/insertar}" th:object="${cliente}" method="POST">-->
-
-<!--					<div class="form-group">-->
-<!--						<label class="form-control" for="nombre">Nombre:</label>-->
-<!--						<input id="nombre" type="text" class="form-control" th:field="${cliente.nombre}" required-->
-<!--							autofocus="autofocus">-->
-<!--					</div>-->
-<!--					<div class="form-group">-->
-<!--						<label class="form-control" for="apellido">Apellido:</label>-->
-<!--						<input id="apellido" type="text" class="form-control" th:field="${cliente.apellido}" required-->
-<!--							autofocus="autofocus">-->
-<!--					</div>-->
-<!--					<div class="form-group">-->
-<!--						<label class="form-control" for="edad">Edad:</label>-->
-<!--						<input id="edad" type="number" class="form-control" th:field="${cliente.edad}" required-->
-<!--							autofocus="autofocus">-->
-<!--					</div>-->
-<!--					<div class="form-group">-->
-<!--						<label class="form-control" for="correo">Email</label>-->
-<!--						<input id="correo" type="email" class="form-control" th:field="${cliente.correo}" required-->
-<!--							autofocus="autofocus">-->
-<!--					</div>-->
-<!--					<div class="form-group">-->
-<!--						<label class="form-control" for="cedula">Cédula:</label>-->
-<!--						<input id="cedula" type="text" class="form-control" th:field="${cliente.cedula}" required-->
-<!--							autofocus="autofocus">-->
-<!--					</div>-->
-<!--					<div class="form-group">-->
-<!--						<label class="form-control" for="direccion">Dirección:</label>-->
-<!--						<input id="direccion" type="text" class="form-control" th:field="${cliente.direccion}" required-->
-<!--							autofocus="autofocus">-->
-<!--					</div>-->
-<!--					<div class="form-group">-->
-<!--						<label class="form-control" for="usuarioGeneral">Usuario:</label>-->
-<!--						<input id="usuario" type="text" class="form-control" th:field="${cliente.usuarioGeneral}"-->
-<!--							required autofocus="autofocus">-->
-<!--					</div>-->
-<!--					<div class="form-group">-->
-<!--						<label class="form-control" for="contrasenia">Contraseña:</label>-->
-<!--						<input id="contrasenia" type="password" class="form-control" th:field="${cliente.contrasenia}"-->
-<!--							required autofocus="autofocus">-->
-<!--					</div>-->
-
-<!--					<button id="registrar" type="submit" class="btn btn-warning">Registrar</button>-->
-<!--					<script>-->
-<!--						document.getElementById("registrar").addEventListener("click", function () {-->
-<!--							alert("¡ACEPTAR si desea registrarse!");-->
-<!--						});-->
-<!--					</script>-->
-<!--				</form>-->
-<!--				<span>Si estás registrado <a th:href="@{/inicio}">Inicia sesión aquí</a></span>-->
-<!--			</div>-->
-<!--		</div>-->
-<!--		<p style="color: red;">Todos los campos son requeridos.</p>  Added validation message -->
-
-<!--	</div>-->
-<!--	 Latest compiled and minified JavaScript -->
-<!--	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"-->
-<!--		integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"-->
-<!--		crossorigin="anonymous"></script>-->
-<!--</body>-->
-
-<!--</html>-->
