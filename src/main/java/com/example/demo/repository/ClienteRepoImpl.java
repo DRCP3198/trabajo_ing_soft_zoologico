@@ -60,13 +60,7 @@ public class ClienteRepoImpl implements IClienteRepo {
 		}
 	}
 
-	@Override
-	public void eliminar(String cedula) {
-		// TODO Auto-generated method stub
-		
-		this.entityManager.remove(this.encontrarCedula(cedula));
-
-	}
+	
 
 	@Override
 	public List<Cliente> encontrarTodos() {
@@ -86,6 +80,13 @@ public class ClienteRepoImpl implements IClienteRepo {
 	public Cliente encontrarId(Integer id) {
 		// TODO Auto-generated method stub
 		return this.entityManager.find(Cliente.class, id);
+	}
+
+	@Override
+	public void eliminar(Integer id) {
+		// TODO Auto-generated method stub
+		this.entityManager.remove(this.encontrarId(id));
+		
 	}
 
 }

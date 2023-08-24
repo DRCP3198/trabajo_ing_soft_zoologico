@@ -44,10 +44,6 @@ public class Empleado {
 	@Column(name = "empl_usuarioGeneral")
 	private String usuarioGeneral;
 	
-	@OneToOne
-	@JoinColumn(name="empl_id_usuario")
-	private Usuario usuario;
-	
 	
 
 	//SET y GET
@@ -122,14 +118,7 @@ public class Empleado {
 		this.usuarioGeneral = usuarioGeneral;
 	}
 
-	public Usuario getUsuario() {
-		return usuario;
-	}
-
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
-	}
-
+	
 
 
 

@@ -37,8 +37,7 @@ public class Zoologico {
 	@OneToMany(mappedBy = "zoologico")
 	private List<Proveedor> proveedores;
 	
-	@OneToMany(mappedBy = "zoologico")
-	private List<Usuario> usuarios;
+
 
 
 	//SET y GET
@@ -92,13 +91,6 @@ public class Zoologico {
 		this.proveedores = proveedores;
 	}
 
-	public List<Usuario> getUsuarios() {
-		return usuarios;
-	}
-
-	public void setUsuarios(List<Usuario> usuarios) {
-		this.usuarios = usuarios;
-	}
 
 	
 	

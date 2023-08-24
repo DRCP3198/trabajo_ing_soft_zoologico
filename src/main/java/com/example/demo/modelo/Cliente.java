@@ -44,9 +44,7 @@ public class Cliente {
 	@Column(name= "clie_usuario")
 	private String usuarioGeneral;
 
-	@OneToOne
-	@JoinColumn(name="clie_id_usuario")
-	private Usuario usuario;
+	
 	
 	// SET y GET
 	public Integer getId() {
@@ -105,14 +103,7 @@ public class Cliente {
 		this.direccion = direccion;
 	}
 	
-	public Usuario getUsuario() {
-		return usuario;
-	}
-
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
-	}
-
+	
 	public String getContrasenia() {
 		return contrasenia;
 	}

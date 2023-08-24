@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.demo.modelo.Almacen;
@@ -51,10 +52,12 @@ public class EmpleadoController {
 
 	@Autowired
 	private IProveedorService iProveedorService;
-	
+
 	@Autowired
 	private ICompraProveedoresService compraProveedoresService;
 
+
+	// Empleado
 	@GetMapping("/registro")
 	public String registrarEmpleado(Empleado empleado) {
 		return "resgitroEmpleado";
@@ -64,6 +67,13 @@ public class EmpleadoController {
 	public String guardarRegistro(Empleado empleado) {
 		this.empleadoService.agregar(empleado);
 		return "redirect:/empleados/registro";
+	}
+
+	@GetMapping("/reporte")
+	public String reporteEmpleado(Model model) {
+		List<Empleado> lista = this.empleadoService.reporte();
+		model.addAttribute("empleados", lista);
+		return "vistaReporteEmpleado";
 	}
 
 	// CLIENTE
@@ -76,16 +86,41 @@ public class EmpleadoController {
 	@PostMapping("/insertar/cliente")
 	public String insertarCliente(Cliente cliente) {
 		this.clienteService.agregar(cliente);
-		return "redirect:/empleados/cliente/registro";
+		return "confirmacionRegistroEmpleado";
 	}
-	
-	//http://localhost:8085/zoologico/empleados/cliente/reporte
-		@GetMapping("/cliente/reporte")
-		public String encontrarTodos(Model model) {
-			List<Cliente> lista=this.clienteService.reporte();
-			model.addAttribute("clientes",lista);
-			return "vistaReporteClientesEmpleado";
-		}
+
+	@GetMapping("/confir")
+	public String confir() {
+		return "confirmacionRegistroEmpleado";
+	}
+
+	// http://localhost:8085/zoologico/empleados/cliente/reporte
+	@GetMapping("/cliente/reporte")
+	public String reporteCliente(Model model) {
+		List<Cliente> lista = this.clienteService.reporte();
+		model.addAttribute("clientes", lista);
+		return "vistaReporteClientesEmpleado";
+	}
+
+	@GetMapping("/cliente/buscarPorID/{idCliente}")
+	public String buscarPorId(@PathVariable("idCliente") Integer id, Model model) {
+		Cliente cliente = this.clienteService.buscarId(id);
+		model.addAttribute("cliente", cliente);
+		return "actualizarDatosCliente";
+	}
+
+	@PutMapping("/actualizar/{idCliente}")
+	public String actualizarCliente(@PathVariable("idCliente") Integer id, Cliente cliente) {
+		this.clienteService.modificarCliente(cliente);
+		return "redirect:/empleados/cliente/reporte";
+
+	}
+	@DeleteMapping("/borrar/{idCliente}")
+	public String borrarCliente(@PathVariable("idCliente")Integer id) {
+		this.clienteService.eliminar(id);
+		return "redirect:/empleados/cliente/reporte";
+		
+	}
 
 	// ANIMALES
 	@GetMapping("animal/registro")
@@ -161,30 +196,30 @@ public class EmpleadoController {
 		this.iProveedorService.borrar(codigo);
 		return "redirect:/empleados/listaProveedores";
 	}
-	
-	//COMPRA
+
+	// COMPRA
 	@GetMapping("compra/registro/{codigo}")
-	public String registrarCompra(@PathVariable("codigo") String codigo,CompraProveedores compraProveedores,Model modelo) {
-		Proveedor p=this.iProveedorService.buscar(codigo);
+	public String registrarCompra(@PathVariable("codigo") String codigo, CompraProveedores compraProveedores,
+			Model modelo) {
+		Proveedor p = this.iProveedorService.buscar(codigo);
 		compraProveedores.setProveedor(p);
-		List<Producto> productos=this.iProductoService.reporte();
+		List<Producto> productos = this.iProductoService.reporte();
 		modelo.addAttribute("productos", productos);
 		return "vistaNuevaCompra";
 	}
-	
+
 	@PostMapping("/insertar/compra")
 	public String insertarCompra(CompraProveedores compraProveedores) {
 		this.compraProveedoresService.insertar(compraProveedores);
 		return "redirect:/empleados/listaCompras";
 	}
-	
+
 	@GetMapping("/listaCompras")
 	public String listaCompras(Model modelo) {
 		List<CompraProveedores> compraProveedores = this.compraProveedoresService.buscarTodos();
 		modelo.addAttribute("compraProveedores", compraProveedores);
 		return "vistaListaCompras";
 	}
-	
 
 	// ALMACEN
 	// http://localhost:8085/zoologico/empleados/almacen/lista

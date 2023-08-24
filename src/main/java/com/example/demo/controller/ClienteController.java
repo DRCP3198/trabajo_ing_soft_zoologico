@@ -17,50 +17,47 @@ import com.example.demo.service.IClienteService;
 @Controller
 @RequestMapping("/clientes")
 public class ClienteController {
-	
+
 	@Autowired
 	private IClienteService clienteService;
-	
+
 	@GetMapping("/registro")
 	public String registro(Cliente cliente) {
 		return "registroCliente";
 	}
-	
+
 	@PostMapping("/insertar")
 	public String insertarCliente(Cliente cliente) {
 		this.clienteService.agregar(cliente);
 		return "confirmacionRegistro";
 	}
-	
+
 	@GetMapping("/confir")
 	public String confir() {
 		return "confirmacionRegistro";
 	}
-	
-	//http://localhost:8085/zoologico/clientes/reporte
+
+	// http://localhost:8085/zoologico/clientes/reporte
 	@GetMapping("/reporte")
 	public String encontrarTodos(Model model) {
-		List<Cliente> lista=this.clienteService.reporte();
-		model.addAttribute("clientes",lista);
+		List<Cliente> lista = this.clienteService.reporte();
+		model.addAttribute("clientes", lista);
 		return "vistaReporteClientes";
 	}
-	//http://localhost:8085/zoologico/clientes/buscarID/1
+
+	// http://localhost:8085/zoologico/clientes/buscarID/1
 	@GetMapping("/buscarID/{idCliente}")
 	public String buscarId(@PathVariable("idCliente") Integer id, Model model) {
 		Cliente cli = this.clienteService.buscarId(id);
-		model.addAttribute("cliente",cli);
+		model.addAttribute("cliente", cli);
 		return "actualizarDatosCliente";
-		
+
 	}
+
 	@PutMapping("/actualizar/{idCliente}")
 	public String actualizarCliente(@PathVariable("idCliente") Integer id, Cliente cliente) {
 		this.clienteService.modificarCliente(cliente);
-		return "redirect:/clientes/reporte";
+		return "vistaCliente";
 	}
-	
-	
-	
-
-	
 
 }

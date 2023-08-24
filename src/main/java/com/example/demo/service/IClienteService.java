@@ -10,7 +10,7 @@ public interface IClienteService {
 	public void modificar(Integer id);
 	public void modificarCliente(Cliente cliente);
 	public Cliente buscar(String cedula);
-	public void borrar(String cedula);
+	public void eliminar(Integer id);
 	public Cliente buscarId(Integer id); 
 
 	// VERIFICAR USUARIO

@@ -12,7 +12,7 @@ public interface IClienteRepo {
 	public Cliente encontrarId(Integer id);
 	public Cliente encontrarCedula(String cedula);
 	public Cliente encontrarUsuario(String usuario);
-	public void eliminar(String cedula);
+	public void eliminar(Integer id);
 	public List<Cliente> encontrarTodos();
 	
 

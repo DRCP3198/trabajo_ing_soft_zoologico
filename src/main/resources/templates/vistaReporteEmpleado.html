@@ -18,9 +18,8 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
 		integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 
-	<link rel="shortcut icon"
-		href="https://cdn-icons-png.flaticon.com/512/4081/4081551.png"
-		type="image/x-icon">
+	<link rel="shortcut icon" href="https://cdn-icons-png.flaticon.com/512/4081/4081551.png" type="image/x-icon">
+
 
 	<style>
 		* {
@@ -78,31 +77,38 @@
 
 
 <body>
-	<h1>Clientes Registrados</h1>
+	<h1>Empleados Registrados</h1>
 	<table id="forma" style="margin: 0 auto;">
 		<thead>
 			<tr>
 				<th>Id</th>
 				<th>Nombre</th>
 				<th>Apellido</th>
-				<th>Edad</th>
-				<th>Correo</th>
-				<th>Cédula</th>
-				<th>Dirección</th>
+				<th>Cedula</th>
+				<th>Sueldo</th>
+				<th>Cargo</th>
 				<th>Usuario</th>
+				<th>Contraseña</th>
+				<th>Editar</th>
+
 			</tr>
 		</thead>
 		<hbody>
-			<tr th:each="cliente:${clientes}">
+			<tr th:each="empleado:${empleados}">
 
-				<td th:text="${cliente.id}"></td>
-				<td th:text="${cliente.nombre}"> </td>
-				<td th:text="${cliente.apellido}"> </td>
-				<td th:text="${cliente.edad}"></td>
-				<td th:text="${cliente.correo}"> </td>
-				<td th:text="${cliente.cedula}"></td>
-				<td th:text="${cliente.direccion}"></td>
-				<td th:text="${cliente.usuarioGeneral}"></td>
+				<td th:text="${empleado.id}"> </td>
+				<td th:text="${empleado.nombre}"> </td>
+				<td th:text="${empleado.apellido}"> </td>
+				<td th:text="${empleado.cedula}"> </td>
+				<td th:text="${empleado.sueldo}"> </td>
+				<td th:text="${empleado.cargo}"> </td>
+				<td th:text="${empleado.usuarioGeneral}"> </td>
+				<td th:text="${empleado.contrasenia}"> </td>
+				<td>
+					<form>
+						<input type="submit" value="Editar">
+					</form>
+				</td>
 
 			</tr>
 		</hbody>

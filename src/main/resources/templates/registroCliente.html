@@ -9,7 +9,7 @@
 
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
 		integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-
+	<link rel="shortcut icon" href="https://cdn-icons-png.flaticon.com/512/4081/4081551.png" type="image/x-icon">
 	<style>
 		* {
 			margin: 0;
@@ -120,20 +120,21 @@
 					<input id="contrasenia" type="password" class="form-control" th:field="${cliente.contrasenia}"
 						required autofocus="autofocus">
 				</div>
-				
-				
-				<form href = "/clientes/confir"> <button id="registrar" type="submit" class="btn btn-warning">Registrar</button>
-					
+
+
+				<form href="/clientes/confir"> <button id="registrar" type="submit"
+						class="btn btn-warning">Registrar</button>
+
 					<script>
 						document.getElementById("registrar").addEventListener("click", function () {
-							alert("¡ACEPTAR si desea registrarse!");
+							alert("Presione Aceptar para confirma su registro");
 						});
 					</script>
 				</form>
 
 
 			</form>
-			<span>Si estás registrado <a th:href="@{/inicio}">Inicia sesión aquí</a></span>
+			<span>Si ya esta registrado <a th:href="@{/inicio}">Inicie sesión aquí</a></span>
 		</div>
 	</div>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"

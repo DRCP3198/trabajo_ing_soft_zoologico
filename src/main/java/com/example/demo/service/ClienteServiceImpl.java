@@ -36,11 +36,6 @@ public class ClienteServiceImpl implements IClienteService{
 		return this.clienteRepo.encontrarCedula(cedula);
 	}
 
-	@Override
-	public void borrar(String cedula) {
-		// TODO Auto-generated method stub
-		this.clienteRepo.eliminar(cedula);
-	}
 
 	@Override
 	public List<Cliente> reporte() {
@@ -87,6 +82,12 @@ public class ClienteServiceImpl implements IClienteService{
 	public Cliente buscarId(Integer id) {
 		// TODO Auto-generated method stub
 		return this.clienteRepo.encontrarId(id);
+	}
+
+	@Override
+	public void eliminar(Integer id) {
+		// TODO Auto-generated method stub
+		this.clienteRepo.eliminar(id);
 	}
 	
 	
