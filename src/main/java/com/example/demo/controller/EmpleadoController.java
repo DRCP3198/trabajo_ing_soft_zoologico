@@ -164,9 +164,11 @@ public class EmpleadoController {
 	
 	//COMPRA
 	@GetMapping("compra/registro/{codigo}")
-	public String registrarCompra(@PathVariable("codigo") String codigo,CompraProveedores compraProveedores) {
+	public String registrarCompra(@PathVariable("codigo") String codigo,CompraProveedores compraProveedores,Model modelo) {
 		Proveedor p=this.iProveedorService.buscar(codigo);
 		compraProveedores.setProveedor(p);
+		List<Producto> productos=this.iProductoService.reporte();
+		modelo.addAttribute("productos", productos);
 		return "vistaNuevaCompra";
 	}
 	
