@@ -26,17 +26,15 @@
                         <h3 class="mb-0">Registrar Historial Clínico</h3>
                     </div>
                     <div class="card-body">
-                        <form th:action="@{/empleados/insertar/historial}" th:object="${historial}" th:method="POST">
+                        <form th:action="@{/citas/insertar}" th:object="${cita}" th:method="POST">
                             <div class="mb-3">
-                                <label for="fechaRegistro" class="form-label">Fecha de registro:</label>
-                                <input type="datetime-local" id="fechaRegistro" class="form-control" th:field="${historial.fechaRegistro}">
+                                <label for="fechaIngreso" class="form-label">Fecha de ingreso:</label>
+                                <input type="datetime-local" id="fechaIngreso" class="form-control" th:field="${cita.fechaIngreso}">
                             </div>
-                            
-                            
                             <div class="mb-3">
-                                <label for="descripcion" class="form-label">Observaciones:</label>
-                                <input type="text" id="descripcion" class="form-control" th:field="${historial.descripcion}">
-                            </div>
+                                <label for="fechaSalida" class="form-label">Fecha de salida:</label>
+                                <input type="datetime-local" id="fechaSalida" class="form-control" th:field="${cita.fechaSalida}">
+                           
                             <div class="d-grid gap-2">
                                 <button type="submit" class="btn btn-success">Guardar</button>
                             </div>

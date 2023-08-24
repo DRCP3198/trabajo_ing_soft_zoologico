@@ -1,5 +1,7 @@
 package com.example.demo.service;
 
+import java.util.List;
+
 import com.example.demo.modelo.HistorialClinico;
 
 public interface IHistorialClinicoService {
@@ -11,5 +13,7 @@ public interface IHistorialClinicoService {
 	public void eliminar(Integer id);
 	
 	public HistorialClinico buscar(Integer id);
+	
+	public List<HistorialClinico> buscarTodos();
 
 }

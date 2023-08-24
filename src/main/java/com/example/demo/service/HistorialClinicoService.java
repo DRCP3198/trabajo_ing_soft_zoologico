@@ -1,5 +1,7 @@
 package com.example.demo.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -34,6 +36,12 @@ public class HistorialClinicoService implements IHistorialClinicoService {
 	public HistorialClinico buscar(Integer id) {
 		
 		return this.clinicoRepo.seleccionar(id);
+	}
+
+	@Override
+	public List<HistorialClinico> buscarTodos() {
+		// TODO Auto-generated method stub
+		return this.clinicoRepo.buscarTodos();
 	}
 	
 

@@ -17,16 +17,20 @@ import com.example.demo.modelo.Animal;
 import com.example.demo.modelo.Cliente;
 import com.example.demo.modelo.CompraProveedores;
 import com.example.demo.modelo.Empleado;
+import com.example.demo.modelo.HistorialClinico;
 import com.example.demo.modelo.Producto;
 import com.example.demo.modelo.Proveedor;
+import com.example.demo.modelo.citaHistorialClinico;
 import com.example.demo.service.IAlmacenService;
 import com.example.demo.service.IAnimalService;
 import com.example.demo.service.IClienteService;
 import com.example.demo.service.ICompraProveedoresService;
 import com.example.demo.service.IEmpleadoService;
 import com.example.demo.service.IHabitatService;
+import com.example.demo.service.IHistorialClinicoService;
 import com.example.demo.service.IProductoService;
 import com.example.demo.service.IProveedorService;
+import com.example.demo.service.IcitaHistorialClinicoService;
 
 @Controller
 @RequestMapping("/empleados")
@@ -55,6 +59,12 @@ public class EmpleadoController {
 
 	@Autowired
 	private ICompraProveedoresService compraProveedoresService;
+	
+	@Autowired
+	private IcitaHistorialClinicoService citasHistorialclinicoService;
+	
+	@Autowired
+	private IHistorialClinicoService clinicoService;
 
 
 	// Empleado
@@ -220,6 +230,55 @@ public class EmpleadoController {
 		modelo.addAttribute("compraProveedores", compraProveedores);
 		return "vistaListaCompras";
 	}
+	
+	//CITA CLINICA
+	@GetMapping("/cita/registroHistorial/{id}")
+	public String registrarCita(@PathVariable("id") Integer id, citaHistorialClinico cita,
+			Model modelo) {
+		HistorialClinico h = this.clinicoService.buscar(id);
+		cita.setHistorial_clinico(h);
+		List<Animal> animales = this.animalService.buscarTodos();
+		modelo.addAttribute("animales", animales);
+		return "vistaNuevaCitaHistorial";
+	}
+
+	@PostMapping("/insertar/cita")
+	public String insertarCita(citaHistorialClinico citaHistorialClinico) {
+		this.citasHistorialclinicoService.insertar(citaHistorialClinico);
+		return "redirect:/empleados/listaCitas";
+	}
+
+	@GetMapping("/listaCitas")
+	public String listaCita(Model modelo) {
+		List<CompraProveedores> compraProveedores = this.compraProveedoresService.buscarTodos();
+		modelo.addAttribute("compraProveedores", compraProveedores);
+		return "vistaListaCompras";
+	}
+	
+//HISTORIAL CLINICO
+	@GetMapping("/registrarHistorial")
+	public String registrarHistorial(Model model) {
+	    HistorialClinico historial = new HistorialClinico(); // Crear una instancia de HistorialClinico
+	    model.addAttribute("historial", historial); // Agregar el objeto historial al modelo
+	    return "vistaNuevoHistorial"; // Retornar la vista
+	}
+	
+	@PostMapping("/insertar/historial")
+	public String insertarHistorial(HistorialClinico historial) {
+		this.clinicoService.realizar(historial);
+		return "redirect:/empleados/listaHistorial";
+	}
+	
+	
+	@GetMapping("/listaHistorial")
+	public String listaAnimalesH(Model modelo) {
+		List<HistorialClinico> historial =this.clinicoService.buscarTodos();
+		modelo.addAttribute("historial",historial);
+		return "vistaHistorial";
+	}
+	
+	
+	
 
 	// ALMACEN
 	// http://localhost:8085/zoologico/empleados/almacen/lista
@@ -267,4 +326,5 @@ public class EmpleadoController {
 		return "redirect:/empleados/almacen/lista";
 	}
 
+	
 }

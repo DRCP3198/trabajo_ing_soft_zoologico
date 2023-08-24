@@ -30,26 +30,12 @@ public class HistorialClinico {
 	@Column(name="hclin_fecha_registro")
 	private LocalDateTime fechaRegistro;
 	
-	@Column(name="hclin_fecha_alta")
-	private LocalDateTime fechaAlta;
+	@Column(name="hclin_descripcion")
+	private String descripcion;	
 	
-	@Column(name="hclin_diagnostico")
-	private String diagnostico;
-	
-	@Column(name="hclin_observaciones")
-	private String observaciones;
-	
-	
-	@OneToOne
-	@JoinColumn(name="hclin_id_animal")
-	private Animal animal;
-	
-	@OneToMany(mappedBy = "historialClinico")
-	private List<HistorialCitas> citas;
-	
-	
+	@OneToMany(mappedBy = "historial_clinico")
+	List<citaHistorialClinico> citas;
 
-	//Set and Get
 	public Integer getId() {
 		return id;
 	}
@@ -66,47 +52,24 @@ public class HistorialClinico {
 		this.fechaRegistro = fechaRegistro;
 	}
 
-	public LocalDateTime getFechaAlta() {
-		return fechaAlta;
+	public String getDescripcion() {
+		return descripcion;
 	}
 
-	public void setFechaAlta(LocalDateTime fechaAlta) {
-		this.fechaAlta = fechaAlta;
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
 	}
 
-	public String getDiagnostico() {
-		return diagnostico;
-	}
-
-	public void setDiagnostico(String diagnostico) {
-		this.diagnostico = diagnostico;
-	}
-
-	public String getObservaciones() {
-		return observaciones;
-	}
-
-	public void setObservaciones(String observaciones) {
-		this.observaciones = observaciones;
-	}
-	
-
-
-	public Animal getAnimal() {
-		return animal;
-	}
-
-	public void setAnimal(Animal animal) {
-		this.animal = animal;
-	}
-
-	public List<HistorialCitas> getCitas() {
+	public List<citaHistorialClinico> getCitas() {
 		return citas;
 	}
 
-	public void setCitas(List<HistorialCitas> citas) {
+	public void setCitas(List<citaHistorialClinico> citas) {
 		this.citas = citas;
 	}
+
+	
+	
 
 	
 

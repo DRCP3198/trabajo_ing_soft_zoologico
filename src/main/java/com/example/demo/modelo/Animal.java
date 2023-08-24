@@ -51,8 +51,8 @@ public class Animal {
 	private Habitat habitat;
 	
 	
-	@OneToOne(mappedBy = "animal")
-	private HistorialClinico historial;
+	@OneToMany(mappedBy = "animal")
+	List<citaHistorialClinico> citas;
 
 	
 	//Set and Get
@@ -122,14 +122,15 @@ public class Animal {
 		this.habitat = habitat;
 	}
 
-	public HistorialClinico getHistorial() {
-		return historial;
+	public List<citaHistorialClinico> getCitas() {
+		return citas;
 	}
 
-	public void setHistorial(HistorialClinico historial) {
-		this.historial = historial;
+	public void setCitas(List<citaHistorialClinico> citas) {
+		this.citas = citas;
 	}
 
+	
 	
 
 
