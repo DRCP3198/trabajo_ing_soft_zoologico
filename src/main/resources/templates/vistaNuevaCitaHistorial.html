@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+	<link rel="shortcut icon" href="https://cdn-icons-png.flaticon.com/512/4081/4081551.png" type="image/x-icon">
+
+	<title>Document</title>
+	<style>
+		body {
+			font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+			margin: 0;
+			padding: 0;
+			background-color: #f4f4f4;
+			background-image: url('https://campolaboral.net/wp-content/uploads/2020/09/veterniario-zoologico.jpg');
+		}
+
+		h1 {
+			color: #333;
+			text-align: center;
+		}
+
+		table {
+			border-collapse: collapse;
+			width: 80%;
+			margin: auto;
+			margin-top: 20px;
+		}
+
+		th,
+		td {
+			padding: 8px;
+			text-align: center;
+		}
+
+		th {
+			background-color: #333;
+			color: white;
+		}
+
+		tr {
+			background-color: hsla(0, 0%, 100%, 0.80);
+		}
+
+		h2 {
+			color: #333;
+			text-align: center;
+			margin-top: 40px;
+		}
+
+		form {
+			width: 50%;
+			margin: auto;
+			margin-top: 10px;
+			padding: 10px;
+			background-color: hsla(0, 0%, 100%, 0.671);
+			border: 1px solid #ddd;
+			border-radius: 5px;
+		}
+
+		label,
+		input[type="text"],
+		input[type="number"],
+		input[type="submit"] {
+			display: block;
+			margin-bottom: 10px;
+
+		}
+
+		input[type="text"],
+		input[type="number"] {
+			width: 95%;
+			padding: 8px;
+
+			border: 1px solid #ccc;
+			border-radius: 4px;
+		}
+
+		input[type="submit"] {
+			background-color: #333;
+			color: white;
+			padding: 10px 15px;
+			border: none;
+			border-radius: 50px;
+			cursor: pointer;
+		}
+
+		a {
+			color: #333;
+			text-decoration: none;
+			margin-right: 10px;
+		}
+
+		.table-container {
+			max-height: 500px;
+			overflow: auto;
+		}
+
+		.btn {
+			display: inline-block;
+			padding: 8px 15px;
+			background-color: #333;
+			color: white;
+			border: none;
+			border-radius: 4px;
+			cursor: pointer;
+		}
+
+		.btn:hover {
+			background-color: #555;
+		}
+	</style>
+</head>
+
+<body style="background-color: rgb(0, 0, 0);">
+	<div class="container mt-5">
+		<div class="row justify-content-center">
+			<div class="col-md-8">
+				<div class="card">
+					<div class="card-header bg-secondary bg-gradient text-white">
+
+						<h1>Lista de animales</h1>
+					</div>
+
+					<div class="card-body bg-success bg-gradient text-white">
+						<div class="table-responsive">
+							<table class="table table-striped table-dark">
+								<thead>
+									<tr>
+										<th>Id</th>
+										<th>Nombre</th>
+										<th>Especie</th>
+										<th>Genero</th>
+										<th>Edad</th>
+										
+
+
+									</tr>
+								</thead>
+								<tbody>
+									<tr th:each="animal : ${animales}">
+										<td th:text="${animal.id}"></td>
+										<td th:text="${animal.nombreComun}"></td>
+										<td th:text="${animal.especie}"></td>
+										<td th:text="${animal.genero}"></td>
+
+										<td th:text="${animal.edad}"></td>
+
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+
+
+
+
+				<body>
+
+
+
+
+					<form th:action="@{/empleados/insertar/cita}" th:object="${citaHistorialClinico}" th:method="POST">
+						<table class="table table-striped table-dark">
+							<h1>Creando cita medica</h1>
+							<tr>
+								<td>
+									<label>Id de animal:</label>
+								</td>
+								<td>
+									<input type="text" id="codigoAnimal"
+										th:field="${citaHistorialClinico.animal.id}">
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<label>Id de Historial clinico:</label>
+								</td>
+								<td>
+									<input type="text" id="codigoHistorial"
+										th:field="${citaHistorialClinico.historial_clinico.id}">
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<label>Observaciones:</label>
+								</td>
+								<td>
+									<input type="text" id="observaciones" th:field="${citaHistorialClinico.observaciones}">
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<label>Diagnostico:</label>
+								</td>
+								<td>
+									<input type="text" id="diagnostico" th:field="${citaHistorialClinico.diagnostico}">
+								</td>
+							</tr>
+						</table>
+						<input type="submit" value="Hacer cita" class="btn btn-success">
+					</form>
+				</body>
+				<a href="javascript:history.back()" class="btn btn-warning">Atrás</a>
+
+</html>
