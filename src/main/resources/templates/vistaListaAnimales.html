@@ -41,7 +41,8 @@
 										<th>Género</th>
 										<th>Peso</th>
 										<th>Edad</th>
-										<th>Boton</th>
+										<th>Eliminar</th>
+										<th>Historial Clinico</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -56,6 +57,12 @@
 											<form th:action="@{/empleados/eliminar/{id}(id=${animal.id})}"
 												th:object="${animal}" th:method="DELETE">
 												<button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
+											</form>
+										</td>
+										<td class="text-center">
+											<form th:action="@{/empleados/registrarHistorial}"											
+												th:object="${animal}" th:method="GET">
+												<button type="submit" class="btn btn-danger btn-sm">Historial Clinico</button>
 											</form>
 										</td>
 									</tr>
