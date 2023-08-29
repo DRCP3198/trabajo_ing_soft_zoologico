@@ -70,7 +70,7 @@ public class EmpleadoController {
 	private IHistorialClinicoService clinicoService;
 
 
-	// Empleado
+	// EMPLEADO
 	@GetMapping("/registro")
 	public String registrarEmpleado(Empleado empleado) {
 		return "resgitroEmpleado";
@@ -79,7 +79,7 @@ public class EmpleadoController {
 	@PostMapping("/insertar")
 	public String guardarRegistro(Empleado empleado) {
 		this.empleadoService.agregar(empleado);
-		return "redirect:/empleados/registro";
+		return "confirmacionRegistroEmpleados";
 	}
 
 	@GetMapping("/reporte")
@@ -89,6 +89,7 @@ public class EmpleadoController {
 		return "vistaReporteEmpleado";
 	}
 
+	
 	// CLIENTE
 	// registro cliente
 	@GetMapping("/cliente/registro")
@@ -99,7 +100,7 @@ public class EmpleadoController {
 	@PostMapping("/insertar/cliente")
 	public String insertarCliente(Cliente cliente) {
 		this.clienteService.agregar(cliente);
-		return "confirmacionRegistroEmpleado";
+		return "confirmacionRegistroClientesEnEmpleados";
 	}
 
 	@GetMapping("/confir")
@@ -135,26 +136,20 @@ public class EmpleadoController {
 		
 	}
 
+	
 	// ANIMALES
 	@GetMapping("animal/registro")
 	public String registrarAnimal(Animal animal) {
 		return "vistaNuevoAnimal";
 	}
 
-//	@PostMapping("/insertar/animal")
-//	public String insertarAnimal(Animal animal) {
-//		this.animalService.agregar(animal);
-//		return "redirect:/empleados/animal/registro";
-//	}
     @PostMapping("/insertar/animal")
     public String insertarAnimal(@Valid Animal animal, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
-            // Si hay errores de validación, vuelve a la página de registro
             return "vistaNuevoAnimal";
         }
-
         this.animalService.agregar(animal);
-        return "redirect:/empleados/animal/registro";
+        return "confirmacionRegistroAnimal";
     }
 
 	@GetMapping("/listaAnimales")
@@ -170,6 +165,7 @@ public class EmpleadoController {
 		return "redirect:/empleados/listaAnimales";
 	}
 
+	
 	// PRODUCTO
 	@GetMapping("producto/registro")
 	public String registrarProducto(Producto producto) {
