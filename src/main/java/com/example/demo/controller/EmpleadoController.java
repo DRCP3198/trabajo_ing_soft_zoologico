@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -31,6 +32,8 @@ import com.example.demo.service.IHistorialClinicoService;
 import com.example.demo.service.IProductoService;
 import com.example.demo.service.IProveedorService;
 import com.example.demo.service.IcitaHistorialClinicoService;
+
+import jakarta.validation.Valid;
 
 @Controller
 @RequestMapping("/empleados")
@@ -138,11 +141,21 @@ public class EmpleadoController {
 		return "vistaNuevoAnimal";
 	}
 
-	@PostMapping("/insertar/animal")
-	public String insertarAnimal(Animal animal) {
-		this.animalService.agregar(animal);
-		return "redirect:/empleados/animal/registro";
-	}
+//	@PostMapping("/insertar/animal")
+//	public String insertarAnimal(Animal animal) {
+//		this.animalService.agregar(animal);
+//		return "redirect:/empleados/animal/registro";
+//	}
+    @PostMapping("/insertar/animal")
+    public String insertarAnimal(@Valid Animal animal, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            // Si hay errores de validación, vuelve a la página de registro
+            return "vistaNuevoAnimal";
+        }
+
+        this.animalService.agregar(animal);
+        return "redirect:/empleados/animal/registro";
+    }
 
 	@GetMapping("/listaAnimales")
 	public String listaAnimales(Model modelo) {
