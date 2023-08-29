@@ -37,33 +37,33 @@
 					<div class="card-body bg-success text-white">
 						<form th:action="@{/empleados/insertar/producto}" th:object="${producto}" th:method="POST">
 							<div class="mb-3">
-								<label for="nombre" class="form-label">Nombre:</label>
+								<label for="nombre" class="form-label">Nombre</label>
 								<input type="text" id="nombre" class="form-control" th:field="${producto.nombre}">
 							</div>
 							<div class="mb-3">
-								<label for="tipo" class="form-label">Tipo:</label>
+								<label for="tipo" class="form-label">Tipo</label>
 								<input type="text" id="tipo" class="form-control" th:field="${producto.tipo}">
 							</div>
 							<div class="mb-3">
-								<label for="cantidad" class="form-label">Cantidad:</label>
+								<label for="cantidad" class="form-label">Cantidad</label>
 								<input type="number" id="cantidad" class="form-control"
 									th:field="${producto.cantidad_stock}">
 							</div>
 							<div class="mb-3">
-								<label for="codigo" class="form-label">Codigo:</label>
+								<label for="codigo" class="form-label">Codigo</label>
 								<input type="text" id="codigo" class="form-control" th:field="${producto.codigo}">
 							</div>
 							<div class="mb-3">
-								<label for="descripcion" class="form-label">Descripcion:</label>
+								<label for="descripcion" class="form-label">Descripcion</label>
 								<input type="text" id="descripcion" class="form-control"
 									th:field="${producto.descripcion}">
 							</div>
 							<div class="mb-3">
-								<label for="precio" class="form-label">Precio:</label>
+								<label for="precio" class="form-label">Precio</label>
 								<input type="number" id="precio" class="form-control" th:field="${producto.precio}">
 							</div>
 							<div class="mb-3">
-								<label for="fechaCaducidad" class="form-label">Fecha caducidad:</label>
+								<label for="fechaCaducidad" class="form-label">Fecha caducidad</label>
 								<input type="date" id="fechaCaducidad" class="form-control"
 									th:field="${producto.fechaCaducidad}">
 							</div>
@@ -73,9 +73,6 @@
 							</center>
 						</form>
 					</div>
-				</div>
-				<a href="javascript:history.back()" class="btn btn-primary atras-button">Atrás</a>
-			</div>
 
 		</div>
 	</div>

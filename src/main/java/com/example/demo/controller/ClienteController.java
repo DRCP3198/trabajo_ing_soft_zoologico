@@ -29,12 +29,7 @@ public class ClienteController {
 	@PostMapping("/insertar")
 	public String insertarCliente(Cliente cliente) {
 		this.clienteService.agregar(cliente);
-		return "confirmacionRegistro";
-	}
-
-	@GetMapping("/confir")
-	public String confir() {
-		return "confirmacionRegistro";
+		return "confirmacionRegistroClientesEnClientes";
 	}
 
 	// http://localhost:8085/zoologico/clientes/reporte

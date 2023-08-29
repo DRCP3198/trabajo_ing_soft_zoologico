@@ -103,11 +103,6 @@ public class EmpleadoController {
 		return "confirmacionRegistroClientesEnEmpleados";
 	}
 
-	@GetMapping("/confir")
-	public String confir() {
-		return "confirmacionRegistroEmpleado";
-	}
-
 	// http://localhost:8085/zoologico/empleados/cliente/reporte
 	@GetMapping("/cliente/reporte")
 	public String reporteCliente(Model model) {
@@ -175,7 +170,7 @@ public class EmpleadoController {
 	@PostMapping("/insertar/producto")
 	public String insertarProducto(Producto producto) {
 		this.iProductoService.agregar(producto);
-		return "redirect:/empleados/producto/registro";
+		return "confirmacionRegistroProducto";
 	}
 
 	@GetMapping("/listaProductos")
@@ -191,6 +186,7 @@ public class EmpleadoController {
 		return "redirect:/empleados/listaProductos";
 	}
 
+	
 	// PROVEEDOR
 	@GetMapping("proveedor/registro")
 	public String registrarProveedor(Proveedor proveedor) {
@@ -200,7 +196,7 @@ public class EmpleadoController {
 	@PostMapping("/insertar/proveedor")
 	public String insertarProducto(Proveedor proveedor) {
 		this.iProveedorService.agregar(proveedor);
-		return "redirect:/empleados/proveedor/registro";
+		return "confirmacionRegistroProveedor";
 	}
 
 	@GetMapping("/listaProveedores")
@@ -216,6 +212,7 @@ public class EmpleadoController {
 		return "redirect:/empleados/listaProveedores";
 	}
 
+	
 	// COMPRA
 	@GetMapping("compra/registro/{codigo}")
 	public String registrarCompra(@PathVariable("codigo") String codigo, CompraProveedores compraProveedores,
@@ -264,7 +261,7 @@ public class EmpleadoController {
 		return "vistaListaCitas";
 	}
 	
-//HISTORIAL CLINICO
+	//HISTORIAL CLINICO
 	@GetMapping("/registrarHistorial")
 	public String registrarHistorial(Model model) {
 	    HistorialClinico historial = new HistorialClinico(); // Crear una instancia de HistorialClinico
