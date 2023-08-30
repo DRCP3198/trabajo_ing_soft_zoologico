@@ -176,7 +176,48 @@ public class EmpleadoController {
 		return "redirect:/empleados/listaAnimales";
 	}
 
-	
+    @GetMapping("/habitad")
+    public String paginaBuscarCliente(Animal animal) {
+        return "busquedaHabitad";
+    }
+    
+    @GetMapping("/especie")
+    public String paginaBuscarEspecie(Animal animal) {
+        return "busquedaEspecie";
+    }
+ 
+    @GetMapping("/apellidos")
+    public String buscarPorApellido(Animal animal, Model model) {
+        List<Animal> listCliente = this.animalService.buscarPorHabitat(animal.getNombreCientifico());
+        for (Animal a : listCliente) {
+			System.out.println(a.getNombreCientifico());
+		}
+        model.addAttribute("animales", listCliente);
+        return "vistaListaAnimales";
+    }
+
+    @GetMapping("/idHab")
+    public String buscarPorEspecie(Animal animal, Model model) {
+        List<Animal> listCliente = this.animalService.buscarPorEspecie(animal.getEspecie());
+        for (Animal a : listCliente) {
+			System.out.println(a.getEspecie());
+		}
+        model.addAttribute("animales", listCliente);
+        return "vistaListaAnimales";
+    }
+
+    // buscar todos
+    @GetMapping("/lista")
+    public String buscarClientes(Model model) {
+        List<Animal> lista = this.animalService.buscarTodos();
+        for (Animal animal : lista) {
+			System.out.println(animal.getNombreCientifico());
+		}
+        model.addAttribute("animales", lista);
+        return "vistaListaAnimales";
+    }
+    
+    
 	// PRODUCTO
 	@GetMapping("producto/registro")
 	public String registrarProducto(Producto producto) {

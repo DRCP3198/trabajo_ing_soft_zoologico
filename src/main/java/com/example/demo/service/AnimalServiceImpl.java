@@ -56,4 +56,15 @@ public class AnimalServiceImpl implements IAnimalService {
 		this.animalRepo.eliminarPorID(id);
 	}
 
+	@Override
+	public List<Animal> buscarPorHabitat(String habitat) {
+	    return animalRepo.buscarPorHabitat(habitat);
+	}
+
+	@Override
+	public List<Animal> buscarPorEspecie(String especie) {
+		return animalRepo.buscarPorEspecie(especie);
+	}
+
+
 }

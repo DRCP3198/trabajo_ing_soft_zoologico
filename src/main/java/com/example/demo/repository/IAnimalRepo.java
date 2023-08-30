@@ -25,4 +25,8 @@ public interface IAnimalRepo {
 	
 	public void eliminarPorID(Integer id);
 
+	public List<Animal> buscarPorHabitat(String habitat);
+
+	public List<Animal> buscarPorEspecie(String especie);
+
 }

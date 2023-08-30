@@ -65,4 +65,19 @@ public class AnimalRepoImpl implements IAnimalRepo{
 		
 	}
 
+	@Override
+	public List<Animal> buscarPorHabitat(String habitat) {
+	    TypedQuery<Animal> myQuery = this.entityManager
+	            .createQuery("SELECT a FROM Animal a WHERE a.nombreCientifico = :nombreCientifico", Animal.class);
+	    myQuery.setParameter("nombreCientifico", habitat);
+	    return myQuery.getResultList();
+	}
+
+	@Override
+	public List<Animal> buscarPorEspecie(String especie) {
+	    TypedQuery<Animal> myQuery = this.entityManager
+	            .createQuery("SELECT a FROM Animal a WHERE a.especie = :especie", Animal.class);
+	    myQuery.setParameter("especie", especie);
+	    return myQuery.getResultList();
+	}
 }
