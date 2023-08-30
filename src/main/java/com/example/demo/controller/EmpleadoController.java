@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.example.demo.modelo.AdquirirServicioProveedor;
 import com.example.demo.modelo.Almacen;
 import com.example.demo.modelo.Animal;
 import com.example.demo.modelo.Cliente;
@@ -21,7 +22,11 @@ import com.example.demo.modelo.Empleado;
 import com.example.demo.modelo.HistorialClinico;
 import com.example.demo.modelo.Producto;
 import com.example.demo.modelo.Proveedor;
+import com.example.demo.modelo.ProveedorServicios;
+import com.example.demo.modelo.Servicio;
 import com.example.demo.modelo.citaHistorialClinico;
+import com.example.demo.repository.IAdquiriServicioRepo;
+import com.example.demo.service.IAdquirirServicioService;
 import com.example.demo.service.IAlmacenService;
 import com.example.demo.service.IAnimalService;
 import com.example.demo.service.IClienteService;
@@ -31,6 +36,8 @@ import com.example.demo.service.IHabitatService;
 import com.example.demo.service.IHistorialClinicoService;
 import com.example.demo.service.IProductoService;
 import com.example.demo.service.IProveedorService;
+import com.example.demo.service.IProveedorServiciosService;
+import com.example.demo.service.IServicioService;
 import com.example.demo.service.IcitaHistorialClinicoService;
 
 import jakarta.validation.Valid;
@@ -68,6 +75,16 @@ public class EmpleadoController {
 	
 	@Autowired
 	private IHistorialClinicoService clinicoService;
+	
+	@Autowired
+	private IServicioService iServicioService;
+	
+	@Autowired
+	private IProveedorServiciosService iProveedorServiciosService;
+	
+	@Autowired
+	private IAdquirirServicioService adquirirServicioService;
+	
 
 
 	// EMPLEADO
@@ -236,6 +253,88 @@ public class EmpleadoController {
 		modelo.addAttribute("compraProveedores", compraProveedores);
 		return "vistaListaCompras";
 	}
+	
+	
+	
+	
+	
+	// SERVICIO
+		@GetMapping("servicio/registro")
+		public String registrarServicio(Servicio servicio) {
+			return "vistaNuevoServicio";
+		}
+
+		@PostMapping("/insertar/servicio")
+		public String insertarServicio(Servicio servicio) {
+			this.iServicioService.agregar(servicio);
+			return "confirmacionRegistroServicio";
+		}
+
+		@GetMapping("/listaServicios")
+		public String listaServicios(Model modelo) {
+			List<Servicio> servicios = this.iServicioService.reporte();
+			modelo.addAttribute("servicios", servicios);
+			return "vistaListaServicios";
+		}
+
+		@DeleteMapping("/servicio/eliminar/{codigo}")
+		public String eliminarServicio(@PathVariable("codigo") String codigo) {
+			this.iServicioService.borrar(codigo);
+			return "redirect:/empleados/listaServicios";
+		}
+
+		
+		// PROVEEDOR DE SERVICIOS
+		@GetMapping("proveedorServicios/registro")
+		public String registrarProveedorServicios(ProveedorServicios proveedorServicios) {
+			return "vistaNuevoProveedorServicios";
+		}
+
+		@PostMapping("/insertar/proveedorServicios")
+		public String insertarServicio(ProveedorServicios proveedorServicios) {
+			this.iProveedorServiciosService.agregar(proveedorServicios);
+			return "confirmacionRegistroProveedorServicios";
+		}
+
+		@GetMapping("/listaProveedoresServicios")
+		public String listaProveedoresServicios(Model modelo) {
+			List<ProveedorServicios> proveedoresS = this.iProveedorServiciosService.reporte();
+			modelo.addAttribute("proveedoresServicios", proveedoresS);
+			return "vistaListaProveedoresServicios";
+		}
+
+		@DeleteMapping("/proveedorServicios/eliminar/{codigo}")
+		public String eliminarProveedorServicios(@PathVariable("codigo") String codigo) {
+			this.iProveedorServiciosService.borrar(codigo);
+			return "redirect:/empleados/listaProveedoresServicios";
+		}
+
+		
+		// COMPRA
+		@GetMapping("adquirir/registro/{codigo}")
+		public String registrarAdquisicion(@PathVariable("codigo") String codigo, AdquirirServicioProveedor adquirirServicioProveedor,
+				Model modelo) {
+			ProveedorServicios p = this.iProveedorServiciosService.buscar(codigo);
+			adquirirServicioProveedor.setProveedorServicios(p);
+			List<Servicio> servicios = this.iServicioService.reporte();
+			modelo.addAttribute("servicios", servicios);
+			return "vistaNuevaAdquisicion";
+		}
+
+		@PostMapping("/insertar/adquisicion")
+		public String insertarAdquisicion(AdquirirServicioProveedor adquirirServicioProveedor) {
+			this.adquirirServicioService.insertar(adquirirServicioProveedor);
+			return "redirect:/empleados/listaAdquisiciones";
+		}
+
+		@GetMapping("/listaAdquisiciones")
+		public String listaAdquisiciones(Model modelo) {
+			List<AdquirirServicioProveedor> adquirirProveedores = this.adquirirServicioService.buscarTodos();
+			modelo.addAttribute("adquirirProveedores", adquirirProveedores);
+			return "vistaListaAdquisiciones";
+		}
+		
+		
 	
 	//CITA CLINICA
 	@GetMapping("/cita/registroHistorial/{id}")
