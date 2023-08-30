@@ -44,6 +44,12 @@ public class Empleado {
 	@Column(name = "empl_usuarioGeneral")
 	private String usuarioGeneral;
 	
+	@Column(name = "empl_horario_inicio")
+	private String horarioI;
+	
+	@Column(name = "empl_horario_salida")
+	private String horarioS;
+	
 	
 
 	//SET y GET
@@ -116,6 +122,22 @@ public class Empleado {
 
 	public void setUsuarioGeneral(String usuarioGeneral) {
 		this.usuarioGeneral = usuarioGeneral;
+	}
+
+	public String getHorarioI() {
+		return horarioI;
+	}
+
+	public void setHorarioI(String horarioI) {
+		this.horarioI = horarioI;
+	}
+
+	public String getHorarioS() {
+		return horarioS;
+	}
+
+	public void setHorarioS(String horarioS) {
+		this.horarioS = horarioS;
 	}
 
 	

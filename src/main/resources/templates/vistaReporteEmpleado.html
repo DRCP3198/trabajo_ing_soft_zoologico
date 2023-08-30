@@ -115,7 +115,10 @@
 					<th>Cargo</th>
 					<th>Usuario</th>
 					<th>Contraseña</th>
+					<th>Horario Inicio</th>
+					<th>Horario Salida</th>
 					<th>Editar</th>
+					<th>Borrar</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -128,9 +131,16 @@
 					<td th:text="${empleado.cargo}"></td>
 					<td th:text="${empleado.usuarioGeneral}"></td>
 					<td th:text="${empleado.contrasenia}"></td>
+					<td th:text="${empleado.horarioI}"></td>
+					<td th:text="${empleado.horarioS}"></td>
 					<td>
-						<form>
+						<form th:action= "@{/empleados/buscarPorID/{id}(id=${empleado.id})}" method="GET">
 							<input type="submit" value="Editar" class="btn btn-info">
+						</form>
+					</td>
+					<td>
+						<form th:action="@{/empleados/borrarEmpleado/{id}(id=${empleado.id})}" th:method="DELETE">
+							<input class="btn btn-danger" type="submit" value="Borrar">
 						</form>
 					</td>
 				</tr>

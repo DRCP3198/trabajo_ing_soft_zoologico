@@ -10,7 +10,7 @@ public interface IEmpleadoRepo {
 	public void insertar(Empleado empleado);
 	
 	public Empleado buscar(Integer id);
-
+	public void eliminar(Integer id);
 	public void actualizar(Empleado empleado);
 
 	public Empleado encontrar(String codigo);

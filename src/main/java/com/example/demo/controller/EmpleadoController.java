@@ -89,7 +89,25 @@ public class EmpleadoController {
 		model.addAttribute("empleados", lista);
 		return "vistaReporteEmpleado";
 	}
+	@GetMapping("/buscarPorID/{idEmpleado}")
+	public String buscarPorIdEmpleado(@PathVariable("idEmpleado") Integer id, Model model) {
+		Empleado empleado = this.empleadoService.encontrar(id);
+		model.addAttribute("empleado", empleado);
+		return "actualizarDatosEmpleado";
+	}
 
+	@PutMapping("/actualizarEmpleado/{idEmpleado}")
+	public String actualizarEmpleado(@PathVariable("idEmpleado") Integer id, Empleado empleado) {
+		this.empleadoService.modificar(empleado);
+		return "redirect:/empleados/reporte";
+
+	}
+	@DeleteMapping("/borrarEmpleado/{idEmpleado}")
+	public String borrarEmpleados(@PathVariable("idEmpleado")Integer id) {
+		this.empleadoService.borrarId(id);
+		return "redirect:/empleados/reporte";
+		
+	}
 	
 	// CLIENTE
 	// registro cliente
