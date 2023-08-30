@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<head>   
+	<meta charset="UTF-8">   
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">   
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">    <title>Inicio-Zoologico</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+
+	<style type="text/css">
+		* {
+			padding: 0px;
+			margin: 0px
+		}
+
+		body {
+			font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+		}
+
+		h1 {
+			text-align: center;
+			background-color: hsla(0, 0%, 0%, 0.712);
+
+		}
+
+		#header {
+			margin: auto;
+			width: 1000px;
+
+
+		}
+
+		ul,
+		ol {
+			list-style: none;
+		}
+
+		.nav li a {
+			background-color: hsla(0, 0%, 0%, 0.712);
+			color: #fff;
+			text-decoration: none;
+			padding: 10px 15px;
+			display: block;
+		}
+
+		.nav li a:hover {
+			background-color: hsla(0, 0%, 0%, 0.712);
+		}
+
+		.nav>li {
+			float: left;
+		}
+
+		.nav li ul {
+			display: none;
+			position: absolute;
+			min-width: 140px;
+		}
+
+		.nav li:hover>ul {
+			display: block;
+		}
+	</style>
+
+</head>
+
+
+
+<h1 style="font-family:verdana;" class="display-1"> ZooMania</h1>
+
+<body
+	style="background-image :url('https://cloudfront-us-east-1.images.arcpublishing.com/infobae/7IZMVYJRSJBHTIQJL76LE34DOM.jpeg');background-repeat:no-repeat;color: #FFFFFF; padding:25px;">
+
+
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+
+		<div class="container-fluid">
+			<a class="navbar-brand" href="#">Bienvenido</a>
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+				aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+
+
+			<div id="header">
+				<ul class="nav">
+					<li><a href="">Clientes</a>
+						<ul>
+							<li class="nav">
+								<a class="nav-link" href="http://localhost:8085/zoologico/empleados/cliente/registro"
+									target="_blank">Registro Usuario</a>
+							</li>
+							<li class="nav">
+								<a class="nav-link" th:href="@{/empleados/cliente/reporte}" target="_blank">Reporte
+									Clientes</a>
+							</li>
+						</ul>
+					</li>
+					<li><a href="">Empleados</a>
+						<ul>
+							<li class="nav">
+								<a class="nav-link" href="http://localhost:8085/zoologico/empleados/registro"
+									target="_blank">Registro Empleados</a>
+							</li>
+							<li class="nav">
+								<a class="nav-link" href="/zoologico/empleados/reporte" target="_blank">Reporte Empleados</a>
+							</li>
+						</ul>
+					</li>
+
+					<li><a href="">Animales</a>
+						<ul>
+							<li class="nav">
+								<a class="nav-link" href="/zoologico/empleados/animal/registro" target="_blank">Registro
+									Animales</a>
+							</li>
+							<li class="nav">
+								<a class="nav-link"
+									href="http://localhost:8085/zoologico/empleados/listaAnimales">Animales
+									registrados</a>
+							</li>
+							<li class="nav">
+								<a class="nav-link" href="/zoologico/habitats/listaHabitats">Habitats</a>
+							</li>
+						</ul>
+					</li>
+					<li><a>Almacen</a>
+						<ul>
+							<li class="nav">
+								<a class="nav-link" href="http://localhost:8085/zoologico/empleados/almacen/lista"
+									target="_blank">Registro Almacen</a>
+							</li>
+							<li class="nav">
+								<a class="nav-link" href="http://localhost:8085/zoologico/empleados/almacen/lista"
+									target="_blank">Detalle Almacen</a>
+							</li>
+						</ul>
+					</li>
+					<li><a a href="">Proveedor</a>
+						<ul>
+							<li class="nav">	
+								<a class="nav-link" href="/zoologico/empleados/proveedor/registro"
+									>Registro
+									nuevo proveedor</a>
+							</li>
+							<li class="nav">
+								<a class="nav-link"
+									href="http://localhost:8085/zoologico/empleados/listaProveedores">Nomina de proveedores</a>
+							</li>
+							<li class="nav">
+								<a class="nav-link"
+									href="http://localhost:8085/zoologico/empleados/listaCompras">Compras realizadas</a>
+							</li>
+						</ul>
+					</li>
+					<li><a>Producto</a>
+						<ul>
+							<li class="nav">
+								<a class="nav-link" href="/zoologico/empleados/producto/registro"
+									target="_blank">Registro
+									nuevo producto</a>
+							</li>
+							<li class="nav">
+								<a class="nav-link"
+									href="http://localhost:8085/zoologico/empleados/listaProductos">Productos en
+									stock</a>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+
+
+
+			<div class="collapse navbar-collapse" id="navbarNav">
+				<ul class="navbar-nav">
+					<li class="nav">
+						<a id="cerrar-sesion" class="nav-link" href="/zoologico/inicio">CERRAR SESION</a>
+
+					</li>
+
+
+				</ul>
+			</div>
+
+
+
+		</div>
+	</nav>
+	<center>
+
+		<center>
+
+
+
+</body>
+
+
+</html>

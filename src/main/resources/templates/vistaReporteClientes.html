@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+
+
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Información | Cliente</title>
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+		integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+		integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+	<link rel="shortcut icon" href="https://cdn-icons-png.flaticon.com/512/4081/4081551.png" type="image/x-icon">
+
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+
+		body {
+			text-align: center;
+
+			background: url('https://static.nationalgeographicla.com/files/styles/image_3200/public/nationalgeographic_2791022.jpg?w=1600&h=900&p=righttop');
+
+
+		}
+
+		h1 {
+			background-color: hsla(0, 0%, 87%, 0.685);
+		}
+
+		#forma {
+			font-family: Arial, Helvetica, sans-serif;
+			border-collapse: collapse;
+			width: 70%;
+			align-content: center;
+		}
+
+		#forma td,
+		#forma th {
+			border: 1px solid #ddd;
+			padding: 8px;
+		}
+
+		#forma tr {
+			background-color: hsla(0, 0%, 87%, 0.685);
+		}
+
+		#forma tr:hover {
+			background-color: #ddd;
+		}
+
+		#forma th {
+			padding-top: 12px;
+			padding-bottom: 12px;
+			text-align: left;
+			background-color: hsla(120, 100%, 75%, 0.74);
+			color: white;
+		}
+	</style>
+
+</head>
+
+
+
+
+
+<body>
+	<h1>Clientes Registrados</h1>
+	<table id="forma" style="margin: 0 auto;">
+		<thead>
+			<tr>
+				<th>Id</th>
+				<th>Nombre</th>
+				<th>Apellido</th>
+				<th>Edad</th>
+				<th>Correo</th>
+				<th>Cédula</th>
+				<th>Dirección</th>
+				<th>Usuario</th>
+			</tr>
+		</thead>
+		<hbody>
+			<tr th:each="cliente:${clientes}">
+
+				<td th:text="${cliente.id}"></td>
+				<td th:text="${cliente.nombre}"> </td>
+				<td th:text="${cliente.apellido}"> </td>
+				<td th:text="${cliente.edad}"></td>
+				<td th:text="${cliente.correo}"> </td>
+				<td th:text="${cliente.cedula}"></td>
+				<td th:text="${cliente.direccion}"></td>
+				<td th:text="${cliente.usuarioGeneral}"></td>
+
+			</tr>
+		</hbody>
+
+	</table>
+
+
+
+
+
+
+</body>
+
+
+
+</html>

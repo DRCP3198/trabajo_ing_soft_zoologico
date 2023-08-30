@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Información | Cliente</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+		integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+		integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+	<link rel="shortcut icon" href="https://cdn-icons-png.flaticon.com/512/4081/4081551.png" type="image/x-icon">
+
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+
+		body {
+			text-align: center;
+			background: url('https://static.nationalgeographicla.com/files/styles/image_3200/public/nationalgeographic_2791022.jpg?w=1600&h=900&p=righttop');
+		}
+
+		h1 {
+			background-color: hsla(0, 0%, 87%, 0.685);
+			padding: 10px;
+			border-radius: 15px;
+		}
+
+		.atras-button {
+			position: absolute;
+			top: 35px;
+			left: 30px;
+			padding: 5px 10px;
+			background-color: rgba(255, 255, 255, 0.2);
+			border: none;
+			border-radius: 5px;
+			color: white;
+			font-size: 14px;
+			text-decoration: none;
+		}
+
+		#table-container {
+			max-height: 550px;
+			overflow-y: auto;
+			border-radius: 15px;
+			margin: 60px auto;
+			width: 85%;
+			/* Added width */
+			background-color: rgba(255, 255, 255, 0.8);
+			/* Added background color */
+			padding: 20px;
+		}
+
+		#forma {
+			font-family: Arial, Helvetica, sans-serif;
+			border-collapse: collapse;
+			width: 100%;
+		}
+
+		#forma td,
+		#forma th {
+			border: 1px solid #ddd;
+			padding: 8px;
+		}
+
+		#forma tr {
+			background-color: hsla(0, 0%, 87%, 0.685);
+		}
+
+		#forma tr:hover {
+			background-color: #ddd;
+		}
+
+		#forma th {
+			padding-top: 12px;
+			padding-bottom: 15px;
+			text-align: center;
+			background-color: hsla(120, 100%, 75%, 0.74);
+			color: white;
+		}
+
+		#forma th {
+			position: sticky;
+			top: 0;
+			background-color: hsla(120, 100%, 75%, 1);
+			color: white;
+			z-index: 1;
+		}
+	</style>
+
+</head>
+
+<body>
+	<a href="javascript:history.back()" class="btn btn-primary atras-button">Atrás</a>
+	<h1>Clientes Registrados</h1>
+	<div id="table-container">
+		<table id="forma">
+			<thead>
+				<tr>
+					<th>Id</th>
+					<th>Nombre</th>
+					<th>Apellido</th>
+					<th>Edad</th>
+					<th>E-mail</th>
+					<th>Cédula</th>
+					<th>Dirección</th>
+					<th>Usuario</th>
+					<th>Contraseña</th>
+					<th>Editar Datos Cliente</th>
+					<th>Borrar</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="cliente:${clientes}">
+					<td th:text="${cliente.id}"></td>
+					<td th:text="${cliente.nombre}"></td>
+					<td th:text="${cliente.apellido}"></td>
+					<td th:text="${cliente.edad}"></td>
+					<td th:text="${cliente.correo}"></td>
+					<td th:text="${cliente.cedula}"></td>
+					<td th:text="${cliente.direccion}"></td>
+					<td th:text="${cliente.usuarioGeneral}"></td>
+					<td th:text="${cliente.contrasenia}"></td>
+					<td>
+						<form th:action="@{/empleados/cliente/buscarPorID/{id}(id=${cliente.id})}" method="GET">
+							<input class="btn btn-info" type="submit" value="Editar">
+						</form>
+					</td>
+					<td>
+						<form th:action="@{/empleados/borrar/{id}(id=${cliente.id})}" th:method="DELETE">
+							<input class="btn btn-danger" type="submit" value="Borrar">
+						</form>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+
+</html>

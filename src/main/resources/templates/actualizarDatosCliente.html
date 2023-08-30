@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Actualización | Datos</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+
+    <link rel="shortcut icon" href="https://cdn-icons-png.flaticon.com/512/4081/4081551.png" type="image/x-icon">
+	<style>
+		body {
+			margin: 0;
+			padding: 0;
+			background: url('https://static.nationalgeographicla.com/files/styles/image_3200/public/nationalgeographic_2791022.jpg?w=1600&h=900&p=righttop');
+			background-size: cover;
+			font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			height: 100vh;
+		}
+
+		h2 {
+			text-align: center;
+			border-radius: 20px;
+			padding: 10px;
+			background-color: rgba(255, 255, 255, 0.7);
+			margin-bottom: 20px;
+		}
+
+		table label {
+			font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+		}
+
+		table input {
+			border-radius: 50px;
+			padding: 8px;
+			width: 100%; /* Hacer los cajones más anchos */
+		}
+
+		.atras-button {
+			margin-bottom: 20px;
+		}
+
+		.container {
+			background-color: rgba(255, 255, 255, 0.7);
+			padding: 20px;
+			border-radius: 10px;
+		}
+
+		/* Centrar el texto en los cajones */
+		table input[type="text"],
+		table input[type="number"] {
+			text-align: center;
+		}
+
+		/* Centrar el botón */
+		#actualizar {
+			display: block;
+			margin: 0 auto;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="container">
+		<h2>Actualización de datos</h2>
+		<a href="javascript:history.back()" class="btn btn-primary atras-button">Atrás</a>
+
+		<form th:action="@{/empleados/actualizar/{id}(id=${cliente.id})}" th:object="${cliente}" th:method="PUT">
+
+			<table class="table table-striped table-bordered table-hover table-responsive">
+
+				<tr>
+					<td>
+						<label></label>
+					</td>
+					<td>
+						<input type="number" id="id" th:field="${cliente.id}" readonly onmousedown="return false;">
+					</td>
+				</tr>
+
+				<tr>
+					<td>
+						<label>Nombre</label>
+					</td>
+					<td>
+						<input type="text" id="nombre" th:field="${cliente.nombre}">
+					</td>
+				</tr>
+
+				<tr>
+					<td>
+						<label>Apellido</label>
+					</td>
+					<td>
+						<input type="text" id="apellido" th:field="${cliente.apellido}">
+					</td>
+				</tr>
+				
+				<tr>
+					<td>
+						<label>Cedula</label>
+					</td>
+					<td>
+						<input type="text" id="cedula" th:field="${cliente.cedula}">
+					</td>
+				</tr>
+
+				<tr>
+					<td>
+						<label>Edad</label>
+					</td>
+					<td>
+						<input type="number" id="edad" th:field="${cliente.edad}">
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label>E-mail</label>
+					</td>
+					<td>
+						<input type="text" id="correo" th:field="${cliente.correo}">
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label>Dirección</label>
+					</td>
+					<td>
+						<input type="text" id="direccion" th:field="${cliente.direccion}">
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label>Usuario</label>
+					</td>
+					<td>
+						<input type="text" id="usuario" th:field="${cliente.usuarioGeneral}"readonly onmousedown="return false;">
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label>Contraseña</label>
+					</td>
+					<td>
+						<input type="text" id="contra" th:field="${cliente.contrasenia}">
+					</td>
+				</tr>
+			</table>
+			<button id="actualizar" type="submit" class="btn btn-warning">Actualizar</button>
+		</form>
+	</div>
+	<script>
+		document.getElementById("actualizar").addEventListener("click", function () {
+			alert("Datos Actualizados Correctamente");
+		});
+	</script>
+</body>
+
+</html>
+
+
+

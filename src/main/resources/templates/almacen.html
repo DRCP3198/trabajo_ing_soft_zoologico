@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Almacenes</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            background-image: url('https://img.freepik.com/vector-gratis/fondo-vida-silvestre-acuarela_23-2149424200.jpg?w=2000');
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 80%;
+            margin: auto;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 8px;
+            text-align: center; 
+        }
+
+        th {
+            background-color: #333;
+            color: white;
+        }
+
+        tr {
+            background-color: hsla(0, 0%, 100%, 0.80);
+        }
+
+        h2 {
+            color: #333;
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        form {
+            width: 50%;
+            margin: auto;
+            margin-top: 10px;
+            padding: 10px;
+            background-color: hsla(0, 0%, 100%, 0.671);
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        label, input[type="text"], input[type="number"], input[type="submit"] {
+            display: block;
+            margin-bottom: 10px;
+            
+        }
+
+        input[type="text"], input[type="number"] {
+            width: 95%;
+            padding: 8px;
+            
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        input[type="submit"] {
+            background-color: #333;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+        }
+
+        a {
+            color: #333;
+            text-decoration: none;
+            margin-right: 10px;
+        }
+        
+        .table-container {
+            max-height: 500px; 
+            overflow: auto;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 8px 15px;
+            background-color: #333;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+<body>
+    <h1>Lista de Almacenes</h1>
+    
+    <div class="table-container">
+        <table border="1">        <tr>
+            <th>Nombre</th>
+            <th>Capacidad</th>
+            <th>Tipo</th>
+            <th>Acciones</th>
+        </tr>
+            <tr th:each="almacen : ${almacenes}">
+            <td th:text="${almacen.nombre}"></td>
+            <td th:text="${almacen.capacidad}"></td>
+            <td th:text="${almacen.tipo}"></td>
+                <td>
+                    <a class="btn" th:href="@{/empleados/almacen/editar/{nombre}(nombre=${almacen.nombre})}">Editar</a>
+                    <a class="btn" th:href="@{/empleados/almacen/eliminar/{nombre}(nombre=${almacen.nombre})}">Eliminar</a>
+                </td>
+            </tr>
+        </table>
+    </div>
+    
+    <h2>Nuevo Almacén</h2>
+    <form action="/zoologico/empleados/almacen/agregar" method="post">
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre">
+        
+        <label for="capacidad">Capacidad:</label>
+        <input type="number" id="capacidad" name="capacidad">
+        
+        <label for="tipo">Tipo:</label>
+        <input type="text" id="tipo" name="tipo">
+        
+        <input type="submit" value="Agregar Almacén">
+    </form>
+</body>
+</html>

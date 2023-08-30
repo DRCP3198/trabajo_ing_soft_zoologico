@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href="https://cdn-icons-png.flaticon.com/512/4081/4081551.png" type="image/x-icon">
+
+    <title>Editar Almacén</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+              background-image: url('https://img.freepik.com/vector-gratis/fondo-vida-silvestre-acuarela_23-2149424200.jpg?w=2000');
+           
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 80%;
+            margin: auto;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 8px;
+            text-align: center; 
+        }
+
+        th {
+            background-color: #333;
+            color: white;
+        }
+
+        tr{
+            background-color: #f2f2f2;
+        }
+
+        h2 {
+            color: #333;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        form {
+            width: 65%;
+            margin: auto;
+            margin-top: 10px;
+            padding: 10px;
+            background-color:  hsla(0, 0%, 100%, 0.80);
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        label, input[type="text"], input[type="number"], input[type="submit"] {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        input[type="text"], input[type="number"] {
+            width: 95%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        input[type="submit"] {
+            background-color: #333;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        a {
+            color: #333;
+            text-decoration: none;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Editar Almacén</h1>
+    
+<form th:action="@{/empleados/almacen/editar/{nombre}(nombre=${almacen.nombre})}" method="post">
+        <label for="nombre">Nuevo Nombre:</label>
+        <input type="text" id="nombre" name="nombre" th:value="${almacen.nombre}" required>
+        
+        <label for="capacidad">Nueva Capacidad:</label>
+        <input type="number" id="capacidad" name="capacidad" th:value="${almacen.capacidad}" required>
+        
+        <label for="tipo">Nuevo Tipo:</label>
+        <input type="text" id="tipo" name="tipo" th:value="${almacen.tipo}" required>
+        
+        <input type="submit" value="Guardar Cambios">
+    </form>
+</body>
+</html>
