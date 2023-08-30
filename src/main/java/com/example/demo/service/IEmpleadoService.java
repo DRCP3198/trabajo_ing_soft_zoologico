@@ -7,9 +7,10 @@ import com.example.demo.modelo.Empleado;
 public interface IEmpleadoService {
 	
 	public void agregar(Empleado empleado);
+	public Empleado encontrar(Integer id);
 
 	public void modificar(Empleado empleado);
-
+    public void borrarId(Integer id);
 	public Empleado buscar(String codigo);
 
 	public void borrar(String codigo);
@@ -20,5 +21,5 @@ public interface IEmpleadoService {
 	public String siguienteVista(String usuario, String contrasenia);
 
 	public List<Empleado> reporte();
-
+	
 }

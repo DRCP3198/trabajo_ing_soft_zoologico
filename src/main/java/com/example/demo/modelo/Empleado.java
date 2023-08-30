@@ -7,9 +7,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToOne;
+
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 
@@ -43,6 +41,12 @@ public class Empleado {
 	
 	@Column(name = "empl_usuarioGeneral")
 	private String usuarioGeneral;
+	
+	@Column(name = "empl_horario_inicio")
+	private String horarioI;
+	
+	@Column(name = "empl_horario_salida")
+	private String horarioS;
 	
 	
 
@@ -116,6 +120,22 @@ public class Empleado {
 
 	public void setUsuarioGeneral(String usuarioGeneral) {
 		this.usuarioGeneral = usuarioGeneral;
+	}
+
+	public String getHorarioI() {
+		return horarioI;
+	}
+
+	public void setHorarioI(String horarioI) {
+		this.horarioI = horarioI;
+	}
+
+	public String getHorarioS() {
+		return horarioS;
+	}
+
+	public void setHorarioS(String horarioS) {
+		this.horarioS = horarioS;
 	}
 
 	

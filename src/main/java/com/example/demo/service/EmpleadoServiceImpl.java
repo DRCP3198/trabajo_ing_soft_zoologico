@@ -75,4 +75,17 @@ public class EmpleadoServiceImpl implements IEmpleadoService {
 			return "redirect:/inicio";
 		}
 	}
+
+	@Override
+	public Empleado encontrar(Integer id) {
+		// TODO Auto-generated method stub
+		return this.empleadoRepo.buscar(id);
+	}
+
+	@Override
+	public void borrarId(Integer id) {
+		// TODO Auto-generated method stub
+		this.empleadoRepo.eliminar(id);
+		
+	}
 }

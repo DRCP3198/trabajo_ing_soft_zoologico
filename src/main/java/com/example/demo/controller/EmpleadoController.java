@@ -87,23 +87,42 @@ public class EmpleadoController {
 
 
 	// EMPLEADO
-	@GetMapping("/registro")
-	public String registrarEmpleado(Empleado empleado) {
-		return "resgitroEmpleado";
-	}
+		@GetMapping("/registro")
+		public String registrarEmpleado(Empleado empleado) {
+			return "resgitroEmpleado";
+		}
 
-	@PostMapping("/insertar")
-	public String guardarRegistro(Empleado empleado) {
-		this.empleadoService.agregar(empleado);
-		return "confirmacionRegistroEmpleados";
-	}
+		@PostMapping("/insertar")
+		public String guardarRegistro(Empleado empleado) {
+			this.empleadoService.agregar(empleado);
+			return "confirmacionRegistroEmpleados";
+		}
 
-	@GetMapping("/reporte")
-	public String reporteEmpleado(Model model) {
-		List<Empleado> lista = this.empleadoService.reporte();
-		model.addAttribute("empleados", lista);
-		return "vistaReporteEmpleado";
-	}
+		@GetMapping("/reporte")
+		public String reporteEmpleado(Model model) {
+			List<Empleado> lista = this.empleadoService.reporte();
+			model.addAttribute("empleados", lista);
+			return "vistaReporteEmpleado";
+		}
+		@GetMapping("/buscarPorID/{idEmpleado}")
+		public String buscarPorIdEmpleado(@PathVariable("idEmpleado") Integer id, Model model) {
+			Empleado empleado = this.empleadoService.encontrar(id);
+			model.addAttribute("empleado", empleado);
+			return "actualizarDatosEmpleado";
+		}
+
+		@PutMapping("/actualizarEmpleado/{idEmpleado}")
+		public String actualizarEmpleado(@PathVariable("idEmpleado") Integer id, Empleado empleado) {
+			this.empleadoService.modificar(empleado);
+			return "redirect:/empleados/reporte";
+
+		}
+		@DeleteMapping("/borrarEmpleado/{idEmpleado}")
+		public String borrarEmpleados(@PathVariable("idEmpleado")Integer id) {
+			this.empleadoService.borrarId(id);
+			return "redirect:/empleados/reporte";
+			
+		}
 
 	
 	// CLIENTE
