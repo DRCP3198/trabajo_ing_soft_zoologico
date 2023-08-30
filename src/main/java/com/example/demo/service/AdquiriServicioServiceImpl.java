@@ -13,7 +13,7 @@ import com.example.demo.modelo.Servicio;
 import com.example.demo.repository.IAdquiriServicioRepo;
 
 @Service
-public class AdquiriServicioServiceImpl implements IAdquiriServicioRepo{
+public class AdquiriServicioServiceImpl implements IAdquirirServicioService{
 
 	@Autowired
 	private IAdquiriServicioRepo adquiriServicioRepo;
@@ -43,7 +43,7 @@ public class AdquiriServicioServiceImpl implements IAdquiriServicioRepo{
 		adquirir.setValor(adquirirServicioProveedor.getValor());
 		adquirir.setFechaAdquisicion(LocalDate.now());
 		
-		this.adquiriServicioRepo.insertar(adquirirServicioProveedor);
+		this.adquiriServicioRepo.insertar(adquirir);
 		
 	}
 

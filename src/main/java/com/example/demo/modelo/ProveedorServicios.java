@@ -41,7 +41,7 @@ public class ProveedorServicios {
 	
 	// RELACIONES:
 	
-	@OneToMany(mappedBy = "proveedor_servicios")
+	@OneToMany(mappedBy = "proveedorServicios")
 	private List<AdquirirServicioProveedor> compras;
 	
 	@ManyToOne

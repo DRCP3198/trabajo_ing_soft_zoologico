@@ -25,7 +25,6 @@ import com.example.demo.modelo.Proveedor;
 import com.example.demo.modelo.ProveedorServicios;
 import com.example.demo.modelo.Servicio;
 import com.example.demo.modelo.citaHistorialClinico;
-import com.example.demo.repository.IAdquiriServicioRepo;
 import com.example.demo.service.IAdquirirServicioService;
 import com.example.demo.service.IAlmacenService;
 import com.example.demo.service.IAnimalService;

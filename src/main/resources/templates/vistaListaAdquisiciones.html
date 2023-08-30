@@ -44,12 +44,12 @@
 									</tr>
 								</thead>
 								<tbody>
-									<tr th:each="servicio_proveedores:${compraProveedores}">
-										<td th:text="${servicio_proveedores.fechaCompra}"></td>
-										<td th:text="${servicio_proveedores.servicio.nombre}"></td>
-										<td th:text="${servicio_proveedores.proveedorServicios.nombre}"></td>										
-										<td th:text="${servicio_proveedores.servicio.valorPorDia}"></td>
-										<td th:text="${servicio_proveedores.valor}"></td>
+									<tr th:each="adquirirProveedores:${adquirirProveedores}">
+										<td th:text="${adquirirProveedores.fechaAdquisicion}"></td>
+										<td th:text="${adquirirProveedores.servicio.nombre}"></td>
+										<td th:text="${adquirirProveedores.proveedorServicios.nombre}"></td>										
+										<td th:text="${adquirirProveedores.servicio.valorPorDia}"></td>
+										<td th:text="${adquirirProveedores.valor}"></td>
 
 
 									</tr>

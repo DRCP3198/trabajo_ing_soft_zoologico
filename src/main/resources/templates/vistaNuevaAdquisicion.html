@@ -141,11 +141,11 @@
 									</tr>
 								</thead>
 								<tbody>
-									<tr th:each="servicio : ${servicios}">
-										<td th:text="${servicio.codigo}"></td>
-										<td th:text="${servicio.nombre}"></td>
-										<td th:text="${servicio.estado}"></td>
-										<td th:text="${servicio.valorPorDia}"></td>								
+									<tr th:each="servicios : ${servicios}">
+										<td th:text="${servicios.codigo}"></td>
+										<td th:text="${servicios.nombre}"></td>
+										<td th:text="${servicios.estado}"></td>
+										<td th:text="${servicios.valorPorDia}"></td>								
 
 									</tr>
 								</tbody>
@@ -162,7 +162,7 @@
 
 
 
-					<form th:action="@{/empleados/insertar/adquisicion}" th:object="${servicio_proveedores}" th:method="POST">
+					<form th:action="@{/empleados/insertar/adquisicion}" th:object="${adquirirServicioProveedor}" th:method="POST">
 						<table class="table table-striped table-dark">
 							<h1>Realizar compra a proveedor</h1>
 							<tr>
@@ -171,7 +171,7 @@
 								</td>
 								<td>
 									<input type="text" id="codigoProvedor"
-										th:field="${servicio_proveedores.proveedorServicios.codigo}">
+										th:field="${adquirirServicioProveedor.proveedorServicios.codigo}">
 								</td>
 							</tr>
 							<tr>
@@ -180,7 +180,7 @@
 								</td>
 								<td>
 									<input type="text" id="codigoProducto"
-										th:field="${servicio_proveedores.servicio.codigo}">
+										th:field="${adquirirServicioProveedor.servicio.codigo}">
 								</td>
 							</tr>
 							<tr>
@@ -188,7 +188,7 @@
 									<label>Valor:</label>
 								</td>
 								<td>
-									<input type="number" id="valor" th:field="${servicio_proveedores.valor}">
+									<input type="number" id="valor" th:field="${adquirirServicioProveedor.valor}">
 								</td>
 							</tr>
 						</table>

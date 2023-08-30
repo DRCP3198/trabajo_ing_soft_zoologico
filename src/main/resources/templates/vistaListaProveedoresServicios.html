@@ -110,21 +110,21 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr th:each="proveedor_servicios:${proveedoresServicios}">
-					<td th:text="${proveedor_servicios.nombre}"></td>
-					<td th:text="${proveedor_servicios.fechaInicioContrato}"></td>
-					<td th:text="${proveedor_servicios.fechaFinContrato}"></td>
-					<td th:text="${proveedor_servicios.ruc}"></td>
-					<td th:text="${proveedor_servicios.codigo}"></td>
+				<tr th:each="proveedoresS:${proveedoresServicios}">
+					<td th:text="${proveedoresS.nombre}"></td>
+					<td th:text="${proveedoresS.fechaInicioContrato}"></td>
+					<td th:text="${proveedoresS.fechaFinContrato}"></td>
+					<td th:text="${proveedoresS.ruc}"></td>
+					<td th:text="${proveedoresS.codigo}"></td>
 					<td class="text-center">
-						<form th:action="@{/empleados/proveedorServicios/eliminar/{codigo}(codigo=${proveedor_servicios.codigo})}"
-							th:object="${proveedor_servicios}" th:method="DELETE">
+						<form th:action="@{/empleados/proveedorServicios/eliminar/{codigo}(codigo=${proveedoresS.codigo})}"
+							th:object="${proveedoresS}" th:method="DELETE">
 							<button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
 						</form>
 					</td>
 					<td class="text-center">
-						<form th:action="@{/empleados/compra/registro/{codigo}(codigo=${proveedor.codigo})}"
-							th:object="${proveedor}" th:method="GET">
+						<form th:action="@{/empleados/adquirir/registro/{codigo}(codigo=${proveedoresS.codigo})}"
+							th:object="${proveedoresS}" th:method="GET">
 							<button type="submit" class="btn btn-danger btn-sm">Comprar
 								producto</button>
 						</form>
