@@ -46,14 +46,23 @@ public class AnimalServiceImpl implements IAnimalService {
 
 	@Override
 	public Animal buscarPorId(Integer id) {
-		// TODO Auto-generated method stub
 		return this.animalRepo.buscarPorId(id);
 	}
 
 	@Override
 	public void borrarPorID(Integer id) {
-		// TODO Auto-generated method stub
 		this.animalRepo.eliminarPorID(id);
 	}
+	
+	@Override
+	public List<Animal> buscarPorHabitat(String habitat) {
+	    return animalRepo.buscarPorHabitat(habitat);
+	}
+
+	@Override
+	public List<Animal> buscarPorEspecie(String especie) {
+		return animalRepo.buscarPorEspecie(especie);
+	}
+
 
 }

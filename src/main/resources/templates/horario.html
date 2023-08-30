@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendario de Horarios</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #ccc;
+            padding: 8px;
+            text-align: center;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        td.empty {
+            background-color: #eee;
+        }
+        .selected {
+            background-color: #b3d4fc;
+        }
+        #employee-schedule {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            width: 50%;
+        }
+    </style>
+</head>
+<body>
+    <h1>Calendario de Horarios</h1>
+    <table>
+        <tr>
+            <th>Hora</th>
+            <th>Lunes</th>
+            <th>Martes</th>
+            <th>Miércoles</th>
+            <th>Jueves</th>
+            <th>Viernes</th>
+            <th>Sábado</th>
+            <th>Domingo</th>
+        </tr>
+        <!-- Generar filas para cada hora y día -->
+        <!-- Puedes usar JavaScript para generar estas filas de manera dinámica -->
+        <!-- Ejemplo de filas para las horas -->
+        <tr>
+            <td>06:00 AM</td>
+            <td class="empty"></td>
+            <td class="empty"></td>
+            <td class="empty"></td>
+            <td class="empty"></td>
+            <td class="empty"></td>
+            <td class="empty"></td>
+            <td class="empty"></td>
+        </tr>
+        <!-- Puedes agregar más filas de acuerdo a las horas y días -->
+    </table>
+
+    <div id="employee-schedule">
+        <h2>Añadir Horario de Empleado</h2>
+        <label for="employee-name">Nombre del Empleado:</label>
+        <input type="text" id="employee-name">
+        <label for="start-time">Hora de Inicio:</label>
+        <input type="time" id="start-time">
+        <label for="end-time">Hora de Fin:</label>
+        <input type="time" id="end-time">
+        <button id="add-schedule">Añadir Horario</button>
+    </div>
+
+    <script>
+        const addScheduleButton = document.getElementById('add-schedule');
+        const startTimeInput = document.getElementById('start-time');
+        const endTimeInput = document.getElementById('end-time');
+
+        addScheduleButton.addEventListener('click', () => {
+            const employeeName = document.getElementById('employee-name').value;
+            const startTime = startTimeInput.value;
+            const endTime = endTimeInput.value;
+
+            if (employeeName && startTime && endTime) {
+                const cells = document.querySelectorAll('td.empty');
+
+                cells.forEach(cell => {
+                    const cellTime = cell.parentNode.firstChild.textContent;
+                    if (cellTime >= startTime && cellTime <= endTime) {
+                        cell.textContent = employeeName;
+                        cell.classList.add('selected');
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>

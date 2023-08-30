@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.demo.modelo.Almacen;
 import com.example.demo.modelo.Animal;
@@ -75,7 +76,7 @@ public class EmpleadoController {
 	public String registrarEmpleado(Empleado empleado) {
 		return "resgitroEmpleado";
 	}
-
+	
 	@PostMapping("/insertar")
 	public String guardarRegistro(Empleado empleado) {
 		this.empleadoService.agregar(empleado);
@@ -89,6 +90,10 @@ public class EmpleadoController {
 		return "vistaReporteEmpleado";
 	}
 
+	@GetMapping("/horario")
+	public String horarioEmpleado() {
+		return "horario";
+	}
 	
 	// CLIENTE
 	// registro cliente
@@ -160,6 +165,48 @@ public class EmpleadoController {
 		return "redirect:/empleados/listaAnimales";
 	}
 
+    @GetMapping("/habitad")
+    public String paginaBuscarCliente(Animal animal) {
+        return "busquedaHabitad";
+    }
+    
+    @GetMapping("/especie")
+    public String paginaBuscarEspecie(Animal animal) {
+        return "busquedaEspecie";
+    }
+ 
+    @GetMapping("/apellidos")
+    public String buscarPorApellido(Animal animal, Model model) {
+        List<Animal> listCliente = this.animalService.buscarPorHabitat(animal.getNombreCientifico());
+        for (Animal a : listCliente) {
+			System.out.println(a.getNombreCientifico());
+		}
+        model.addAttribute("animales", listCliente);
+        return "vistaListaAnimales";
+    }
+
+    @GetMapping("/idHab")
+    public String buscarPorEspecie(Animal animal, Model model) {
+        List<Animal> listCliente = this.animalService.buscarPorEspecie(animal.getEspecie());
+        for (Animal a : listCliente) {
+			System.out.println(a.getEspecie());
+		}
+        model.addAttribute("animales", listCliente);
+        return "vistaListaAnimales";
+    }
+
+    // buscar todos
+    @GetMapping("/lista")
+    public String buscarClientes(Model model) {
+        List<Animal> lista = this.animalService.buscarTodos();
+        for (Animal animal : lista) {
+			System.out.println(animal.getNombreCientifico());
+		}
+        model.addAttribute("animales", lista);
+        return "vistaListaAnimales";
+    }
+
+	
 	
 	// PRODUCTO
 	@GetMapping("producto/registro")

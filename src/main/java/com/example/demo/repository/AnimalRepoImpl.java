@@ -13,41 +13,41 @@ import jakarta.transaction.Transactional;
 
 @Transactional
 @Repository
-public class AnimalRepoImpl implements IAnimalRepo{
-	
+public class AnimalRepoImpl implements IAnimalRepo {
+
 	@PersistenceContext
 	private EntityManager entityManager;
 
 	@Override
 	public void insertar(Animal animal) {
 		this.entityManager.persist(animal);
-		
+
 	}
 
 	@Override
 	public void actualizar(Animal animal) {
 		this.entityManager.merge(animal);
-		
+
 	}
 
 	@Override
 	public void eliminar(String nombreComun) {
-	
+
 		this.entityManager.remove(this.seleccionar(nombreComun));
-		
-		
+
 	}
 
 	@Override
 	public Animal seleccionar(String nombreComun) {
-		TypedQuery<Animal> myQuery = this.entityManager.createQuery("Select anim from anim WHERE anim.nombreComun=:datoNombre",Animal.class);
+		TypedQuery<Animal> myQuery = this.entityManager
+				.createQuery("Select anim from anim WHERE anim.nombreComun=:datoNombre", Animal.class);
 		myQuery.setParameter("datoNombre", nombreComun);
 		return myQuery.getSingleResult();
 	}
 
 	@Override
 	public List<Animal> encontrarTodos() {
-		TypedQuery<Animal> myQuery= this.entityManager.createQuery("Select anim from Animal anim",Animal.class);
+		TypedQuery<Animal> myQuery = this.entityManager.createQuery("Select anim from Animal anim", Animal.class);
 		return myQuery.getResultList();
 	}
 
@@ -60,9 +60,25 @@ public class AnimalRepoImpl implements IAnimalRepo{
 	@Override
 	public void eliminarPorID(Integer id) {
 		// TODO Auto-generated method stub
-		Animal a=this.buscarPorId(id);
+		Animal a = this.buscarPorId(id);
 		this.entityManager.remove(a);
-		
+
+	}
+
+	@Override
+	public List<Animal> buscarPorHabitat(String habitat) {
+	    TypedQuery<Animal> myQuery = this.entityManager
+	            .createQuery("SELECT a FROM Animal a WHERE a.nombreCientifico = :nombreCientifico", Animal.class);
+	    myQuery.setParameter("nombreCientifico", habitat);
+	    return myQuery.getResultList();
+	}
+
+	@Override
+	public List<Animal> buscarPorEspecie(String especie) {
+	    TypedQuery<Animal> myQuery = this.entityManager
+	            .createQuery("SELECT a FROM Animal a WHERE a.especie = :especie", Animal.class);
+	    myQuery.setParameter("especie", especie);
+	    return myQuery.getResultList();
 	}
 
 }

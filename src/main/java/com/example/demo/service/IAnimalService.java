@@ -19,4 +19,10 @@ public interface IAnimalService {
 	
 	public void borrarPorID(Integer id);
 
+	public List<Animal> buscarPorHabitat(String habitat);
+
+	public List<Animal> buscarPorEspecie(String especie);
+
+	
 }
+

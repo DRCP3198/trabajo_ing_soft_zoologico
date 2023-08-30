@@ -41,10 +41,18 @@
 									th:field="${animal.nombreComun}">
 							</div>
 
-							<!--<div class="mb-3">-->
-							<!--    <label for="nombreCientifico" class="form-label">Nombre Científico</label>-->
-							<!--    <input type="text" id="nombreCientifico" class="form-control" th:field="${animal.nombreCientifico}">-->
-							<!--</div>-->
+							<div class="mb-3">
+								<label for="habitat" class="form-label">Hábitat</label>
+								<select id="habitat" class="form-control" th:field="${animal.nombreCientifico}">
+									<option value="selva">Selva</option>
+									<option value="desierto">Desierto</option>
+									<option value="oceano">Acuáticos</option>
+									<option value="rio">Rio</option>
+									<option value="pantano">Pantano</option>
+									<option value="bosque">Bosque</option>
+
+								</select>
+							</div>
 
 							<div class="mb-3">
 								<label for="especie" class="form-label">Especie</label>
