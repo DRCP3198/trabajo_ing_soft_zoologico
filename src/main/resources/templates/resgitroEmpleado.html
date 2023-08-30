@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<title>Registro | Empleado</title>
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+		integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+		integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+	<link rel="shortcut icon" href="https://cdn-icons-png.flaticon.com/512/4081/4081551.png" type="image/x-icon">
+
+	<style>
+		body {
+			background-image: url('https://www.explica.me/__export/1630425844553/sites/debate/img/2021/08/31/animales_diurnos_crop1630425842866.png_673822677.png');
+			margin: 0;
+			padding: 0;
+			background-size: cover;
+			font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+			height: 100vh;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+
+		.registro {
+			background-color: rgba(255, 255, 255, 0.9);
+			padding: 20px;
+			border-radius: 10px;
+			box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+			width: 80%;
+			max-width: 400px;
+			text-align: center;
+		}
+
+		.registro label {
+			margin: 0;
+			padding: 0;
+			font-weight: bold;
+			color: #333;
+		}
+
+		.registro input {
+			width: 100%;
+			margin-bottom: 15px;
+			padding: 10px;
+			border: 1px solid #ccc;
+			border-radius: 5px;
+		}
+
+		.registro a {
+			font-size: 18px;
+			color: #e95c5c;
+		}
+
+		.registro button {
+			width: 100%;
+			padding: 10px;
+			background-color: #4caf50;
+			color: white;
+			border: none;
+			border-radius: 5px;
+			cursor: pointer;
+		}
+
+		.atras-button {
+			position: absolute;
+			top: 35px;
+			left: 30px;
+			padding: 5px 10px;
+			background-color: rgba(255, 255, 255, 0.2);
+			border: none;
+			border-radius: 5px;
+			color: white;
+			font-size: 14px;
+			text-decoration: none;
+		}
+	</style>
+</head>
+
+<body>
+	<a href="javascript:history.back()" class="btn btn-primary atras-button">Atrás</a>
+
+	<div class="registro">
+		<h1>Registro Empleado</h1>
+		<form th:action="@{/empleados/insertar}" th:object="${empleado}" method="POST">
+			<div class="form-group">
+				<label for="nombre">Nombre</label>
+				<input id="nombre" type="text" class="form-control" th:field="${empleado.nombre}" required
+					autofocus="autofocus">
+			</div>
+			<div class="form-group">
+				<label for="apellido">Apellido</label>
+				<input id="apellido" type="text" class="form-control" th:field="${empleado.apellido}" required
+					autofocus="autofocus">
+			</div>
+			<div class="form-group">
+				<label for="cedula">Cédula</label>
+				<input id="cedula" type="number" class="form-control" th:field="${empleado.cedula}" required
+					autofocus="autofocus">
+			</div>
+			<div class="form-group">
+				<label for="sueldo">Sueldo</label>
+				<input id="sueldo" type="number" class="form-control" th:field="${empleado.sueldo}" required
+					autofocus="autofocus">
+			</div>
+			<div class="form-group">
+				<label for="cargo">Cargo</label>
+				<select id="cargo" class="form-control" th:field="${empleado.cargo}" required autofocus="autofocus">
+					<option value="Veterinario">Veterinario</option>
+					<option value="Cuidador de fauna">Cuidador de fauna</option>
+					<option value="Seguridad">Seguridad</option>
+					<option value="Limpieza">Limpieza</option>
+					<option value="Administrativo">Administrativo</option>
+				</select>
+			</div>
+			<div class="form-group">
+				<label for="usuarioGeneral">Usuario</label>
+				<input id="usuario" type="text" class="form-control" th:field="${empleado.usuarioGeneral}" required
+					autofocus="autofocus">
+			</div>
+			<div class="form-group">
+				<label for="contrasenia">Contraseña</label>
+				<input id="contrasenia" type="password" class="form-control" th:field="${empleado.contrasenia}" required
+					autofocus="autofocus">
+			</div>
+			<button id="registrar" type="submit" class="btn btn-success">Registrar</button>
+			<script>
+				document.getElementById("registrar").addEventListener("click", function () {
+					alert("¡Aceptar si desea registrar un Empleado!");
+				});
+			</script>
+		</form>
+	</div>
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+		integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+		crossorigin="anonymous"></script>
+</body>
+
+</html>

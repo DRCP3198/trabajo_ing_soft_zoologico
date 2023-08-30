@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+	<title>Registrar Historial Clínico</title>
+	<style>
+		body {
+			background-image: url('https://www.orientacionandujar.es/wp-content/uploads/2017/02/Imagen-14-El-parque-zoolo%CC%81gico-I.jpg');
+			background-repeat: no-repeat;
+			background-attachment: fixed;
+			background-size: cover;
+			font-family: Arial, sans-serif;
+			margin: 0;
+			padding: 0;
+		}
+
+		.container {
+			padding: 2rem;
+		}
+
+		.table {
+			margin-top: 2rem;
+		}
+
+		.table thead th {
+			background-color: #343a40;
+			color: #ffffff;
+			border-color: #343a40;
+			font-size: 1.2rem;
+		}
+
+		.table tbody td {
+			vertical-align: middle;
+			font-size: 1rem;
+		}
+
+		h1.display-4 {
+			font-size: 2.5rem;
+			margin-top: 3rem;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="container">
+		<h1 class="display-4 text-center">Historial Clínico</h1>
+		<table class="table table-dark table-striped">
+			<thead>
+				<tr>
+					<th>Fecha de registro</th>
+					<th>Observaciones</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="historial : ${historial}">
+					<td th:text="${historial.fechaRegistro}"></td>
+					<td th:text="${historial.descripcion}"></td>
+
+					
+
+					<td class="text-center">
+						<form th:action="@{/empleados/cita/registroHistorial/{id}(id=${historial.id})}"
+							th:object="${historial}" th:method="GET">
+							<button type="submit" class="btn btn-danger btn-sm">Registrar nueva cita</button>
+						</form>
+					</td>
+					<td class="text-center">
+						<form th:action="@{/empleados/listaHistorial/{id}(id=${historial.id})}" th:object="${historial}"
+							th:method="GET">
+							<button type="submit" class="btn btn-primary">Editar</button>
+						</form>
+					</td>
+
+				</tr>
+			</tbody>
+		</table>
+		<a th:href="@{/empleados/registrarHistorial}">Agregar nuevo Historial Clinico</a>
+	</div>
+</body>
+
+</html>

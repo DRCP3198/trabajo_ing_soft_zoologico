@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Reporte Productos</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+		integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+		integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+	<link rel="shortcut icon" href="https://cdn-icons-png.flaticon.com/512/4081/4081551.png" type="image/x-icon">
+
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+
+		body {
+			text-align: center;
+			background: url('https://img.freepik.com/vector-gratis/fondo-vida-silvestre-acuarela_23-2149424200.jpg?w=2000');
+		}
+
+		h1 {
+			background-color: hsla(0, 0%, 87%, 0.685);
+			padding: 10px;
+			border-radius: 15px;
+		}
+
+		.atras-button {
+			position: absolute;
+			top: 35px;
+			left: 30px;
+			padding: 5px 10px;
+			background-color: rgba(255, 255, 255, 0.2);
+			border: none;
+			border-radius: 5px;
+			color: white;
+			font-size: 14px;
+			text-decoration: none;
+		}
+
+
+
+		#table-container {
+			max-height: 550px;
+			/* Set a max height for the container */
+			overflow-y: auto;
+			width: 85%;
+
+			/* Enable vertical scrolling for overflowing content */
+			border-radius: 15px;
+			margin: 60px auto;
+		}
+
+		#forma {
+			font-family: Arial, Helvetica, sans-serif;
+			border-collapse: collapse;
+			width: 100%;
+			/* Set the table width to 100% */
+		}
+
+		#forma td,
+		#forma th {
+			border: 1px solid #ddd;
+			padding: 8px;
+		}
+
+		#forma tr {
+			background-color: hsla(0, 0%, 87%, 0.685);
+		}
+
+		#forma tr:hover {
+			background-color: #ddd;
+		}
+
+		#forma th {
+			padding-top: 12px;
+			padding-bottom: 12px;
+			text-align: center;
+			/* Center align headers */
+			background-color: hsla(120, 100%, 75%, 0.74);
+			color: white;
+		}
+
+		#forma th {
+			/* Add sticky positioning for the header cells */
+			position: sticky;
+			top: 0;
+			background-color: hsla(120, 100%, 75%, 1);
+			color: white;
+			z-index: 1;
+			/* Ensure it's above the scrolling content */
+		}
+	</style>
+
+</head>
+
+<body>
+	<a href="javascript:history.back()" class="btn btn-primary atras-button">Atrás</a>
+	<h1>Reporte de Productos</h1>
+	<div id="table-container">
+		<table id="forma">
+			<thead>
+				<tr>
+					<th>Nombre</th>
+					<th>Tipo</th>
+					<th>Stock</th>
+					<th>Codigo</th>
+					<th>Descripcion</th>
+					<th>Precio</th>
+					<th>Fecha Caducidad</th>
+					<th>Estado</th>
+					<th>Acción</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="producto:${productos}">
+					<td th:text="${producto.nombre}"></td>
+					<td th:text="${producto.tipo}"></td>
+					<td th:text="${producto.cantidad_stock}"></td>
+					<td th:text="${producto.codigo}"></td>
+					<td th:text="${producto.descripcion}"></td>
+					<td th:text="${producto.precio}"></td>
+					<td th:text="${producto.fechaCaducidad}"></td>
+					<td th:text="${producto.estado}"></td>
+					<td class="text-center">
+						<form th:action="@{/empleados/producto/eliminar/{codigo}(codigo=${producto.codigo})}"
+							th:object="${producto}" th:method="DELETE">
+							<button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
+						</form>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+
+</html>
